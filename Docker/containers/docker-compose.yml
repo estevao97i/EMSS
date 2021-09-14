@@ -1,0 +1,7 @@
+version: '2'
+services:
+  Turmaformacao:
+    extends:
+      file: postgres/postgres.yml
+      service: Turmaformacao
+    container_name: Turmaformacao
