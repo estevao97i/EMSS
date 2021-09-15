@@ -1,0 +1,10 @@
+spring:
+  application:
+      name: EMS
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/formacao
+    username: user_formacao
+    password: user_formacao
+  liquibase:
+    change-log:classpath:/config/liquibase/master.xml
