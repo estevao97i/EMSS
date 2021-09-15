@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202109151709" author="estevao.araujo">
+        <createTable tableName="MOTIVO" remarks="Tabela com os motivos para ter o evento">
+            <column name="ID" type="INT" autoIncrement="true" remarks="chave primaria que identifica a tabela Motivo">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="TITULO" type="VARCHAR(18)" remarks="titulo do motivo">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRICAO" type="VARCHAR(100)" remarks="descricao do motivo">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+</databaseChangeLog>    
