@@ -1,0 +1,42 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202109161052" author="hellysamar">
+        <createTable tableName="EVENTO" remarks="Tabela destinada a criação dos eventos">
+            <column name="ID" type="int" autoIncrement="true" remarks="coluna que identifica a tabela eventos">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="DATA_EVENTO" type="DATE" remarks="coluna destinada a data do evento">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="JUSTIFICATIVA_ADIAMENTO" type="varchar(100)" remarks="coluna destinada a Justificativa para o adiamento do evento">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ID_MOTIVO" type="int" remarks="coluna para descrição do motivo do evento">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VALOR" type="int" remarks="valor">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ID_SITUACAO" type="int" remarks="coluna destinada a data do evento">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="EVENTO"
+                                 baseColumnNames="ID_MOTIVO"
+                                 constraintName="FK_MOTIVO_EVENTO"
+                                 referencedTableName="MOTIVO"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="EVENTO"
+                                 baseColumnNames="ID_SITUACAO"
+                                 constraintName="FK_SITUACAO_EVENTO"
+                                 referencedTableName="SITUACAO"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+</databaseChangeLog>
