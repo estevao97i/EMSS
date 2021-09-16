@@ -19,7 +19,9 @@ public class Usuario implements Serializable {
     private Long id;
 
     @Column(name = "CPF")
+
     private String cpf;
+
 
     @Column(name = "DT_NASCIMENTO")
     private LocalDate dt_nascimento;
