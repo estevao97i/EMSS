@@ -18,6 +18,7 @@
                 <constraints nullable="false"/>
             </column>
 
+
             <column name="VALOR" type="int" remarks="valor">
                 <constraints nullable="false"/>
             </column>
