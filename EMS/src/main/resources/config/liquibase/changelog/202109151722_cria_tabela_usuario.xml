@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+   <changeSet id="202109152127" author="wagner.cardoso">
+       <createTable tableName="USUARIO" remarks="tabela com nome dos usuarios">
+           <column name="ID" type="INT" autoIncrement="true" remarks="indentificaçao do usuario">
+               <constraints primaryKey="true"/>
+           </column>
+           <column name="CPF" type="VARCHAR(11)" remarks="documento do usuario">
+             <constraints nullable="false" unique="true"/>
+           </column>
+           <column name="DT_NASCIMENTO" type="DATE" remarks="Ddata do anivessario">
+               <constraints nullable="false"/>
+           </column>
+           <column name="E-MAIL" type="VARCHAR(50)" remarks="forma de comunicar com o usuarios">
+               <constraints nullable="false" unique="true"/>
+           </column>
+           <column name="ID_CARGO" type="INT" remarks="indentificador do cardgo do usuario">
+               <constraints nullable="false"/>
+           </column>
+           <column name="STATUS" type="BOOLEAN" remarks="situaçao do colaborador ">
+               <constraints nullable="false"/>
+           </column>
+           <column name="FOTO" type="BLOB"  remarks="foto do colaborador"/>
+           <column name="TELEFONE" type="VARCHAR(11)" remarks="deixar recado para o colaborador ">
+               <constraints nullable="false" unique="true"/>
+           </column>
+
+       </createTable>
+
+       <addForeignKeyConstraint baseTableName="USUARIO"
+                                baseColumnNames="ID_CARGO"
+                                constraintName="FK_CARGO_USUARIO"
+                                referencedTableName="CARGO"
+                                referencedColumnNames="ID"/>
+   </changeSet>
+
+</databaseChangeLog>

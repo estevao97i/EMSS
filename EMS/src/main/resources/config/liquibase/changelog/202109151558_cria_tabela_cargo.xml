@@ -6,8 +6,8 @@
             <column name="ID" type="INT" autoIncrement="true" remarks="indentifica o cargo do usuario">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="DESCRICAO" type="varchar(30)" remarks="cargo do usuario">
-
+            <column name="DESCRICAO" type="VARCHAR(30)" remarks="cargo do usuario">
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
