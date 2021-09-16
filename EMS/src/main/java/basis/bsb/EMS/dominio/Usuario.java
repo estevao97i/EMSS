@@ -2,9 +2,8 @@ package basis.bsb.EMS.dominio;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.java.Log;
-import org.hibernate.engine.profile.Fetch;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -12,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @Table(name="USUARIO")
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -20,7 +19,7 @@ public class Usuario {
     private Long id;
 
     @Column(name = "CPF")
-    private String id;
+    private String cpf;
 
     @Column(name = "DT_NASCIMENTO")
     private LocalDate dt_nascimento;
