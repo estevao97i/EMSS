@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="2021091605" author="hellysamar">
+        <createTable tableName="SITUACAO" remarks="Tabela destinada a descrever a situação do evento">
+            <column name="ID" type="int" autoIncrement="true" remarks="coluna que identifica a tabela Situação">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="DESCRICAO" type="varchar(18)" remarks="descrição da situação do evento">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
