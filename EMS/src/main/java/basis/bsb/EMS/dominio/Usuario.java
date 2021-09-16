@@ -6,10 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
-@Getter
-@Setter
-@Table(name="USUARIO")
+    @Entity
+    @Getter
+    @Setter
+    @Table(name="USUARIO")
 
 public class Usuario implements Serializable {
 
