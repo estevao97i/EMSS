@@ -1,4 +1,6 @@
 package basis.bsb.EMS.repositorio;
 
-public interface CargoRepositorio extends JpaRepositorio<Cargo,Long>{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CargoRepositorio extends JpaRepository<Cargo,Long> {
 }
