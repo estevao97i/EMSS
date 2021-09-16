@@ -7,4 +7,5 @@ spring:
     username: user_formacao
     password: user_formacao
   liquibase:
-    change-log:classpath:/config/liquibase/master.xml
+    change-log: classpath:/config/liquibase/master.xml
+#    drop-first: true

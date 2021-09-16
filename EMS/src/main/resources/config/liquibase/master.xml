@@ -1,6 +1,18 @@
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <include file=""/>
+
+    <include file="config/liquibase/changelog/202109151558_cria_tabela_cargo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109151600_cria_tabela_situacao.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109151607_cria_tabela_motivo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109151722_cria_tabela_usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109161052_cria_tabela_evento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109161130_cria_tabela_evento_usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109161155_insere_cargo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202109161201_insere_situacao.xml" relativeToChangelogFile="false"/>
+
 </databaseChangeLog>
