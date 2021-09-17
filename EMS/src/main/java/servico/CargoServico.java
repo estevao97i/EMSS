@@ -1,5 +1,6 @@
 package servico;
 
+import basis.bsb.EMS.dominio.Cargo;
 import basis.bsb.EMS.repositorio.CargoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
