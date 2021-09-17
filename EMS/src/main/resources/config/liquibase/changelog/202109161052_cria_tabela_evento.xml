@@ -5,20 +5,15 @@
             <column name="ID" type="int" autoIncrement="true" remarks="coluna que identifica a tabela eventos">
                 <constraints primaryKey="true"/>
             </column>
-
             <column name="DATA_EVENTO" type="DATE" remarks="coluna destinada a data do evento">
                 <constraints nullable="false"/>
             </column>
-
             <column name="JUSTIFICATIVA_ADIAMENTO" type="varchar(100)" remarks="coluna destinada a Justificativa para o adiamento do evento">
                 <constraints nullable="false"/>
             </column>
-
             <column name="ID_MOTIVO" type="int" remarks="coluna para descrição do motivo do evento">
                 <constraints nullable="false"/>
             </column>
-
-
             <column name="VALOR" type="int" remarks="valor">
                 <constraints nullable="false"/>
             </column>
