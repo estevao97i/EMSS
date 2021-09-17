@@ -1,4 +1,4 @@
-package servico.dto;
+package basis.bsb.EMS.servico.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
