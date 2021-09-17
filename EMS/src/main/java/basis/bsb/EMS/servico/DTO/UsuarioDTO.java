@@ -15,7 +15,7 @@ public class UsuarioDTO {
 
     private Long id;
     private String CPF;
-    private LocalDate data_nascimento;
+    private LocalDate dataNascimento;
     private String email;
     private boolean status;
     private byte[] foto;
