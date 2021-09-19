@@ -28,17 +28,15 @@ public class Evento {
     @Column(name = "VALOR")
     private Long valor;
 
-    @Column(name = "ID_MOTIVO")
+    @JoinColumn(name = "ID_MOTIVO")
     @ManyToOne(fetch = FetchType.EAGER)
     private Motivo motivo;
 
-    @Column(name = "ID_SITUACAO")
+    @JoinColumn(name = "ID_SITUACAO")
     @ManyToOne(fetch = FetchType.EAGER)
     private Situacao situacao;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "EVENTO_USUARIO", joinColumns = {
-            @JoinColumn(name = "ID_USUARIO")},
-    inverseJoinColumns = {@JoinColumn(name = "ID_EVENTO")})
+    @JoinTable(name = "EVENTO_USUARIO", joinColumns = {@JoinColumn(name = "ID_USUARIO")},inverseJoinColumns = {@JoinColumn(name = "ID_EVENTO")})
     private List<Evento> evento;
 }
