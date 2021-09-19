@@ -20,6 +20,6 @@ public class UsuarioDTO {
     private boolean status;
     private byte[] foto;
     private String telefone;
-    private SelectDTO cargo;
+//    private SelectDTO cargo;
 
 }

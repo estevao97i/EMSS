@@ -17,6 +17,6 @@ public class EventoDTO {
     private LocalDateTime dataEvento;
     private String justificativaAdiamento;
     private Integer valor;
-    private SelectDTO motivo;
-    private SelectDTO situacao;
+//    private SelectDTO motivo;
+//    private SelectDTO situacao;
 }

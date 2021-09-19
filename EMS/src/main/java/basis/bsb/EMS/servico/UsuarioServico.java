@@ -2,26 +2,31 @@ package basis.bsb.EMS.servico;
 
 import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.UsuarioRepositorio;
+import basis.bsb.EMS.servico.DTO.UsuarioDTO;
+import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
-import liquibase.pro.packaged.id;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 @Service
 public class UsuarioServico {
 
     private UsuarioRepositorio usuarioRepositorio;
+    private UsuarioMapper usuarioMapper;
 
-    public Usuario encontrarPorId(Long id) {
-        return usuarioRepositorio.findById(id).orElseThrow(()-> new ObjectnotFoundException("Usuario nao encontrado!:" + id));
+    public UsuarioDTO encontrarPorId(Long id) {
+        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(ObjectnotFoundException ::new);
+        return usuarioMapper.toDTO(usuario);
     }
 
-    public List<Usuario> encontrarPorTodos(){
+    public List<UsuarioDTO> encontrarPorTodos( ){
         return usuarioRepositorio.findAll();
     }
 
