@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Getter
@@ -13,10 +16,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 
 public class EventoDTO {
+
+    @NotBlank (message = "Não pode ser vazio!")
     private Long id;
+
+    @FutureOrPresent (message = "A data nao pode ser anterior a hoje")
     private LocalDateTime dataEvento;
+
+    @NotBlank(message = "Campo obrigatorio!")
     private String justificativaAdiamento;
+
+    @NotBlank (message = "Campo obrigatorio!")
     private Integer valor;
-//    private SelectDTO motivo;
-//    private SelectDTO situacao;
+
+    @NotBlank (message = "Campo obrigatorio")
+    private SelectDTO motivo;
+    @NotBlank(message = "Campo obrigatorio")
+    private SelectDTO situacao;
 }

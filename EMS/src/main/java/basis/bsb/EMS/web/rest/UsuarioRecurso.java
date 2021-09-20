@@ -1,7 +1,6 @@
 package basis.bsb.EMS.web.rest;
 
 
-import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.UsuarioServico;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,7 @@ public class UsuarioRecurso {
     private final UsuarioServico usuarioServico;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable Long id){
+    public ResponseEntity <UsuarioDTO> buscarPorId(@PathVariable Long id){
         UsuarioDTO usuario = usuarioServico.encontrarPorId(id);
         return ResponseEntity.ok(usuario);
     }
@@ -43,13 +42,13 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuarioDTO);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/ativar/{id}")
     public ResponseEntity<Void> ativarUsuario(@PathVariable Long id){
         usuarioServico.ativarUsuario(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/desativa/{id}")
     public ResponseEntity<Void> inativarUsuario(@PathVariable Long id){
         usuarioServico.inativarUsuario(id);
         return new ResponseEntity<>(HttpStatus.OK);
