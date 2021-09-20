@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Setter
@@ -19,12 +20,14 @@ public class UsuarioDTO {
     private Long id;
 
     @CPF(message = "CPF tem q ser valido")
+    @Size(min = 11, max = 11)
     private String CPF;
 
     @Past(message = "Não pode ser uma data futura!")
     private LocalDate dataNascimento;
 
     @Email(message="Tem que ser um e-mail vaido!")
+    @Size(min = 10, max = 50)
     private String email;
 
     @NotBlank

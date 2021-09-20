@@ -20,10 +20,10 @@ public class Evento {
     private Long id;
 
     @Column(name = "DATA_EVENTO")
-    private LocalDate data_evento;
+    private LocalDate dataEvento;
 
     @Column(name = "JUSTIFICATIVA_ADIAMENTO")
-    private String justificativa_adiamento;
+    private String justificativaAdiamento;
 
     @Column(name = "VALOR")
     private Long valor;
