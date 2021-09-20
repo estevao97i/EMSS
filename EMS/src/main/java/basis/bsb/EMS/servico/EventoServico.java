@@ -53,8 +53,8 @@ public class EventoServico {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
-    public void deletar(Long id) {
-        eventoRepositorio.deleteById(id);
-    }
+//    public void deletar(Long id) {
+//        eventoRepositorio.deleteById(id);
+//    }
     
 }
