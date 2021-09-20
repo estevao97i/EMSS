@@ -7,7 +7,6 @@ import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 
 import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,10 +32,10 @@ public class UsuarioServico {
     }
 
     public boolean validaCPF(UsuarioDTO usuarioDTO) {
-        if (usuarioRepositorio.existsByCpf(usuarioDTO.getCPF())) {
+        if (usuarioRepositorio.existsByCpf(usuarioDTO.getCpf())) {
             return true;
         }
-        throw new ObjectnotFoundException("CPF inválido" + usuarioDTO.getCPF());
+        throw new ObjectnotFoundException("CPF inválido" + usuarioDTO.getCpf());
     }
 
     public boolean validaEmail(UsuarioDTO usuarioDTO){
@@ -52,7 +51,7 @@ public class UsuarioServico {
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
 
-        } throw new ObjectnotFoundException("Error" + usuarioDTO.getCPF() + " "+ usuarioDTO.getEmail());
+        } throw new ObjectnotFoundException("Error" + usuarioDTO.getCpf() + " "+ usuarioDTO.getEmail());
 
     }
 

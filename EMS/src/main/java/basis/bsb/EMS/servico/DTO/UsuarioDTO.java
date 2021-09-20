@@ -21,7 +21,7 @@ public class UsuarioDTO {
 
     @CPF(message = "CPF tem q ser valido")
     @Size(min = 11, max = 11)
-    private String CPF;
+    private String cpf;
 
     @Past(message = "Não pode ser uma data futura!")
     private LocalDate dataNascimento;
