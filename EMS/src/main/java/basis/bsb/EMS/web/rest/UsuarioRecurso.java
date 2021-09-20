@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api/usuario")
@@ -43,10 +43,15 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuarioDTO);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> ativarUsuario(@PathVariable Long id){
+        usuarioServico.ativarUsuario(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        usuarioServico.deletar(id);
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> inativarUsuario(@PathVariable Long id){
+        usuarioServico.inativarUsuario(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
