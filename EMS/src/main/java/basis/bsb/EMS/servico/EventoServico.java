@@ -3,6 +3,7 @@ package basis.bsb.EMS.servico;
 import basis.bsb.EMS.dominio.Evento;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
+import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -28,10 +29,22 @@ public class EventoServico {
         return eventoMapper.toDTO(eventoRepositorio.findAll());
     }
 
+    public boolean validaEvento(EventoDTO eventoDTO){
+        if(!eventoRepositorio.existsByDataEvento(eventoDTO.getDataEvento())){
+            return true;
+        }
+        throw new ObjectnotFoundException("Dois eventos não podem ser cadastrados no mesmo dia" + eventoDTO.getDataEvento());
+
+    }
+
     public EventoDTO salvar (EventoDTO eventoDTO) {
-        Evento evento = eventoMapper.toEntity(eventoDTO);
-        Evento eventoSalva = eventoRepositorio.save(evento);
-        return eventoMapper.toDTO(eventoSalva);
+        if(validaEvento(eventoDTO)){
+            Evento evento = eventoMapper.toEntity(eventoDTO);
+            Evento eventoSalva = eventoRepositorio.save(evento);
+            return eventoMapper.toDTO(eventoSalva);
+        }
+        throw new ObjectnotFoundException("Não pode salvar Evento" + eventoDTO.getDataEvento());
+
     }
 
     public EventoDTO editar (EventoDTO eventoDTO) {

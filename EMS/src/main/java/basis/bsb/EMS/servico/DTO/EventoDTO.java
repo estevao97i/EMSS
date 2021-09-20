@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,9 +22,8 @@ public class EventoDTO {
     private Long id;
 
     @FutureOrPresent (message = "A data nao pode ser anterior a hoje")
-    private LocalDateTime dataEvento;
+    private LocalDate dataEvento;
 
-    @NotBlank(message = "Campo obrigatorio!")
     private String justificativaAdiamento;
 
     @NotBlank (message = "Campo obrigatorio!")
