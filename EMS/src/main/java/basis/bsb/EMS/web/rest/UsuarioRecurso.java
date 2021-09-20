@@ -5,11 +5,9 @@ import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.UsuarioServico;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +28,26 @@ public class UsuarioRecurso {
     @GetMapping
     public ResponseEntity <List<UsuarioDTO>> buscarTodos(){
         List<UsuarioDTO> listUsuario = usuarioServico.buscarTodos();
+        return ResponseEntity.ok(listUsuario);
+    }
+
+    @PostMapping
+    public ResponseEntity<UsuarioDTO> salvar(@RequestBody UsuarioDTO usuarioDTO){
+        return ResponseEntity.ok(usuarioServico.salvar(usuarioDTO));
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO, @PathVariable Long id){
+        usuarioDTO.setId(id);
+        usuarioDTO = usuarioServico.editar(usuarioDTO);
+        return ResponseEntity.ok(usuarioDTO);
+    }
+
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        usuarioServico.deletar(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
