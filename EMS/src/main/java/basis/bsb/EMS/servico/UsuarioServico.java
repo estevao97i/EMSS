@@ -26,19 +26,34 @@ public class UsuarioServico {
         return usuarioMapper.toDTO(usuario);
     }
 
-    public List<UsuarioDTO> encontrarPorTodos( ){
-        return usuarioRepositorio.findAll();
+    public List<UsuarioDTO> buscarTodos( ){
+        List<Usuario> usuario = usuarioRepositorio.findAll();
+        return usuarioMapper.toDTO(usuario);
     }
 
-    public Usuario salvar(Usuario usuario) {
-        return usuarioRepositorio.save(usuario);
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        Usuario usuarioSalva = usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDTO(usuarioSalva);
     }
 
-    public Usuario editar(Usuario usuario){
-        return usuarioRepositorio.save(usuario);
+    public UsuarioDTO editar(UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDTO(usuarioAtualiza);
     }
-    public void deletar(Long id){
-        usuarioRepositorio.deleteById(id);
+//    public void deletar(Long id){
+//        usuarioRepositorio.deleteById(id);
+//    }
+
+    public void ativarUsuario(Long id){
+        UsuarioDTO usuarioDTO = encontrarPorId(id);
+        usuarioDTO.setStatus(true);
+    }
+
+    public void inativarUsuario(Long id){
+        UsuarioDTO usuarioDTO = encontrarPorId(id);
+        usuarioDTO.setStatus(false);
     }
 
 }
