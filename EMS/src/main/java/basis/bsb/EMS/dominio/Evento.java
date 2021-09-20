@@ -29,7 +29,7 @@ public class Evento {
     private Long valor;
 
     @JoinColumn(name = "ID_MOTIVO")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Motivo motivo;
 
     @JoinColumn(name = "ID_SITUACAO")

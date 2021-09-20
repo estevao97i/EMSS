@@ -42,7 +42,7 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuarioDTO);
     }
 
-    @PutMapping(value = "/ativar/{id}")
+    @PutMapping(value = "/ativa/{id}")
     public ResponseEntity<Void> ativarUsuario(@PathVariable Long id){
         usuarioServico.ativarUsuario(id);
         return new ResponseEntity<>(HttpStatus.OK);
