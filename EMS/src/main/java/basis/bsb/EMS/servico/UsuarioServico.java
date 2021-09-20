@@ -47,19 +47,13 @@ public class UsuarioServico {
 
     }
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
-        if(validaCPF(usuarioDTO)) {
-            if(validaEmail(usuarioDTO)){
-                Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
-                Usuario usuarioSalva = usuarioRepositorio.save(usuario);
-                return usuarioMapper.toDTO(usuarioSalva);
-            }
-            else {
-                throw new ObjectnotFoundException("Email inválido " + usuarioDTO.getEmail());
-            }
-        }
-        else {
-            throw new ObjectnotFoundException("CPF inválido " + usuarioDTO.getCPF());
-        }
+        if (validaCPF(usuarioDTO) && validaEmail(usuarioDTO)) {
+            Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+            Usuario usuarioSalva = usuarioRepositorio.save(usuario);
+            return usuarioMapper.toDTO(usuarioSalva);
+
+        } throw new ObjectnotFoundException("Error" + usuarioDTO.getCPF() + " "+ usuarioDTO.getEmail());
+
     }
 
     public UsuarioDTO editar(UsuarioDTO usuarioDTO){
