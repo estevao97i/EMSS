@@ -42,9 +42,9 @@ public class UsuarioServico {
         Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
         return usuarioMapper.toDTO(usuarioAtualiza);
     }
-//    public void deletar(Long id){
-//        usuarioRepositorio.deleteById(id);
-//    }
+    public void deletar(Long id){
+        usuarioRepositorio.deleteById(id);
+    }
 
     public void ativarUsuario(Long id){
         UsuarioDTO usuarioDTO = encontrarPorId(id);
