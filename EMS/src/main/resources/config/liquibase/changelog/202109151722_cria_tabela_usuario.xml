@@ -6,6 +6,9 @@
            <column name="ID" type="INT" autoIncrement="true" remarks="indentificaçao do usuario">
                <constraints primaryKey="true"/>
            </column>
+           <column name="NOME" type="VARCHAR(50)" remarks="criacao da coluna nome">
+               <constraints nullable="false"/>
+           </column>
            <column name="CPF" type="VARCHAR(11)" remarks="documento do usuario">
              <constraints nullable="false" unique="true"/>
            </column>
