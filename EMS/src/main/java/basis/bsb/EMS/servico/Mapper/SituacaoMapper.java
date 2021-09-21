@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 public interface SituacaoMapper extends EntityMapper<SelectDTO, Situacao> {
 
     @Mapping(source = "id", target = "value")
-    @Mapping(source = "situacao", target = "label")
+    @Mapping(source = "descricao", target = "label")
     SelectDTO toDTO(Situacao situacao);
 
     @InheritInverseConfiguration

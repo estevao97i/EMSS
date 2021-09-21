@@ -16,7 +16,7 @@ public class Situacao implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "SITUACAO")
-    private String Situacao;
+    @Column(name = "DESCRICAO")
+    private String descricao;
 
 }
