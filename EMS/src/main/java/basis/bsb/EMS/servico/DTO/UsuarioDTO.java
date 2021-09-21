@@ -19,7 +19,7 @@ public class UsuarioDTO {
     @NotBlank(message = "nao pode ser vazio")
     private Long id;
 
-    @CPF(message = "CPF tem q ser valido")
+//    @CPF(message = "CPF tem q ser valido")
     @Size(min = 11, max = 11)
     @NotBlank
     private String cpf;
