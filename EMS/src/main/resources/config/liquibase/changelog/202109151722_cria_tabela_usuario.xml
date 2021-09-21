@@ -12,7 +12,7 @@
            <column name="DT_NASCIMENTO" type="DATE" remarks="Ddata do anivessario">
                <constraints nullable="false"/>
            </column>
-           <column name="E-MAIL" type="VARCHAR(50)" remarks="forma de comunicar com o usuarios">
+           <column name="EMAIL" type="VARCHAR(50)" remarks="forma de comunicar com o usuarios">
                <constraints nullable="false" unique="true"/>
            </column>
            <column name="ID_CARGO" type="INT" remarks="indentificador do cardgo do usuario">
