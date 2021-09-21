@@ -18,6 +18,9 @@ public class Usuario implements Serializable {
     @Column(name = "ID")
     private Long id;
 
+    @Column(name = "nome")
+    private String nome;
+
     @Column(name = "CPF")
     private String cpf;
 
