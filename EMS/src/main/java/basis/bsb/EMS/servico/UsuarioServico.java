@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 @Service
 public class UsuarioServico {
 
