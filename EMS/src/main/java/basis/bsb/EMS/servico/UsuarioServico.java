@@ -3,8 +3,6 @@ package basis.bsb.EMS.servico;
 import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.UsuarioRepositorio;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioEditaDTO;
-import basis.bsb.EMS.servico.Mapper.UsuarioEditaMapper;
 import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 
@@ -22,11 +20,10 @@ public class UsuarioServico {
 
     private final  UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
-    private final UsuarioEditaMapper usuarioEditaMapper;
 
-    public UsuarioEditaDTO encontrarPorId(Long id) {
+    public UsuarioDTO encontrarPorId(Long id) {
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(ObjectnotFoundException ::new);
-        return usuarioEditaMapper.toDTO(usuario);
+        return usuarioMapper.toDTO(usuario);
     }
 
     public List<UsuarioDTO> buscarTodos(){
@@ -34,40 +31,42 @@ public class UsuarioServico {
     }
 
     public boolean validaCPF(UsuarioDTO usuarioDTO) {
-        if (usuarioRepositorio.existsByCpf(usuarioDTO.getCpf())) {
-            throw new ObjectnotFoundException("CPF inválido " + usuarioDTO.getCpf());
-        }
+        if (!usuarioRepositorio.existsByCpf(usuarioDTO.getCpf())) {
             return true;
+        }
+        throw new ObjectnotFoundException("CPF ja existe no banco " + usuarioDTO.getCpf());
     }
 
     public boolean validaEmail(UsuarioDTO usuarioDTO){
         if (usuarioRepositorio.existsByEmail(usuarioDTO.getEmail())){
             return true;
         }
-        throw new ObjectnotFoundException("Email inválido "+ usuarioDTO.getEmail());
+        throw new ObjectnotFoundException("Email já cadastrado no banco "+ usuarioDTO.getEmail());
 
     }
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
+        if (validaCPF(usuarioDTO) && validaEmail(usuarioDTO)){
             Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
-
+        }
+        throw new ObjectnotFoundException(" " + usuarioDTO.getCpf());
     }
 
-    public UsuarioEditaDTO editar(UsuarioEditaDTO usuarioEditaDTO){
-            Usuario usuario = usuarioEditaMapper.toEntity(usuarioEditaDTO);
-            Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
-            return usuarioEditaMapper.toDTO(usuarioAtualiza);
+    public UsuarioDTO editar(UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDTO(usuarioAtualiza);
     }
 
     public void ativarUsuario(Long id){
-        UsuarioEditaDTO usuarioDTO = encontrarPorId(id);
+        UsuarioDTO usuarioDTO = encontrarPorId(id);
         usuarioDTO.setStatus(true);
         editar(usuarioDTO);
     }
 
     public void inativarUsuario(Long id){
-        UsuarioEditaDTO usuarioDTO = encontrarPorId(id);
+        UsuarioDTO usuarioDTO = encontrarPorId(id);
         usuarioDTO.setStatus(false);
         editar(usuarioDTO);
     }
