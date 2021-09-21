@@ -18,8 +18,8 @@ import java.util.List;
 @Service
 public class UsuarioServico {
 
-    private UsuarioRepositorio usuarioRepositorio;
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioRepositorio usuarioRepositorio;
+    private final UsuarioMapper usuarioMapper;
 
     public UsuarioDTO encontrarPorId(Long id) {
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(ObjectnotFoundException ::new);
@@ -27,8 +27,7 @@ public class UsuarioServico {
     }
 
     public List<UsuarioDTO> buscarTodos(){
-        List<Usuario> usuario = usuarioRepositorio.findAll();
-        return usuarioMapper.toDTO(usuario);
+        return usuarioMapper.toDTO(usuarioRepositorio.findAll());
     }
 
     public boolean validaCPF(UsuarioDTO usuarioDTO) {
