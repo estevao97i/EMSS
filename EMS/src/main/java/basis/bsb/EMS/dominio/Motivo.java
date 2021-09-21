@@ -6,10 +6,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Getter
-@Setter
-@Table(name="MOTIVO")
+    @Entity
+    @Getter
+    @Setter
+    @Table(name="MOTIVO")
 
 public class Motivo implements Serializable {
 
