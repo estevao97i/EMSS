@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api/usuarios")
@@ -26,7 +25,6 @@ public class UsuarioRecurso {
 
     @GetMapping
     public ResponseEntity <List<UsuarioDTO>> buscarTodos(){
-
         return ResponseEntity.ok(usuarioServico.buscarTodos());
     }
 
@@ -37,9 +35,7 @@ public class UsuarioRecurso {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO, @PathVariable Long id){
-        usuarioDTO.setId(id);
-        usuarioDTO = usuarioServico.editar(usuarioDTO);
-        return ResponseEntity.ok(usuarioDTO);
+        return ResponseEntity.ok(usuarioServico.editar(usuarioDTO));
     }
 
     @PutMapping(value = "/ativa/{id}")

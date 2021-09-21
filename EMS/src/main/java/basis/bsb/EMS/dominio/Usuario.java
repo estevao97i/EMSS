@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
     private String cpf;
 
     @Column(name = "DT_NASCIMENTO")
-    private LocalDate dt_nascimento;
+    private LocalDate dataNascimento;
 
     @Column(name = "EMAIL")
     private String email;

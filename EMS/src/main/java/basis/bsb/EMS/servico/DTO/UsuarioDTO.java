@@ -15,19 +15,23 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UsuarioDTO {
 
+    @NotBlank
+    private String nome;
 
-    @NotBlank(message = "nao pode ser vazio")
     private Long id;
 
-//    @CPF(message = "CPF tem q ser valido")
+    @CPF(message = "CPF tem q ser valido")
     @Size(min = 11, max = 11)
+    @NotBlank
     private String cpf;
 
     @Past(message = "Não pode ser uma data futura!")
+    @NotBlank
     private LocalDate dataNascimento;
 
     @Email(message="Tem que ser um e-mail vaido!")
     @Size(min = 10, max = 50)
+    @NotBlank
     private String email;
 
     @NotBlank

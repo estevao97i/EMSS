@@ -1,3 +1,4 @@
+
 package basis.bsb.EMS.servico.filtro;
 
 import basis.bsb.EMS.dominio.Motivo;
@@ -47,3 +48,4 @@ public class MotivoFiltro implements EntityFiltro<Motivo> {
         return predicates;
     }
 }
+

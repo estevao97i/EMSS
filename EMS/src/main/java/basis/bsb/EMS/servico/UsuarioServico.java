@@ -14,11 +14,11 @@ import java.util.List;
 
 
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 @Service
 public class UsuarioServico {
 
-    private final UsuarioRepositorio usuarioRepositorio;
+    private final  UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
 
     public UsuarioDTO encontrarPorId(Long id) {
