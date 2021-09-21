@@ -37,7 +37,6 @@ public class UsuarioDTO {
     @NotBlank
     private boolean status;
 
-
     private byte[] foto;
 
     @NotBlank(message = "Campo obrigatorio!")
