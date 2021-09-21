@@ -32,18 +32,17 @@ public class MotivoFiltro implements EntityFiltro<Motivo> {
         criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Motivo_.id)));
 
         if (titulo != null) {
-            predicates.add(cb.like(root.get(Motivo_.titulo),
+            predicates.add(criteriaBuilder.like(root.get(Motivo_.titulo),
                     "%" + titulo + "%"));
         }
 
         if (descricao != null){
-            predicates.add(eb.like(root.get(Motivo_.descricao),
+            predicates.add(criteriaBuilder.like(root.get(Motivo_.descricao),
                     "%" + descricao + "%"));
         }
 
         if (id != null){
-            predicates.add (cb.equals(root.get(Motivo_.id),
-                    id));
+            predicates.add(criteriaBuilder.equal(root.get(Motivo_.id),id));
         }
         return predicates;
     }
