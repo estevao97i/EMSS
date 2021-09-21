@@ -3,7 +3,9 @@
 
     <changeSet id="202109171647" author="wagner.cardoso" >
         <addColumn tableName="USUARIO">
-            <column name="NOME" type="VARCHAR(50)" remarks="criacao da coluna nome"/>
+            <column name="NOME" type="VARCHAR(50)" remarks="criacao da coluna nome">
+                <constraints nullable="false"/>
+            </column>
         </addColumn>
     </changeSet>
 </databaseChangeLog>

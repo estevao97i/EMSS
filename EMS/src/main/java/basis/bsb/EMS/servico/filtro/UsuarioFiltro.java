@@ -37,7 +37,7 @@ public class UsuarioFiltro implements EntityFiltro<Usuario>{
         criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Usuario_.id)));
 
         if(nome != null){
-            predicates.add(criteriaBuilder.like(root.get(Usuario_.nome),"%" + nome +"%"));
+            predicates.add(criteriaBuilder.like(root.get(Usuario_.NOME),"%" + nome +"%"));
         }
 
         if (cpf != null){

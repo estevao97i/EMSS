@@ -51,7 +51,7 @@ public class UsuarioServico {
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
 
-        } throw new ObjectnotFoundException("Error" + usuarioDTO.getCpf() + " "+ usuarioDTO.getEmail());
+        } throw new ObjectnotFoundException("Error" + usuarioDTO.toString());
 
     }
 

@@ -18,7 +18,6 @@ import java.util.List;
 public class EventoFiltro implements EntityFiltro<Evento> {
 
     private Long id;
-    private String justificativa_adiamento;
     private String data_evento;
 
     @Override
@@ -36,12 +35,8 @@ public class EventoFiltro implements EntityFiltro<Evento> {
             predicates.add(criteriaBuilder.equal(root.get(Evento_.id), id));
         }
 
-        if (justificativa_adiamento != null){
-            predicates.add(criteriaBuilder.like(root.get(Evento_.justificativa_adiamento), justificativa_adiamento));
-        }
-
         if(data_evento != null){
-            predicates.add(criteriaBuilder.like(root.get(Evento_.data_evento), data_evento));
+            predicates.add(criteriaBuilder.like(root.get(Evento_.DATA_EVENTO), data_evento));
         }
 
         return predicates;
