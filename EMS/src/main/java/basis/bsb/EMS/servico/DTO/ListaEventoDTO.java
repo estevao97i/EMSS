@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListaEvento {
+public class ListaEventoDTO {
 
     private Long id;
     private LocalDate dataEvento;

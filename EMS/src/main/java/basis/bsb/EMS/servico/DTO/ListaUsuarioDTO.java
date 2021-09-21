@@ -13,10 +13,7 @@ import lombok.Setter;
 public class ListaUsuarioDTO {
 
     private Long id;
-
     private String nome;
-
     private SelectDTO cargo;
-
     private boolean status;
 }
