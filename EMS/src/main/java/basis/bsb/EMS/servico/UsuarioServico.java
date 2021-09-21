@@ -3,6 +3,8 @@ package basis.bsb.EMS.servico;
 import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.UsuarioRepositorio;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
+import basis.bsb.EMS.servico.DTO.UsuarioEditaDTO;
+import basis.bsb.EMS.servico.Mapper.UsuarioEditaMapper;
 import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 
@@ -20,10 +22,11 @@ public class UsuarioServico {
 
     private final  UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
+    private final UsuarioEditaMapper usuarioEditaMapper;
 
-    public UsuarioDTO encontrarPorId(Long id) {
+    public UsuarioEditaDTO encontrarPorId(Long id) {
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(ObjectnotFoundException ::new);
-        return usuarioMapper.toDTO(usuario);
+        return usuarioEditaMapper.toDTO(usuario);
     }
 
     public List<UsuarioDTO> buscarTodos(){
@@ -32,9 +35,9 @@ public class UsuarioServico {
 
     public boolean validaCPF(UsuarioDTO usuarioDTO) {
         if (usuarioRepositorio.existsByCpf(usuarioDTO.getCpf())) {
-            return true;
+            throw new ObjectnotFoundException("CPF inválido " + usuarioDTO.getCpf());
         }
-        throw new ObjectnotFoundException("CPF inválido " + usuarioDTO.getCpf());
+            return true;
     }
 
     public boolean validaEmail(UsuarioDTO usuarioDTO){
@@ -51,20 +54,20 @@ public class UsuarioServico {
 
     }
 
-    public UsuarioDTO editar(UsuarioDTO usuarioDTO){
-        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
-        Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
-        return usuarioMapper.toDTO(usuarioAtualiza);
+    public UsuarioEditaDTO editar(UsuarioEditaDTO usuarioEditaDTO){
+            Usuario usuario = usuarioEditaMapper.toEntity(usuarioEditaDTO);
+            Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
+            return usuarioEditaMapper.toDTO(usuarioAtualiza);
     }
 
     public void ativarUsuario(Long id){
-        UsuarioDTO usuarioDTO = encontrarPorId(id);
+        UsuarioEditaDTO usuarioDTO = encontrarPorId(id);
         usuarioDTO.setStatus(true);
         editar(usuarioDTO);
     }
 
     public void inativarUsuario(Long id){
-        UsuarioDTO usuarioDTO = encontrarPorId(id);
+        UsuarioEditaDTO usuarioDTO = encontrarPorId(id);
         usuarioDTO.setStatus(false);
         editar(usuarioDTO);
     }
