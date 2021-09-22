@@ -2,7 +2,6 @@ package basis.bsb.EMS.web.rest;
 
 
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioEditaDTO;
 import basis.bsb.EMS.servico.UsuarioServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,8 +18,8 @@ public class UsuarioRecurso {
     private final UsuarioServico usuarioServico;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity <UsuarioEditaDTO> buscarPorId(@PathVariable Long id){
-        UsuarioEditaDTO usuario = usuarioServico.encontrarPorId(id);
+    public ResponseEntity <UsuarioDTO> buscarPorId(@PathVariable Long id){
+        UsuarioDTO usuario = usuarioServico.encontrarPorId(id);
         return ResponseEntity.ok(usuario);
     }
 
@@ -35,7 +34,7 @@ public class UsuarioRecurso {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UsuarioEditaDTO> editar(@RequestBody UsuarioEditaDTO usuarioDTO, @PathVariable Long id){
+    public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO, @PathVariable Long id){
         return ResponseEntity.ok(usuarioServico.editar(usuarioDTO));
     }
 
