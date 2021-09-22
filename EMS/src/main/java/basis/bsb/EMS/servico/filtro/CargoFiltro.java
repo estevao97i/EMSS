@@ -1,7 +1,7 @@
 package basis.bsb.EMS.servico.filtro;
 
-import basis.bsb.EMS.dominio.Motivo;
-import basis.bsb.EMS.dominio.Motivo_;
+import basis.bsb.EMS.dominio.Cargo;
+import basis.bsb.EMS.dominio.Cargo_;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.Specification;
@@ -15,36 +15,30 @@ import java.util.List;
 
 @Getter
 @Setter
-public class MotivoFiltro implements EntityFiltro<Motivo> {
+
+public class CargoFiltro implements EntityFiltro<Cargo> {
 
     private Long id;
-    private String titulo;
     private String descricao;
 
     @Override
-    public Specification<Motivo> filter(){
+    public Specification<Cargo> filter(){
         return ((root, query, criteriaBuilder) -> criteriaBuilder.and(getPredicates(root, query, criteriaBuilder)
                 .toArray(new Predicate[0])));
     }
-    private List<Predicate> getPredicates(Root<Motivo> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+    private List<Predicate> getPredicates(Root<Cargo> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 
         List<Predicate> predicates = new ArrayList<>();
-        criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Motivo_.id)));
-
-        if (titulo != null) {
-            predicates.add(criteriaBuilder.like(root.get(Motivo_.titulo),
-                    "%" + titulo + "%"));
-        }
+        criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Cargo_.id)));
 
         if (descricao != null){
-            predicates.add(criteriaBuilder.like(root.get(Motivo_.descricao),
-                    "%" + descricao + "%"));
+            predicates.add(criteriaBuilder.like(root.get(Cargo_.descricao),
+                "%" + descricao + "%"));
         }
 
         if (id != null){
-            predicates.add(criteriaBuilder.equal(root.get(Motivo_.id),id));
+            predicates.add(criteriaBuilder.equal(root.get(Cargo_.id),id));
         }
         return predicates;
     }
 }
-

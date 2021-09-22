@@ -6,19 +6,20 @@ import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @RequiredArgsConstructor
 @Transactional
 @Service
 public class UsuarioServico {
 
-    private final  UsuarioRepositorio usuarioRepositorio;
+    private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
 
     public UsuarioDTO encontrarPorId(Long id) {

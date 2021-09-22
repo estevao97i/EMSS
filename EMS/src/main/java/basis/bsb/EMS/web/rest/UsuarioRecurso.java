@@ -50,5 +50,4 @@ public class UsuarioRecurso {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
 }
