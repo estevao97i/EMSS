@@ -3,6 +3,7 @@ package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.UsuarioServico;
+import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,5 +55,8 @@ public class UsuarioRecurso {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    @GetMapping(value = "filtro ")
+    public ResponseEntity<List<UsuarioDTO>> encontrarTodosFiltro(UsuarioFiltro filtro){
+        return ResponseEntity.ok(usuarioServico.buscarTodosFiltro(filtro));
+    }
 }
