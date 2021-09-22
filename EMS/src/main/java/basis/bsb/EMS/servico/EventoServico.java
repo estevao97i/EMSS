@@ -2,11 +2,12 @@ package basis.bsb.EMS.servico;
 
 import basis.bsb.EMS.dominio.Evento;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
+import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ public class EventoServico {
 
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
+    private final EmailServico emailServico;
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
@@ -68,6 +70,19 @@ public class EventoServico {
         eventoDTO.setStatus(false);
         editar(eventoDTO);
     }
+
+    @Scheduled(cron = "* * * * * 7")
+    public void rotinaDeEmail(){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
+        emailDTO.setAssunto("");
+        emailDTO.setCorpo("");
+        emailDTO.getCopias().add("");
+
+        emailServico.sendEmail(emailDTO);
+
+    }
+
 
 
 }
