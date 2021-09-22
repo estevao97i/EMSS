@@ -5,7 +5,6 @@ import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
-import basis.bsb.EMS.servico.excecao.EmailServico;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -72,10 +71,10 @@ public class EventoServico {
         editar(eventoDTO);
     }
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "* * * * * 7")
     public void rotinaDeEmail(){
         EmailDTO emailDTO = new EmailDTO();
-        emailDTO.setDestinatario("");
+        emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
         emailDTO.setAssunto("");
         emailDTO.setCorpo("");
         emailDTO.getCopias().add("");

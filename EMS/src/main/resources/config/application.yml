@@ -10,13 +10,13 @@ spring:
     change-log: classpath:/config/liquibase/master.xml
 #    drop-first: true
   email:
-    endereco-remetente: # Email do remetente
-    nome-remetente: Projeto Formacao
+    endereco-remetente: projeto.formacaobsb@gmail.com
+    nome-remetente: EMS
   mail:
     host: smtp.gmail.com
     port: 587
-    username: # Email utilizado para o envio
-    password: # Senha desse email
+    username: Turma.formacaobsb@gmail.com
+    password: user_formacao
     properties:
       mail:
         smtp:

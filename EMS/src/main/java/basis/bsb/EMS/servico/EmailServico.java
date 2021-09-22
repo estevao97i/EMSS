@@ -1,4 +1,4 @@
-package basis.bsb.EMS.servico.excecao;
+package basis.bsb.EMS.servico;
 
 import basis.bsb.EMS.servico.Config.ApplicationProperties;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
