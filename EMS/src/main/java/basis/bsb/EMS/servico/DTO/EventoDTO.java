@@ -29,6 +29,9 @@ public class EventoDTO {
     @NotBlank (message = "Campo obrigatorio!")
     private Integer valor;
 
+    @NotBlank
+    private boolean status;
+
     @NotBlank (message = "Campo obrigatorio")
     private SelectDTO motivo;
     @NotBlank(message = "Campo obrigatorio")

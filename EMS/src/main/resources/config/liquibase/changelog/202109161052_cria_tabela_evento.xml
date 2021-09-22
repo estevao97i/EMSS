@@ -21,6 +21,9 @@
             <column name="ID_SITUACAO" type="int" remarks="coluna destinada a data do evento">
                 <constraints nullable="false"/>
             </column>
+            <column name="STATUS" type="BOOLEAN" remarks="situaçao do colaborador ">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <addForeignKeyConstraint baseTableName="EVENTO"
