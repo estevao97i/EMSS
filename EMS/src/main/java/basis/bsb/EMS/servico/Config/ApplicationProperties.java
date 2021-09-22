@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "application.yml")
+@ConfigurationProperties(prefix = "application.email")
 @Getter
 @Setter
 public class ApplicationProperties {

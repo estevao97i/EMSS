@@ -33,7 +33,7 @@ public class EmailServico {
             mime.addCc(s);
         }
 
-        mime.setText("Patrocinador (id)"+ " ");
+        mime.setText("Paguem felizes!!");
         javaSenderEmail.send(mimeMessage);
     }
 }

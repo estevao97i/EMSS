@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -18,7 +19,7 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class EventoServico {
+public class EventoServico implements Serializable {
 
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
@@ -71,13 +72,13 @@ public class EventoServico {
         editar(eventoDTO);
     }
 
-    @Scheduled(cron = "* * * * * 7")
+    @Scheduled(cron = "20 29 16 * * *")
     public void rotinaDeEmail(){
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
-        emailDTO.setAssunto("");
-        emailDTO.setCorpo("");
-        emailDTO.getCopias().add("");
+        emailDTO.setAssunto("teste ");
+        emailDTO.setCorpo("esta funcionando!!!!");
+        emailDTO.getCopias().add("wagner.cardoso20@gmail.com");
 
         emailServico.sendEmail(emailDTO);
 

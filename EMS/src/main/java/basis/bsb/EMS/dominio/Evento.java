@@ -38,5 +38,5 @@ public class Evento {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "EVENTO_USUARIO", joinColumns = {@JoinColumn(name = "ID_USUARIO")},inverseJoinColumns = {@JoinColumn(name = "ID_EVENTO")})
-    private List<Evento> evento;
+    private List<Usuario> usuario;
 }

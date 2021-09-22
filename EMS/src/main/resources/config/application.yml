@@ -9,13 +9,11 @@ spring:
   liquibase:
     change-log: classpath:/config/liquibase/master.xml
 #    drop-first: true
-  email:
-    endereco-remetente: projeto.formacaobsb@gmail.com
-    nome-remetente: EMS
+
   mail:
     host: smtp.gmail.com
     port: 587
-    username: Turma.formacaobsb@gmail.com
+    username: projeto.formacaobsb@gmail.com
     password: user_formacao
     properties:
       mail:
@@ -25,5 +23,10 @@ spring:
             enable: true
             required: true
           quitwait: false
+
+application:
+  email:
+    endereco-remetente: projeto.formacaobsb@gmail.com
+    nome-remetente: EM
 
 
