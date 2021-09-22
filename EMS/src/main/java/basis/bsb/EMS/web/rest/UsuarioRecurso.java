@@ -3,6 +3,7 @@ package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.UsuarioServico;
+import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/api/usuarios")
+@RequestMapping(value = "/api/usuario")
 public class UsuarioRecurso {
 
     private final UsuarioServico usuarioServico;
@@ -25,7 +27,8 @@ public class UsuarioRecurso {
 
     @GetMapping
     public ResponseEntity <List<UsuarioDTO>> buscarTodos(){
-        return ResponseEntity.ok(usuarioServico.buscarTodos());
+        List<UsuarioDTO> listUsuario = usuarioServico.buscarTodos();
+        return ResponseEntity.ok(listUsuario);
     }
 
     @PostMapping
@@ -35,7 +38,9 @@ public class UsuarioRecurso {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO, @PathVariable Long id){
-        return ResponseEntity.ok(usuarioServico.editar(usuarioDTO));
+        usuarioDTO.setId(id);
+        usuarioDTO = usuarioServico.editar(usuarioDTO);
+        return ResponseEntity.ok(usuarioDTO);
     }
 
     @PutMapping(value = "/ativa/{id}")
@@ -50,5 +55,8 @@ public class UsuarioRecurso {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    @GetMapping(value = "filtro ")
+    public ResponseEntity<List<UsuarioDTO>> encontrarTodosFiltro(UsuarioFiltro filtro){
+        return ResponseEntity.ok(usuarioServico.buscarTodosFiltro(filtro));
+    }
 }

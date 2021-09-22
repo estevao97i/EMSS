@@ -40,8 +40,14 @@ public class EventoRecurso {
         return ResponseEntity.ok(eventoDTO);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id){
+    @PutMapping(value = "/ativa/{id}")
+    public ResponseEntity<Void> ativaEvento(@PathVariable Long id){
+        eventoServico.ativarEvento(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping(value = "/desativa/{id}")
+    public ResponseEntity<Void> desativaEvento(@PathVariable Long id){
+        eventoServico.inativarEvento(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
