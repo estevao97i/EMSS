@@ -11,7 +11,7 @@ import org.mapstruct.Mapping;
 public interface MotivoMapper extends EntityMapper<SelectDTO, Motivo>{
 
     @Mapping(source = "id", target = "value")
-    @Mapping(source = "descricao", target = "label")
+    @Mapping(source = "titulo", target = "label")
     SelectDTO toDTO(Motivo motivo);
 
     @InheritInverseConfiguration
