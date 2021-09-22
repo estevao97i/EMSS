@@ -9,3 +9,21 @@ spring:
   liquibase:
     change-log: classpath:/config/liquibase/master.xml
 #    drop-first: true
+  email:
+    endereco-remetente: # Email do remetente
+    nome-remetente: Projeto Formacao
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: # Email utilizado para o envio
+    password: # Senha desse email
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          quitwait: false
+
+

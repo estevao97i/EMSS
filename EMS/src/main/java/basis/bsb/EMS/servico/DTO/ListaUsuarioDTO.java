@@ -6,16 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListaEvento {
+public class ListaUsuarioDTO {
 
     private Long id;
-    private LocalDate dataEvento;
-    private SelectDTO situacao;
-    private SelectDTO motivo;
+    private String nome;
+    private SelectDTO cargo;
+    private boolean status;
 }
