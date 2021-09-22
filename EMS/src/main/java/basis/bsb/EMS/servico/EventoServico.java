@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
+
 @Transactional
 @RequiredArgsConstructor
 @Service
@@ -54,8 +56,18 @@ public class EventoServico {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
-//    public void deletar(Long id) {
-//        eventoRepositorio.deleteById(id);
-//    }
-    
+
+    public void ativarEvento(Long id){
+        EventoDTO eventoDTO = encontrarPorId(id);
+        eventoDTO.setStatus(true);
+        editar(eventoDTO);
+    }
+
+    public void inativarEvento(Long id){
+        EventoDTO eventoDTO = encontrarPorId(id);
+        eventoDTO.setStatus(false);
+        editar(eventoDTO);
+    }
+
+
 }
