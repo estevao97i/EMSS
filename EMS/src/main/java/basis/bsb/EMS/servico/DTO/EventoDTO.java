@@ -10,6 +10,7 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,8 +30,14 @@ public class EventoDTO {
     @NotBlank (message = "Campo obrigatorio!")
     private Integer valor;
 
+    @NotBlank
+    private boolean status;
+
     @NotBlank (message = "Campo obrigatorio")
     private SelectDTO motivo;
     @NotBlank(message = "Campo obrigatorio")
     private SelectDTO situacao;
+
+    @NotBlank
+    private List<UsuarioDTO> usuarios;
 }

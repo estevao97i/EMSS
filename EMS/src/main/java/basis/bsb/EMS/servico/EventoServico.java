@@ -2,23 +2,28 @@ package basis.bsb.EMS.servico;
 
 import basis.bsb.EMS.dominio.Evento;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
+import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
+
+
 
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class EventoServico {
+public class EventoServico implements Serializable {
 
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
+    private final EmailServico emailServico;
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
@@ -54,8 +59,31 @@ public class EventoServico {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
-//    public void deletar(Long id) {
-//        eventoRepositorio.deleteById(id);
-//    }
-    
+
+    public void ativarEvento(Long id){
+        EventoDTO eventoDTO = encontrarPorId(id);
+        eventoDTO.setStatus(true);
+        editar(eventoDTO);
+    }
+
+    public void inativarEvento(Long id){
+        EventoDTO eventoDTO = encontrarPorId(id);
+        eventoDTO.setStatus(false);
+        editar(eventoDTO);
+    }
+
+    @Scheduled(cron = "20 29 16 * * *")
+    public void rotinaDeEmail(){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
+        emailDTO.setAssunto("teste ");
+        emailDTO.setCorpo("esta funcionando!!!!");
+        emailDTO.getCopias().add("wagner.cardoso20@gmail.com");
+
+        emailServico.sendEmail(emailDTO);
+
+    }
+
+
+
 }

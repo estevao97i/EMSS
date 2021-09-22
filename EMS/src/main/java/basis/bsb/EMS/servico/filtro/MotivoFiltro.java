@@ -5,7 +5,6 @@ import basis.bsb.EMS.dominio.Motivo_;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.Specification;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -18,7 +17,6 @@ import java.util.List;
 public class MotivoFiltro implements EntityFiltro<Motivo> {
 
     private Long id;
-    private String titulo;
     private String descricao;
 
     @Override
@@ -31,10 +29,6 @@ public class MotivoFiltro implements EntityFiltro<Motivo> {
         List<Predicate> predicates = new ArrayList<>();
         criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Motivo_.id)));
 
-        if (titulo != null) {
-            predicates.add(criteriaBuilder.like(root.get(Motivo_.titulo),
-                    "%" + titulo + "%"));
-        }
 
         if (descricao != null){
             predicates.add(criteriaBuilder.like(root.get(Motivo_.descricao),

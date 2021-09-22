@@ -6,18 +6,18 @@ import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional
 @Service
-public class UsuarioServico {
+public class UsuarioServico implements Serializable {
 
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
@@ -32,24 +32,26 @@ public class UsuarioServico {
     }
 
     public boolean validaCPF(UsuarioDTO usuarioDTO) {
-        if (usuarioRepositorio.existsByCpf(usuarioDTO.getCpf())) {
+        if (!usuarioRepositorio.existsByCpf(usuarioDTO.getCpf())) {
             return true;
         }
-        throw new ObjectnotFoundException("CPF inválido " + usuarioDTO.getCpf());
+        throw new ObjectnotFoundException("CPF ja existe no banco " + usuarioDTO.getCpf());
     }
 
     public boolean validaEmail(UsuarioDTO usuarioDTO){
         if (usuarioRepositorio.existsByEmail(usuarioDTO.getEmail())){
             return true;
         }
-        throw new ObjectnotFoundException("Email inválido "+ usuarioDTO.getEmail());
+        throw new ObjectnotFoundException("Email já cadastrado no banco "+ usuarioDTO.getEmail());
 
     }
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
+        if (validaCPF(usuarioDTO)){
             Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
-
+        }
+        throw new ObjectnotFoundException(" " + usuarioDTO.getCpf());
     }
 
     public UsuarioDTO editar(UsuarioDTO usuarioDTO){
@@ -68,6 +70,10 @@ public class UsuarioServico {
         UsuarioDTO usuarioDTO = encontrarPorId(id);
         usuarioDTO.setStatus(false);
         editar(usuarioDTO);
+    }
+
+    public List<UsuarioDTO> buscarTodosFiltro(UsuarioFiltro usuarioFiltro) {
+        return usuarioMapper.toDTO(usuarioRepositorio.findAll(usuarioFiltro.filter()));
     }
 
 }
