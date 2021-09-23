@@ -1,4 +1,3 @@
-
 package basis.bsb.EMS.servico.filtro;
 
 import basis.bsb.EMS.dominio.Motivo;
@@ -29,6 +28,7 @@ public class MotivoFiltro implements EntityFiltro<Motivo> {
 
         List<Predicate> predicates = new ArrayList<>();
         criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Motivo_.id)));
+
 
         if (titulo != null) {
             predicates.add(criteriaBuilder.like(root.get(Motivo_.titulo), "%" + titulo + "%"));

@@ -11,12 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class MotivoServico {
+public class MotivoServico implements Serializable {
 
     private final MotivoMapper motivoMapper;
     private final MotivoRepositorio motivoRepositorio;

@@ -2,15 +2,20 @@ package basis.bsb.EMS.servico;
 
 import basis.bsb.EMS.dominio.Evento;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
+import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.time.LocalDate;
+
+import java.io.Serializable;
+
 import java.util.List;
 
 
@@ -18,22 +23,23 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class EventoServico {
+public class EventoServico implements Serializable {
 
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
+    private final EmailServico emailServico;
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
         return eventoMapper.toDTO(evento);
     }
 
-    public List<EventoDTO> encontrarTodosOrdenado(){
+    public List<EventoDTO> encontrarTodosOrdenado() {
         return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
 
-    public boolean validaEvento(EventoDTO eventoDTO){
-        if(!eventoRepositorio.existsByDataEvento(eventoDTO.getDataEvento())){
+    public boolean validaEvento(EventoDTO eventoDTO) {
+        if (!eventoRepositorio.existsByDataEvento(eventoDTO.getDataEvento())) {
             return true;
         }
         throw new ObjectnotFoundException("Dois eventos não podem ser cadastrados no mesmo dia" + eventoDTO.getDataEvento());
@@ -47,8 +53,8 @@ public class EventoServico {
 //        }
 //    }
 
-    public EventoDTO salvar (EventoDTO eventoDTO) {
-        if(validaEvento(eventoDTO)){
+    public EventoDTO salvar(EventoDTO eventoDTO) {
+        if (validaEvento(eventoDTO)) {
             Evento evento = eventoMapper.toEntity(eventoDTO);
             Evento eventoSalva = eventoRepositorio.save(evento);
 //            evento.getDataEvento().plusWeeks(1);
@@ -58,18 +64,18 @@ public class EventoServico {
 
     }
 
-    public EventoDTO editar (EventoDTO eventoDTO) {
+    public EventoDTO editar(EventoDTO eventoDTO) {
         Evento evento = eventoMapper.toEntity(eventoDTO);
         Evento eventoAtualiza = eventoRepositorio.save(evento);
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
-    public List<EventoDTO> trocaDataEvento(Long id1, Long id2){
+    public List<EventoDTO> trocaDataEvento(Long id1, Long id2) {
         Evento evento1 = eventoRepositorio.findById(id1).orElseThrow(() -> new ObjectnotFoundException(""));
-        Evento evento2 = eventoRepositorio.findById(id2).orElseThrow(()-> new ObjectnotFoundException(""));
+        Evento evento2 = eventoRepositorio.findById(id2).orElseThrow(() -> new ObjectnotFoundException(""));
 
-        if(!evento1.getSituacao().equals(2) || !evento1.getSituacao().equals(3) && !evento2.getSituacao().equals(2)
-                || !evento2.getSituacao().equals(3)){
+        if (!evento1.getSituacao().equals(2) || !evento1.getSituacao().equals(3) && !evento2.getSituacao().equals(2)
+                || !evento2.getSituacao().equals(3)) {
             LocalDate data1 = evento1.getDataEvento();
             LocalDate data2 = evento2.getDataEvento();
 
@@ -86,15 +92,27 @@ public class EventoServico {
 
     }
 
-    public List<EventoDTO> adiaEvento(Long id){
+    public List<EventoDTO> adiaEvento(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException(""));
         LocalDate dataEvento = evento.getDataEvento();
-        for (Evento l: eventoRepositorio.OrderByDateAdiamento(dataEvento)) {
+        for (Evento l : eventoRepositorio.OrderByDateAdiamento(dataEvento)) {
             l.setDataEvento(l.getDataEvento().plusWeeks(1));
             eventoRepositorio.save(l);
         }
         return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
+
+        @Scheduled(cron = "00 01 16 * * *")
+        public void rotinaDeEmail() {
+            EmailDTO emailDTO = new EmailDTO();
+            emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
+            emailDTO.setAssunto("teste ");
+            emailDTO.setCorpo("esta funcionando!!!!");
+            emailDTO.getCopias().add("projeto.formacaobsb@gmail.com");
+
+            emailServico.sendEmail(emailDTO);
+
+        }
 
 //    public void ativarEvento(Long id){
 //        EventoDTO eventoDTO = encontrarPorId(id);
@@ -109,4 +127,5 @@ public class EventoServico {
 //    }
 
 
-}
+    }
+
