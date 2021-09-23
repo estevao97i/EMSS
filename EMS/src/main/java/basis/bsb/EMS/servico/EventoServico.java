@@ -59,13 +59,13 @@ public class EventoServico implements Serializable {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
-    @Scheduled(cron = "20 29 16 * * *")
+    @Scheduled(cron = "00 01 16 * * *")
     public void rotinaDeEmail(){
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
         emailDTO.setAssunto("teste ");
         emailDTO.setCorpo("esta funcionando!!!!");
-        emailDTO.getCopias().add("wagner.cardoso20@gmail.com");
+        emailDTO.getCopias().add("projeto.formacaobsb@gmail.com");
 
         emailServico.sendEmail(emailDTO);
 
