@@ -14,13 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-
 @RequiredArgsConstructor
 @Transactional
 @Service
 public class UsuarioServico implements Serializable {
 
-    private final  UsuarioRepositorio usuarioRepositorio;
+    private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
 
     public UsuarioDTO encontrarPorId(Long id) {
