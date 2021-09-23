@@ -1,5 +1,6 @@
 package basis.bsb.EMS.servico;
 
+import basis.bsb.EMS.dominio.Evento_;
 import basis.bsb.EMS.servico.Config.ApplicationProperties;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class EmailServico {
             mime.addCc(s);
         }
 
-        mime.setText("Paguem felizes!!");
+        mime.setText("Patracinador: " + Evento_.usuario );
         javaSenderEmail.send(mimeMessage);
     }
 }
