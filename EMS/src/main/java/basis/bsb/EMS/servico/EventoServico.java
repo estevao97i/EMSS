@@ -46,7 +46,7 @@ public class EventoServico implements Serializable {
         if(validaEvento(eventoDTO)){
             Evento evento = eventoMapper.toEntity(eventoDTO);
             Evento eventoSalva = eventoRepositorio.save(evento);
-            evento.getDataEvento().plusWeeks(1);
+//            evento.getDataEvento().plusWeeks(1);
             return eventoMapper.toDTO(eventoSalva);
         }
         throw new ObjectnotFoundException("Não pode salvar Evento" + eventoDTO.getDataEvento());
@@ -59,26 +59,13 @@ public class EventoServico implements Serializable {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
-
-    public void ativarEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        eventoDTO.setStatus(true);
-        editar(eventoDTO);
-    }
-
-    public void inativarEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        eventoDTO.setStatus(false);
-        editar(eventoDTO);
-    }
-
-    @Scheduled(cron = "20 29 16 * * *")
+    @Scheduled(cron = "00 01 16 * * *")
     public void rotinaDeEmail(){
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
         emailDTO.setAssunto("teste ");
         emailDTO.setCorpo("esta funcionando!!!!");
-        emailDTO.getCopias().add("wagner.cardoso20@gmail.com");
+        emailDTO.getCopias().add("projeto.formacaobsb@gmail.com");
 
         emailServico.sendEmail(emailDTO);
 

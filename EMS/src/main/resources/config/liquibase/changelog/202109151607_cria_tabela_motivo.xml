@@ -6,6 +6,9 @@
             <column name="ID" type="INT" autoIncrement="true" remarks="chave primaria que identifica a tabela Motivo">
                 <constraints primaryKey="true"/>
             </column>
+            <column name="TITULO" type="VARCHAR(30)" remarks="titulo do motivo">
+                <constraints nullable="false"/>
+            </column>
             <column name="DESCRICAO" type="VARCHAR(100)" remarks="descricao do motivo">
                 <constraints nullable="false"/>
             </column>

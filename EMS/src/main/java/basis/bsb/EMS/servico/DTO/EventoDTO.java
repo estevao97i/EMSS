@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,14 +31,11 @@ public class EventoDTO {
     @NotBlank (message = "Campo obrigatorio!")
     private Integer valor;
 
-    @NotBlank
-    private boolean status;
-
     @NotBlank (message = "Campo obrigatorio")
-    private SelectDTO motivo;
+    private MotivoDTO motivo;
     @NotBlank(message = "Campo obrigatorio")
     private SelectDTO situacao;
 
     @NotBlank
-    private List<UsuarioDTO> usuarios;
+    private List<UsuarioDTO> usuario;
 }

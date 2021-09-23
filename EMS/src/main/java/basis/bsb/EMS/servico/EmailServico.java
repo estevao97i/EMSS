@@ -1,5 +1,6 @@
 package basis.bsb.EMS.servico;
 
+import basis.bsb.EMS.dominio.Evento_;
 import basis.bsb.EMS.servico.Config.ApplicationProperties;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -22,6 +25,9 @@ public class EmailServico {
 
     @SneakyThrows
     public void sendEmail(EmailDTO emailDTO){
+
+//        List<String> listaDestinatarios = new ArrayList<>();
+
         MimeMessage mimeMessage = javaSenderEmail.createMimeMessage();
         MimeMessageHelper mime = new MimeMessageHelper(mimeMessage);
 
@@ -33,7 +39,7 @@ public class EmailServico {
             mime.addCc(s);
         }
 
-        mime.setText("Paguem felizes!!");
+        mime.setText("Patrocinador: " + Evento_.usuario );
         javaSenderEmail.send(mimeMessage);
     }
 }

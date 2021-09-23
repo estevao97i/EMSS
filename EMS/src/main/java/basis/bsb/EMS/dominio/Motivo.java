@@ -18,6 +18,9 @@ public class Motivo implements Serializable {
     @Column(name = "ID")
     private Long id;
 
+    @Column(name = "titulo")
+    private String titulo;
+
     @Column(name = "DESCRICAO")
     private String descricao;
 }
