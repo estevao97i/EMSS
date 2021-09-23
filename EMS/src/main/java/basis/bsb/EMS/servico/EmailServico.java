@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -23,6 +25,9 @@ public class EmailServico {
 
     @SneakyThrows
     public void sendEmail(EmailDTO emailDTO){
+
+//        List<String> listaDestinatarios = new ArrayList<>();
+
         MimeMessage mimeMessage = javaSenderEmail.createMimeMessage();
         MimeMessageHelper mime = new MimeMessageHelper(mimeMessage);
 
@@ -34,7 +39,7 @@ public class EmailServico {
             mime.addCc(s);
         }
 
-        mime.setText("Patracinador: " + Evento_.usuario );
+        mime.setText("Patrocinador: " + Evento_.usuario );
         javaSenderEmail.send(mimeMessage);
     }
 }
