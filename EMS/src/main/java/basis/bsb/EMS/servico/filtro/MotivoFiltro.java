@@ -23,8 +23,7 @@ public class MotivoFiltro implements EntityFiltro<Motivo> {
 
     @Override
     public Specification<Motivo> filter(){
-        return ((root, query, criteriaBuilder) -> criteriaBuilder.and(getPredicates(root, query, criteriaBuilder)
-                .toArray(new Predicate[0])));
+        return ((root, query, criteriaBuilder) -> criteriaBuilder.and(getPredicates(root, query, criteriaBuilder).toArray(new Predicate[0])));
     }
     private List<Predicate> getPredicates(Root<Motivo> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 
@@ -32,13 +31,11 @@ public class MotivoFiltro implements EntityFiltro<Motivo> {
         criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Motivo_.id)));
 
         if (titulo != null) {
-            predicates.add(criteriaBuilder.like(root.get(Motivo_.titulo),
-                    "%" + titulo + "%"));
+            predicates.add(criteriaBuilder.like(root.get(Motivo_.titulo), "%" + titulo + "%"));
         }
 
         if (descricao != null){
-            predicates.add(criteriaBuilder.like(root.get(Motivo_.descricao),
-                    "%" + descricao + "%"));
+            predicates.add(criteriaBuilder.like(root.get(Motivo_.descricao), "%" + descricao + "%"));
         }
 
         if (id != null){

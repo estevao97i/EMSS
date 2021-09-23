@@ -34,6 +34,9 @@ public class EventoDTO {
 
     @NotBlank (message = "Campo obrigatorio")
     private SelectDTO motivo;
+
     @NotBlank(message = "Campo obrigatorio")
     private SelectDTO situacao;
+
+
 }

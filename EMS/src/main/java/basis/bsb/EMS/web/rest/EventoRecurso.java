@@ -24,8 +24,8 @@ public class EventoRecurso {
     }
 
     @GetMapping
-    public ResponseEntity<List<EventoDTO>> BuscarTotos(){
-        return ResponseEntity.ok(eventoServico.encontrarTodos());
+    public ResponseEntity<List<EventoDTO>> encontrarTodosOrdenado(){
+        return ResponseEntity.ok(eventoServico.encontrarTodosOrdenado());
     }
 
     @PostMapping
@@ -40,14 +40,20 @@ public class EventoRecurso {
         return ResponseEntity.ok(eventoDTO);
     }
 
-    @PutMapping(value = "/ativa/{id}")
-    public ResponseEntity<Void> ativaEvento(@PathVariable Long id){
-        eventoServico.ativarEvento(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-    @PutMapping(value = "/desativa/{id}")
-    public ResponseEntity<Void> desativaEvento(@PathVariable Long id){
-        eventoServico.inativarEvento(id);
+//    @PutMapping(value = "/ativa/{id}")
+//    public ResponseEntity<Void> ativaEvento(@PathVariable Long id){
+//        eventoServico.ativarEvento(id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+//    @PutMapping(value = "/desativa/{id}")
+//    public ResponseEntity<Void> desativaEvento(@PathVariable Long id){
+//        eventoServico.inativarEvento(id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+    @PutMapping(value = "/{id}/formata/{id}")
+    public ResponseEntity<List<EventoDTO>> alteraEvento(@PathVariable Long id1, @PathVariable Long id2){
+        eventoServico.trocaDataEvento(id1, id2);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

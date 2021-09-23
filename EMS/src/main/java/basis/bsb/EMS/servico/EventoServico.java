@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -27,8 +28,8 @@ public class EventoServico {
         return eventoMapper.toDTO(evento);
     }
 
-    public List<EventoDTO> encontrarTodos(){
-        return eventoMapper.toDTO(eventoRepositorio.findAll());
+    public List<EventoDTO> encontrarTodosOrdenado(){
+        return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
 
     public boolean validaEvento(EventoDTO eventoDTO){
@@ -39,11 +40,18 @@ public class EventoServico {
 
     }
 
+//    public void realocaEvento(EventoDTO eventoDTO){
+//        List<EventoDTO> listaEvento = encontrarTodos();
+//        for (EventoDTO data: listaEvento) {
+//            if (eventoDTO.getDataEvento())
+//        }
+//    }
+
     public EventoDTO salvar (EventoDTO eventoDTO) {
         if(validaEvento(eventoDTO)){
             Evento evento = eventoMapper.toEntity(eventoDTO);
             Evento eventoSalva = eventoRepositorio.save(evento);
-            evento.getDataEvento().plusWeeks(1);
+//            evento.getDataEvento().plusWeeks(1);
             return eventoMapper.toDTO(eventoSalva);
         }
         throw new ObjectnotFoundException("Não pode salvar Evento" + eventoDTO.getDataEvento());
@@ -56,18 +64,49 @@ public class EventoServico {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
+    public List<EventoDTO> trocaDataEvento(Long id1, Long id2){
+        Evento evento1 = eventoRepositorio.findById(id1).orElseThrow(() -> new ObjectnotFoundException(""));
+        Evento evento2 = eventoRepositorio.findById(id2).orElseThrow(()-> new ObjectnotFoundException(""));
 
-    public void ativarEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        eventoDTO.setStatus(true);
-        editar(eventoDTO);
+        if(!evento1.getSituacao().equals(2) || !evento1.getSituacao().equals(3) && !evento2.getSituacao().equals(2)
+                || !evento2.getSituacao().equals(3)){
+            LocalDate data1 = evento1.getDataEvento();
+            LocalDate data2 = evento2.getDataEvento();
+
+            evento1.setDataEvento(data2);
+            evento2.setDataEvento(data1);
+
+            eventoRepositorio.save(evento1);
+            eventoRepositorio.save(evento2);
+
+            return eventoMapper.toDTO(eventoRepositorio.findAll());
+        }
+        throw new ObjectnotFoundException("Não pode realizar a troca de Datas entre eventos" + evento1.getDataEvento() + evento2.getDataEvento());
+
+
     }
 
-    public void inativarEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        eventoDTO.setStatus(false);
-        editar(eventoDTO);
+    public List<EventoDTO> adiaEvento(Long id){
+        Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException(""));
+        LocalDate dataEvento = evento.getDataEvento();
+        for (Evento l: eventoRepositorio.OrderByDateAdiamento(dataEvento)) {
+            l.setDataEvento(l.getDataEvento().plusWeeks(1));
+            eventoRepositorio.save(l);
+        }
+        return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
+
+//    public void ativarEvento(Long id){
+//        EventoDTO eventoDTO = encontrarPorId(id);
+//        eventoDTO.setStatus(true);
+//        editar(eventoDTO);
+//    }
+//
+//    public void inativarEvento(Long id){
+//        EventoDTO eventoDTO = encontrarPorId(id);
+//        eventoDTO.setStatus(false);
+//        editar(eventoDTO);
+//    }
 
 
 }
