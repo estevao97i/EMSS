@@ -46,7 +46,7 @@ public class EventoServico implements Serializable {
         if(validaEvento(eventoDTO)){
             Evento evento = eventoMapper.toEntity(eventoDTO);
             Evento eventoSalva = eventoRepositorio.save(evento);
-            evento.getDataEvento().plusWeeks(1);
+//            evento.getDataEvento().plusWeeks(1);
             return eventoMapper.toDTO(eventoSalva);
         }
         throw new ObjectnotFoundException("Não pode salvar Evento" + eventoDTO.getDataEvento());
@@ -57,19 +57,6 @@ public class EventoServico implements Serializable {
         Evento evento = eventoMapper.toEntity(eventoDTO);
         Evento eventoAtualiza = eventoRepositorio.save(evento);
         return eventoMapper.toDTO(eventoAtualiza);
-    }
-
-
-    public void ativarEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        eventoDTO.setStatus(true);
-        editar(eventoDTO);
-    }
-
-    public void inativarEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        eventoDTO.setStatus(false);
-        editar(eventoDTO);
     }
 
     @Scheduled(cron = "20 29 16 * * *")
