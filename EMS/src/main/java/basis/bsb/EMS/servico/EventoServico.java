@@ -35,7 +35,7 @@ public class EventoServico implements Serializable {
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
     private final EmailServico emailServico;
-    private final EventoFiltro eventoFiltro;
+
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
