@@ -4,8 +4,11 @@ import basis.bsb.EMS.dominio.Evento;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
+import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
+import basis.bsb.EMS.servico.filtro.EventoFiltro;
+import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,7 @@ public class EventoServico implements Serializable {
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
     private final EmailServico emailServico;
+    private final EventoFiltro eventoFiltro;
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
@@ -114,17 +118,13 @@ public class EventoServico implements Serializable {
 
         }
 
-//    public void ativarEvento(Long id){
-//        EventoDTO eventoDTO = encontrarPorId(id);
-//        eventoDTO.setStatus(true);
-//        editar(eventoDTO);
-//    }
+    public List<EventoDTO> buscarTodosFiltro(UsuarioFiltro usuarioFiltro) {
+        return eventoMapper.toDTO(eventoRepositorio.findAll(eventoFiltro.filter()));
+    }
+
 //
     public void excluirEvento(Long id){
-        EventoDTO eventoDTO = encontrarPorId(id);
-        Evento evento = eventoMapper.toEntity(eventoDTO);
-
-        if(eventoRepositorio.existsByUsuario());
+        eventoRepositorio.deleteById(id);
     }
 
 

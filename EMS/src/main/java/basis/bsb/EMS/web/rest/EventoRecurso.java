@@ -40,16 +40,10 @@ public class EventoRecurso {
         return ResponseEntity.ok(eventoDTO);
     }
 
-//    @PutMapping(value = "/ativa/{id}")
-//    public ResponseEntity<Void> ativaEvento(@PathVariable Long id){
-//        eventoServico.ativarEvento(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//    @PutMapping(value = "/desativa/{id}")
-//    public ResponseEntity<Void> desativaEvento(@PathVariable Long id){
-//        eventoServico.inativarEvento(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @PutMapping(value = "/adia/{id}")
+    public ResponseEntity<List<EventoDTO>> adiar(@PathVariable Long id){
+        return ResponseEntity.ok(eventoServico.adiaEvento(id));
+    }
 
     @PutMapping(value = "/{id}/formata/{id}")
     public ResponseEntity<List<EventoDTO>> alteraEvento(@PathVariable Long id1, @PathVariable Long id2){
