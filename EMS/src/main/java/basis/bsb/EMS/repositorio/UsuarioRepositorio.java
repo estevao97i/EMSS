@@ -10,5 +10,6 @@ public interface UsuarioRepositorio extends JpaRepository <Usuario,Long>, JpaSpe
 
     boolean existsByCpf(String cpf);
     boolean existsByEmail(String email);
+
 }
 

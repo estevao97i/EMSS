@@ -38,4 +38,8 @@ public class MotivoRecurso {
         return ResponseEntity.ok(motivoServico.ListarPorId(id));
     }
 
+
 }
+
+
+
