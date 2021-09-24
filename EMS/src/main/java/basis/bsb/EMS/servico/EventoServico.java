@@ -5,6 +5,7 @@ import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
+import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
@@ -111,8 +112,6 @@ public class EventoServico implements Serializable {
         }
         throw new ObjectnotFoundException("Não pode realizar a troca de Datas entre eventos" + evento1.getDataEvento() + evento2.getDataEvento());
 
-
-
     }
 
     public List<EventoDTO> adiaEvento(Long id) {
@@ -124,7 +123,6 @@ public class EventoServico implements Serializable {
         }
         return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
-
 
     public List<EventoDTO> buscarTodosFiltro(EventoFiltro eventoFiltro) {
         return eventoMapper.toDTO(eventoRepositorio.findAll(eventoFiltro.filter()));
@@ -148,7 +146,6 @@ public class EventoServico implements Serializable {
             }
         }
     }
-
 
     }
 
