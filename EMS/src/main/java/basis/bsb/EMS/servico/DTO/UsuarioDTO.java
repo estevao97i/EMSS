@@ -2,7 +2,6 @@ package basis.bsb.EMS.servico.DTO;
 
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -15,10 +14,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UsuarioDTO {
 
+    private Long id;
+
     @NotBlank
     private String nome;
-
-    private Long id;
 
     @CPF(message = "CPF tem q ser valido")
     @Size(min = 11, max = 11)

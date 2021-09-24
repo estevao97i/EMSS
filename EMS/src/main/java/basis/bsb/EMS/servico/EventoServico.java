@@ -120,11 +120,12 @@ public class EventoServico implements Serializable {
 //        editar(eventoDTO);
 //    }
 //
-//    public void inativarEvento(Long id){
-//        EventoDTO eventoDTO = encontrarPorId(id);
-//        eventoDTO.setStatus(false);
-//        editar(eventoDTO);
-//    }
+    public void excluirEvento(Long id){
+        EventoDTO eventoDTO = encontrarPorId(id);
+        Evento evento = eventoMapper.toEntity(eventoDTO);
+
+        if(eventoRepositorio.existsByUsuario());
+    }
 
 
     }

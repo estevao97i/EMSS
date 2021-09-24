@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecificationExecutor <Evento> {
+public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecificationExecutor<Evento> {
 
     boolean existsByDataEvento(LocalDate data);
 
@@ -23,7 +23,8 @@ public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecif
     List<Evento> OrderByDateAdiamento(LocalDate date);
 
 //    @Query("SELECT e FROM Evento ")
-    boolean existsByUsuario();
-    List<Evento> getAllByUsuario(Usuario usuario);
+    boolean existsByUsuario(Usuario usuario);
+
+    @Query("SELECT obj FROM Evento obj WHERE id")
 
 }
