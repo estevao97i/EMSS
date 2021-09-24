@@ -42,7 +42,7 @@ public class MotivoBuilder extends ConstrutorDeEntidade<Motivo> {
         return motivoRepositorio.findById(id).get();
     }
 
-    public  void delete(){
+    public void delete(){
         motivoRepositorio.deleteAll();
     }
 }

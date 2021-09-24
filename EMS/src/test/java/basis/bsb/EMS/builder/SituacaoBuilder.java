@@ -1,35 +1,44 @@
 package basis.bsb.EMS.builder;
 
 import basis.bsb.EMS.dominio.Situacao;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import basis.bsb.EMS.repositorio.SituacaoRepositorio;
+import basis.bsb.EMS.servico.Mapper.SituacaoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Collection;
 
+@Component
 public class SituacaoBuilder extends ConstrutorDeEntidade<Situacao> {
 
-    Situacao situacao = new Situacao();
+    @Autowired
+    private SituacaoMapper situacaoMapper;
+
+    @Autowired
+    private SituacaoRepositorio situacaoRepositorio;
 
     @Override
     protected Situacao construirEntidade() throws ParseException {
+        Situacao situacao = new Situacao();
         situacao.setDescricao("Situacao teste");
-        return null;
+        return situacao;
     }
 
     @Override
     protected Situacao persistir(Situacao entidade) {
-        return null;
+        return situacaoRepositorio.save(entidade);
     }
 
     @Override
     protected Collection<Situacao> obterTodos() {
-        return null;
+        return situacaoRepositorio.findAll();
     }
 
     @Override
     protected Situacao obterPorId(Long id) {
-        return null;
+        return situacaoRepositorio.findById(id).get();
     }
 
+    public void delete() {situacaoRepositorio.deleteAll();}
 }
