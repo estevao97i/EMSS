@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+
 public interface MotivoRepositorio extends JpaRepository<Motivo, Long>, JpaSpecificationExecutor<Motivo> {
+
 }
