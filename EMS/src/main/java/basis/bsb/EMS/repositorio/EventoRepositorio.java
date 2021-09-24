@@ -24,6 +24,8 @@ public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecif
 
     boolean existsByUsuario(Usuario usuario);
 
-    @Query("SELECT obj FROM Evento obj WHERE id")
+    List<Evento> getAllByUsuario(Usuario usuario);
+
+//    @Query("SELECT obj FROM Evento obj WHERE id")
 
 }

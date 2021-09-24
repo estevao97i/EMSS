@@ -50,4 +50,10 @@ public class EventoRecurso {
         eventoServico.trocaDataEvento(id1, id2);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id){
+        eventoServico.excluirEvento(id);
+        return ResponseEntity.noContent().build();
+    }
 }
