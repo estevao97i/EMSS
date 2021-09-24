@@ -1,6 +1,7 @@
 package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.EmsApplication;
+import basis.bsb.EMS.builder.EventoBuilder;
 import basis.bsb.EMS.builder.MotivoBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
@@ -22,12 +23,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmsApplication.class)
+public class EventoRecursoIT {
 
-public class MotivoRecursoIT {
+    private static final String BASE_URL = "/api/evento";
 
-    private static final String BASE_URL = "/api/motivo";
-
-    private static final Long ID_INEXISTENTE = 10000l;
+    private static  final Long ID_INEXISTENTE = 10000l;
 
     public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(
             MediaType.APPLICATION_JSON.getType(),
@@ -36,7 +36,7 @@ public class MotivoRecursoIT {
     private MockMvc mockMvc;
 
     @Autowired
-    private MotivoBuilder motivoBuilder;
+    private EventoBuilder eventoBuilder;
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -44,7 +44,8 @@ public class MotivoRecursoIT {
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        this.motivoBuilder.setCustomizacao(null);
-        this.motivoBuilder.delete();
+        this.eventoBuilder.setCustomizacao(null);
+        this.eventoBuilder.delete();
     }
+
 }
