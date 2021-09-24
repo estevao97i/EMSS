@@ -1,12 +1,9 @@
 package basis.bsb.EMS.servico.DTO;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 
@@ -16,7 +13,6 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class MotivoDTO {
 
-    @NotBlank
     private Long id;
 
     @NotBlank

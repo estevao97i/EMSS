@@ -3,6 +3,7 @@ package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.servico.DTO.MotivoDTO;
 import basis.bsb.EMS.servico.MotivoServico;
+import basis.bsb.EMS.servico.filtro.MotivoFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,4 +39,13 @@ public class MotivoRecurso {
         return ResponseEntity.ok(motivoServico.ListarPorId(id));
     }
 
+    @GetMapping(value ="filtro")
+    public ResponseEntity<List<MotivoDTO>> buscarTodosFiltro(MotivoFiltro filtro){
+        return ResponseEntity.ok(motivoServico.buscarTodosFiltro(filtro));
+    }
+
+
 }
+
+
+

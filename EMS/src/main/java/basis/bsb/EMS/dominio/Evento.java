@@ -16,7 +16,7 @@ import java.util.List;
 public class Evento {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
@@ -36,10 +36,11 @@ public class Evento {
     @JoinColumn(name = "ID_SITUACAO")
     @ManyToOne(fetch = FetchType.EAGER)
     private Situacao situacao;
-
+    
     @ManyToMany()
     @JoinTable(name = "EVENTO_USUARIO",
             joinColumns = {@JoinColumn(name = "ID_USUARIO")},
             inverseJoinColumns = {@JoinColumn(name = "ID_EVENTO")})
     private List<Usuario> usuario = new ArrayList<>();
+
 }

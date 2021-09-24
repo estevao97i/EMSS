@@ -3,7 +3,9 @@ package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.servico.DTO.EventoDTO;
 import basis.bsb.EMS.servico.EventoServico;
+import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +25,8 @@ public class EventoRecurso {
     }
 
     @GetMapping
-    public ResponseEntity<List<EventoDTO>> BuscarTotos(){
-        return ResponseEntity.ok(eventoServico.encontrarTodos());
+    public ResponseEntity<List<EventoDTO>> encontrarTodosOrdenado(){
+        return ResponseEntity.ok(eventoServico.encontrarTodosOrdenado());
     }
 
     @PostMapping
@@ -39,4 +41,28 @@ public class EventoRecurso {
         return ResponseEntity.ok(eventoDTO);
     }
 
+    @PutMapping(value = "/adia/{id}")
+    public ResponseEntity<List<EventoDTO>> adiar(@PathVariable Long id){
+        return ResponseEntity.ok(eventoServico.adiaEvento(id));
+    }
+
+    @PutMapping(value = "/{id}/formata/{id}")
+    public ResponseEntity<List<EventoDTO>> alteraEvento(@PathVariable Long id1, @PathVariable Long id2){
+        eventoServico.trocaDataEvento(id1, id2);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id){
+        eventoServico.excluirEvento(id);
+        return ResponseEntity.noContent().build();
+
+    }
+      
+    @GetMapping(value = "filtro")
+    public ResponseEntity<List<EventoDTO>> buscarTodosFiltro(UsuarioFiltro filtro){
+        return ResponseEntity.ok(eventoServico.buscarTodosFiltro(filtro));
+
+    }
 }
