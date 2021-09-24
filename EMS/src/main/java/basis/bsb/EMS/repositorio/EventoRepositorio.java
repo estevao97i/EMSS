@@ -30,7 +30,7 @@ public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecif
 
     @Query("select e " +
             "from Evento e " +
-            "where e.evendoDoDia = :data")
+            "where e.dataEvento = :data")
     Optional<Evento> findTodayEvento(@Param("data") LocalDate data);
 
 }

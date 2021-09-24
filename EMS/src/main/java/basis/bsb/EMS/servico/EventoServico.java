@@ -77,7 +77,7 @@ public class EventoServico implements Serializable {
     }
 
 
-    @Scheduled(cron = "00 01 16 * * *")
+    @Scheduled(cron = "00 43 14 * * ")
     public void rotinaDeEmail() {
         Optional<Evento> eventoOptional = eventoRepositorio.findTodayEvento(LocalDate.now());
         if (eventoOptional.isPresent()) {
@@ -132,7 +132,7 @@ public class EventoServico implements Serializable {
     }
 
 
-    public List<EventoDTO> buscarTodosFiltro(UsuarioFiltro usuarioFiltro) {
+    public List<EventoDTO> buscarTodosFiltro(EventoFiltro eventoFiltro) {
         return eventoMapper.toDTO(eventoRepositorio.findAll(eventoFiltro.filter()));
     }
 
