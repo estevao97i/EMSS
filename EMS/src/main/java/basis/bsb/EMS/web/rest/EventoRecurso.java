@@ -3,6 +3,7 @@ package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.servico.DTO.EventoDTO;
 import basis.bsb.EMS.servico.EventoServico;
+import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,5 +50,10 @@ public class EventoRecurso {
     public ResponseEntity<List<EventoDTO>> alteraEvento(@PathVariable Long id1, @PathVariable Long id2){
         eventoServico.trocaDataEvento(id1, id2);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "filtro")
+    public ResponseEntity<List<EventoDTO>> buscarTodosFiltro(UsuarioFiltro filtro){
+        return ResponseEntity.ok(eventoServico.buscarTodosFiltro(filtro));
     }
 }

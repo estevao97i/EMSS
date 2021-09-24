@@ -55,7 +55,7 @@ public class UsuarioRecurso {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "filtro ")
+    @GetMapping(value = "filtro")
     public ResponseEntity<List<UsuarioDTO>> encontrarTodosFiltro(UsuarioFiltro filtro) {
         return ResponseEntity.ok(usuarioServico.buscarTodosFiltro(filtro));
 
