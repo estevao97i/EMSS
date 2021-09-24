@@ -72,7 +72,7 @@ public class EventoServico implements Serializable {
     }
 
 
-    @Scheduled(cron = "00 43 14 * * ")
+    @Scheduled(cron = "00 43 14 * * *")
     public void rotinaDeEmail() {
         Optional<Evento> eventoOptional = eventoRepositorio.findTodayEvento(LocalDate.now());
         if (eventoOptional.isPresent()) {
