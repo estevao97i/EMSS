@@ -20,7 +20,6 @@ public class UsuarioServico implements Serializable {
 
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
-    private final EventoRepositorio eventoRepositorio;
     private final EventoServico eventoServico;
 
     public UsuarioDTO encontrarPorId(Long id) {
@@ -61,16 +60,6 @@ public class UsuarioServico implements Serializable {
         return usuarioMapper.toDTO(usuarioAtualiza);
     }
 
-    public boolean analiseUsuarioEvento(UsuarioDTO usuarioDTO){
-        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
-        if (!eventoRepositorio.existsByUsuario(usuario)){
-            return true;
-        } else if(eventoRepositorio.existsByUsuario(usuario)){
-            return false;
-        }
-        throw new ObjectnotFoundException("");
-    }
-
     public void ativarUsuario(Long id){
         UsuarioDTO usuarioDTO = encontrarPorId(id);
         usuarioDTO.setStatus(true);
@@ -79,6 +68,7 @@ public class UsuarioServico implements Serializable {
 
     public void inativarUsuario(Long id){
         UsuarioDTO usuarioDTO = encontrarPorId(id);
+        eventoServico.analisaUsuario(usuarioMapper.toEntity(usuarioDTO));
         usuarioDTO.setStatus(false);
         editar(usuarioDTO);
     }

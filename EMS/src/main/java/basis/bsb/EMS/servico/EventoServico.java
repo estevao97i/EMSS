@@ -5,7 +5,6 @@ import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
@@ -20,9 +19,11 @@ import java.time.LocalDate;
 
 import java.io.Serializable;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 
 @Transactional
@@ -51,13 +52,6 @@ public class EventoServico implements Serializable {
         throw new ObjectnotFoundException("Dois eventos não podem ser cadastrados no mesmo dia" + eventoDTO.getDataEvento());
 
     }
-
-//    public void realocaEvento(EventoDTO eventoDTO){
-//        List<EventoDTO> listaEvento = encontrarTodos();
-//        for (EventoDTO data: listaEvento) {
-//            if (eventoDTO.getDataEvento())
-//        }
-//    }
 
     public EventoDTO salvar(EventoDTO eventoDTO) {
         if (validaEvento(eventoDTO)) {
@@ -138,6 +132,21 @@ public class EventoServico implements Serializable {
 
     public void excluirEvento(Long id){
         eventoRepositorio.deleteById(id);
+    }
+
+    public void analisaUsuario(Usuario usuario){
+        List<Evento> lista = eventoRepositorio.getAllByUsuario(usuario);
+        List<Usuario> listaUsuario = new ArrayList<>();
+        for (Evento e: lista) {
+            listaUsuario = e.getUsuario();
+            if (listaUsuario.toArray().length == 1){
+               eventoRepositorio.delete(e);
+            } else {
+                listaUsuario.remove(usuario);
+                e.setUsuario(listaUsuario);
+                eventoRepositorio.save(e);
+            }
+        }
     }
 
 
