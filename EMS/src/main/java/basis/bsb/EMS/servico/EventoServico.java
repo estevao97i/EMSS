@@ -65,7 +65,7 @@ public class EventoServico implements Serializable {
         emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
         emailDTO.setAssunto("teste ");
         emailDTO.setCorpo("esta funcionando!!!!");
-        emailDTO.getCopias().add("projeto.formacaobsb@gmail.com");
+        emailDTO.getCopias().add("wagner.cardoso20@gmail.com");
 
         emailServico.sendEmail(emailDTO);
 
