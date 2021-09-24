@@ -22,7 +22,6 @@ public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecif
     @Query("SELECT obj FROM Evento obj ORDER BY obj.dataEvento")
     List<Evento> OrderByDateAdiamento(LocalDate date);
 
-//    @Query("SELECT e FROM Evento ")
     boolean existsByUsuario(Usuario usuario);
 
     @Query("SELECT obj FROM Evento obj WHERE id")

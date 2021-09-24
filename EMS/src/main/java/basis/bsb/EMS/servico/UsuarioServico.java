@@ -6,12 +6,10 @@ import basis.bsb.EMS.repositorio.UsuarioRepositorio;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
-
 import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -49,7 +47,7 @@ public class UsuarioServico implements Serializable {
 
     }
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
-        if (validaCPF(usuarioDTO) && validaEmail(usuarioDTO){
+        if (validaCPF(usuarioDTO) && validaEmail(usuarioDTO)){
             Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
