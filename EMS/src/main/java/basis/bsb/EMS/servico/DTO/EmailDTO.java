@@ -10,7 +10,6 @@ import java.util.List;
 @Setter
 public class EmailDTO {
 
-
     private String assunto;
     private String destinatario;
     private String corpo;

@@ -1,6 +1,7 @@
 package basis.bsb.EMS.servico;
 
 import basis.bsb.EMS.dominio.Usuario;
+import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.repositorio.UsuarioRepositorio;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.Mapper.UsuarioMapper;
@@ -21,6 +22,8 @@ public class UsuarioServico implements Serializable {
 
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
+    private final EventoRepositorio eventoRepositorio;
+    private final EventoServico eventoServico;
 
     public UsuarioDTO encontrarPorId(Long id) {
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(ObjectnotFoundException ::new);
@@ -39,14 +42,14 @@ public class UsuarioServico implements Serializable {
     }
 
     public boolean validaEmail(UsuarioDTO usuarioDTO){
-        if (usuarioRepositorio.existsByEmail(usuarioDTO.getEmail())){
+        if (!usuarioRepositorio.existsByEmail(usuarioDTO.getEmail())){
             return true;
         }
         throw new ObjectnotFoundException("Email já cadastrado no banco "+ usuarioDTO.getEmail());
 
     }
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
-        if (validaCPF(usuarioDTO)){
+        if (validaCPF(usuarioDTO) && validaEmail(usuarioDTO){
             Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
@@ -58,6 +61,16 @@ public class UsuarioServico implements Serializable {
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         Usuario usuarioAtualiza = usuarioRepositorio.save(usuario);
         return usuarioMapper.toDTO(usuarioAtualiza);
+    }
+
+    public boolean analiseUsuarioEvento(UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        if (!eventoRepositorio.existsByUsuario(usuario)){
+            return true;
+        } else if(eventoRepositorio.existsByUsuario(usuario)){
+            return false;
+        }
+        throw new ObjectnotFoundException("");
     }
 
     public void ativarUsuario(Long id){
