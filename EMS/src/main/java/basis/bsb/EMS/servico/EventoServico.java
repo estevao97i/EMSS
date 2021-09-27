@@ -5,11 +5,11 @@ import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
-import basis.bsb.EMS.servico.DTO.UsuarioDTO;
+
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
-import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
