@@ -1,7 +1,7 @@
 package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.EmsApplication;
-import basis.bsb.EMS.builder.MotivoBuilder;
+import basis.bsb.EMS.builder.SituacaoBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +15,13 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmsApplication.class)
 
-public class MotivoRecursoIT {
+public class SituacaoRecursoIT {
 
-    private static final String BASE_URL = "/api/motivo";
+    private static final String BASE_URL = "/api/situacao";
 
     private static final Long ID_INEXISTENTE = 10000l;
 
@@ -36,7 +32,7 @@ public class MotivoRecursoIT {
     private MockMvc mockMvc;
 
     @Autowired
-    private MotivoBuilder motivoBuilder;
+    private SituacaoBuilder situacaoBuilder;
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -44,7 +40,7 @@ public class MotivoRecursoIT {
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        this.motivoBuilder.setCustomizacao(null);
-        this.motivoBuilder.delete();
+        this.situacaoBuilder.setCustomizacao(null);
+        this.situacaoBuilder.delete();
     }
 }

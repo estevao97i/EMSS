@@ -5,10 +5,11 @@ import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
+
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
-import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,11 @@ import java.time.LocalDate;
 
 import java.io.Serializable;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 
 @Transactional
@@ -30,7 +35,7 @@ public class EventoServico implements Serializable {
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
     private final EmailServico emailServico;
-    private final EventoFiltro eventoFiltro;
+
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
@@ -66,6 +71,28 @@ public class EventoServico implements Serializable {
         return eventoMapper.toDTO(eventoAtualiza);
     }
 
+
+    @Scheduled(cron = "00 43 14 * * *")
+    public void rotinaDeEmail() {
+        Optional<Evento> eventoOptional = eventoRepositorio.findTodayEvento(LocalDate.now());
+        if (eventoOptional.isPresent()) {
+            List<String> copias = new ArrayList<>();
+            EmailDTO emailDTO = new EmailDTO();
+            Evento eventoDoDia =eventoOptional.get();
+            emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
+            emailDTO.setAssunto("Hoje tem um Patrocinador ira pargar o lache!!!");
+            emailDTO.setCorpo("Esta chegando a hora do evento!!!!" + eventoDoDia.getMotivo().getTitulo() + "Esse evento sera patrocinado por" +
+                    eventoDoDia.getUsuario().toArray()[0]+ "e por mais outras" + (eventoDoDia.getUsuario().toArray().length -1)+ "pessoas" );
+
+            for(Usuario user :eventoDoDia.getUsuario()) {
+                copias.add(user.getEmail());
+            }
+            emailDTO.setCopias(copias);
+            emailServico.sendEmail(emailDTO);
+
+        }
+    }
+
     public List<EventoDTO> trocaDataEvento(Long id1, Long id2) {
         Evento evento1 = eventoRepositorio.findById(id1).orElseThrow(() -> new ObjectnotFoundException(""));
         Evento evento2 = eventoRepositorio.findById(id2).orElseThrow(() -> new ObjectnotFoundException(""));
@@ -85,7 +112,6 @@ public class EventoServico implements Serializable {
         }
         throw new ObjectnotFoundException("Não pode realizar a troca de Datas entre eventos" + evento1.getDataEvento() + evento2.getDataEvento());
 
-
     }
 
     public List<EventoDTO> adiaEvento(Long id) {
@@ -98,23 +124,10 @@ public class EventoServico implements Serializable {
         return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
 
-        @Scheduled(cron = "00 01 16 * * *")
-        public void rotinaDeEmail() {
-            EmailDTO emailDTO = new EmailDTO();
-            emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
-            emailDTO.setAssunto("teste ");
-            emailDTO.setCorpo("esta funcionando!!!!");
-            emailDTO.getCopias().add("projeto.formacaobsb@gmail.com");
-
-            emailServico.sendEmail(emailDTO);
-
-        }
-
-    public List<EventoDTO> buscarTodosFiltro(UsuarioFiltro usuarioFiltro) {
+    public List<EventoDTO> buscarTodosFiltro(EventoFiltro eventoFiltro) {
         return eventoMapper.toDTO(eventoRepositorio.findAll(eventoFiltro.filter()));
     }
 
-//
     public void excluirEvento(Long id){
         eventoRepositorio.deleteById(id);
     }
@@ -133,7 +146,6 @@ public class EventoServico implements Serializable {
             }
         }
     }
-
 
     }
 

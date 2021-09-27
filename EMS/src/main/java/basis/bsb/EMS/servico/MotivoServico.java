@@ -6,7 +6,7 @@ import basis.bsb.EMS.repositorio.MotivoRepositorio;
 import basis.bsb.EMS.servico.DTO.MotivoDTO;
 import basis.bsb.EMS.servico.Mapper.MotivoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
-import lombok.AllArgsConstructor;
+import basis.bsb.EMS.servico.filtro.MotivoFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +21,7 @@ public class MotivoServico implements Serializable {
 
     private final MotivoMapper motivoMapper;
     private final MotivoRepositorio motivoRepositorio;
+
 
     public List<MotivoDTO> ListaTodosMotivos(){
         return motivoMapper.toDTO(motivoRepositorio.findAll());
@@ -44,5 +45,9 @@ public class MotivoServico implements Serializable {
 
     public void deletarMotivo(Long id){
         motivoRepositorio.deleteById(id);
+    }
+
+    public List<MotivoDTO> buscarTodosFiltro(MotivoFiltro filtro){
+        return motivoMapper.toDTO(motivoRepositorio.findAll(filtro.filter()));
     }
 }

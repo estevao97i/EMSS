@@ -1,7 +1,7 @@
 package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.EmsApplication;
-import basis.bsb.EMS.builder.MotivoBuilder;
+import basis.bsb.EMS.builder.UsuarioBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmsApplication.class)
+public class UsuarioRecursoIT {
 
-public class MotivoRecursoIT {
-
-    private static final String BASE_URL = "/api/motivo";
+    private static final String BASE_URL = "/api/usuario";
 
     private static final Long ID_INEXISTENTE = 10000l;
 
@@ -36,7 +35,7 @@ public class MotivoRecursoIT {
     private MockMvc mockMvc;
 
     @Autowired
-    private MotivoBuilder motivoBuilder;
+    private UsuarioBuilder usuarioBuilder;
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -44,7 +43,7 @@ public class MotivoRecursoIT {
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        this.motivoBuilder.setCustomizacao(null);
-        this.motivoBuilder.delete();
+        this.usuarioBuilder.setCustomizacao(null);
+        this.usuarioBuilder.delete();
     }
 }

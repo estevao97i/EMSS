@@ -3,6 +3,7 @@ package basis.bsb.EMS.web.rest;
 
 import basis.bsb.EMS.servico.DTO.EventoDTO;
 import basis.bsb.EMS.servico.EventoServico;
+import basis.bsb.EMS.servico.filtro.EventoFiltro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,9 +52,17 @@ public class EventoRecurso {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id){
         eventoServico.excluirEvento(id);
         return ResponseEntity.noContent().build();
+
+    }
+      
+    @GetMapping(value = "filtro")
+    public ResponseEntity<List<EventoDTO>> buscarTodosFiltro(EventoFiltro filtro){
+        return ResponseEntity.ok(eventoServico.buscarTodosFiltro(filtro));
+
     }
 }
