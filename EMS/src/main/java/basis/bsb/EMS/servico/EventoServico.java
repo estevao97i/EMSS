@@ -5,10 +5,11 @@ import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
+
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
-import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class EventoServico implements Serializable {
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
     private final EmailServico emailServico;
-    private final EventoFiltro eventoFiltro;
+
 
     public EventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
@@ -71,7 +72,7 @@ public class EventoServico implements Serializable {
     }
 
 
-    @Scheduled(cron = "00 01 16 * * *")
+    @Scheduled(cron = "00 43 14 * * *")
     public void rotinaDeEmail() {
         Optional<Evento> eventoOptional = eventoRepositorio.findTodayEvento(LocalDate.now());
         if (eventoOptional.isPresent()) {
@@ -111,8 +112,6 @@ public class EventoServico implements Serializable {
         }
         throw new ObjectnotFoundException("Não pode realizar a troca de Datas entre eventos" + evento1.getDataEvento() + evento2.getDataEvento());
 
-
-
     }
 
     public List<EventoDTO> adiaEvento(Long id) {
@@ -125,8 +124,7 @@ public class EventoServico implements Serializable {
         return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
 
-
-    public List<EventoDTO> buscarTodosFiltro(UsuarioFiltro usuarioFiltro) {
+    public List<EventoDTO> buscarTodosFiltro(EventoFiltro eventoFiltro) {
         return eventoMapper.toDTO(eventoRepositorio.findAll(eventoFiltro.filter()));
     }
 
@@ -148,7 +146,6 @@ public class EventoServico implements Serializable {
             }
         }
     }
-
 
     }
 
