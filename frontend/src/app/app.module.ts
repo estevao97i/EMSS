@@ -13,13 +13,21 @@ import { PageNotificationModule, BreadcrumbModule, MenuModule, ErrorStackModule 
 import { ErrorModule, SecurityModule, VersionTagModule } from '@nuvem/angular-base';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
 import { BlockUIModule } from 'ng-block-ui';
+import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
+import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
+
+import {AccordionModule} from 'primeng/accordion';
+
+
 
 @NgModule({
     declarations: [
         AppComponent,
         AppTopbarComponent,
         AppFooterComponent,
-        DiarioErrosComponent
+        DiarioErrosComponent,
+        UsuarioReadComponent,
+        InicioReadComponent
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -36,7 +44,8 @@ import { BlockUIModule } from 'ng-block-ui';
         ErrorModule,
         VersionTagModule,
         SecurityModule.forRoot(environment.auth),
-        MenuModule
+        MenuModule,
+        AccordionModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
