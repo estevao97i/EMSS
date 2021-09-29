@@ -1,3 +1,8 @@
+<div class="">
+    <button pButton type="button" label="Criar-usuario" class="ui-button-raised"></button>
+
+</div>
+<br/>
 <p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
          [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
          [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -10,50 +15,14 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th></th>
-            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-            <th pSortableColumn="country.name">Country <p-sortIcon field="country.name"></p-sortIcon></th>
-            <th pSortableColumn="representative.name">Representative <p-sortIcon field="representative.name"></p-sortIcon></th>
-            <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
-            <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-            <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
-            <th></th>
+            <th colspan="2" pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="name">foto <p-sortIcon field="name"></p-sortIcon></th>
+            <th colspan="3"  pSortableColumn="name">Email <p-sortIcon field="email"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="name">telefone <p-sortIcon field="name"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="name">Cargo <p-sortIcon field="cargo"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
         </tr>
-        <tr>
-            <th>
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th>
-                <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Search by Name" class="ui-column-filter">
-            </th>
-            <th>
-                <input pInputText type="text" (input)="dt.filter($event.target.value, 'country.name', 'contains')" placeholder="Search by Country" class="ui-column-filter">
-            </th>
-            <th>
-                <p-multiSelect [options]="representatives" placeholder="All" (onChange)="onRepresentativeChange($event)" styleClass="ui-column-filter" optionLabel="name">
-                    <ng-template let-option pTemplate="item">
-                        <div class="ui-multiselect-representative-option">
-                            <img [alt]="option.label" src="assets/showcase/images/demo/avatar/{{option.value.image}}" width="32" />
-                            <span>{{option.label}}</span>
-                        </div>
-                    </ng-template>
-                </p-multiSelect>
-            </th>
-            <th>
-                <p-calendar (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')" [showButtonBar]="true" styleClass="ui-column-filter" placeholder="Registration Date" [readonlyInput]="true" dateFormat="yy-mm-dd"></p-calendar>
-            </th>
-            <th>
-                <p-dropdown [options]="statuses" (onChange)="dt.filter($event.value, 'status', 'equals')" styleClass="ui-column-filter" placeholder="Select a Status" [showClear]="true">
-                    <ng-template let-option pTemplate="item">
-                        <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-                    </ng-template>
-                </p-dropdown>
-            </th>
-            <th>
-                <input pInputText type="text" (input)="onActivityChange($event)" placeholder="Minimum" class="ui-column-filter" >
-            </th>
-            <th></th>
-        </tr>
+
     </ng-template>
     <ng-template pTemplate="body" let-customer>
         <tr class="ui-selectable-row">
@@ -65,35 +34,30 @@
                 {{customer.name}}
             </td>
             <td>
-                <span class="ui-column-title">Country</span>
-                <span [class]="'flag flag-' + customer.country.code"></span>
-                <span style="vertical-align: middle; margin-left: .5em">{{customer.country.name}}</span>
-            </td>
-            <td>
-                <span class="ui-column-title">Representative</span>
+                <span class="ui-column-title">Foto</span>
                 <img [alt]="customer.representative.name" src="assets/showcase/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" />
                 <span style="vertical-align: middle; margin-left: .5em">{{customer.representative.name}}</span>
             </td>
             <td>
-                <span class="ui-column-title">Country</span>
-                {{customer.date}}
+                <span class="ui-column-title">Email</span>
+                {{customer.email}}
+            </td>
+            <td>
+                <span class="ui-column-title">Name</span>
+                {{customer.telefone}}
             </td>
             <td>
                 <span class="ui-column-title">Status</span>
                 <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
             </td>
-            <td>
-                <span class="ui-column-title">Activity</span>
-                <p-progressBar [value]="customer.activity" [showValue]="false"></p-progressBar>
-            </td>
-            <td>
-                <button pButton type="button" class="ui-button-secondary" icon="pi pi-cog"></button>
-            </td>
+
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="8" style="text-align:left">Sem Usuarios.</td>
+            <td colspan="13" style="text-align:left">Sem Usuarios.</td>
         </tr>
     </ng-template>
 </p-table>
+
+
