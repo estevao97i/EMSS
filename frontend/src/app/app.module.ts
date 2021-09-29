@@ -16,6 +16,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
 import {AccordionModule} from 'primeng/accordion';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -44,7 +45,8 @@ import {AccordionModule} from 'primeng/accordion';
         VersionTagModule,
         SecurityModule.forRoot(environment.auth),
         MenuModule,
-        AccordionModule
+        AccordionModule,
+        ButtonModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
