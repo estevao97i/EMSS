@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ElementRef, Renderer2, ViewChild, OnDestroy, 
 import { ScrollPanel } from 'primeng';
 import { MenusService, MenuOrientation } from '@nuvem/primeng-components';
 
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
@@ -50,7 +51,8 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
         this.zone.runOutsideAngular(() => { this.bindRipple(); });
 
         this.menuService.itens = [
-            { label: 'Dashboard', icon: 'dashboard', routerLink: ['/'] }
+            {label: 'Inicio', icon: 'home', routerLink: ['/Inicio']},
+            {label: 'Usuario', icon: 'apple', routerLink: ['/Usuario']},
         ];
     }
 
