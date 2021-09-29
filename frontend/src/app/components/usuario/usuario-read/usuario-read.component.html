@@ -10,14 +10,12 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th></th>
+            <th pSortableColumn="foto">Foto</th>
             <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
             <th pSortableColumn="country.name">Country <p-sortIcon field="country.name"></p-sortIcon></th>
             <th pSortableColumn="representative.name">Representative <p-sortIcon field="representative.name"></p-sortIcon></th>
             <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
             <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-            <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
-            <th></th>
         </tr>
         <tr>
             <th>
@@ -49,17 +47,10 @@
                     </ng-template>
                 </p-dropdown>
             </th>
-            <th>
-                <input pInputText type="text" (input)="onActivityChange($event)" placeholder="Minimum" class="ui-column-filter" >
-            </th>
-            <th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-customer>
         <tr class="ui-selectable-row">
-            <td>
-                <p-tableCheckbox [value]="customer"></p-tableCheckbox>
-            </td>
             <td>
                 <span class="ui-column-title">Name</span>
                 {{customer.name}}
@@ -81,13 +72,6 @@
             <td>
                 <span class="ui-column-title">Status</span>
                 <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
-            </td>
-            <td>
-                <span class="ui-column-title">Activity</span>
-                <p-progressBar [value]="customer.activity" [showValue]="false"></p-progressBar>
-            </td>
-            <td>
-                <button pButton type="button" class="ui-button-secondary" icon="pi pi-cog"></button>
             </td>
         </tr>
     </ng-template>
