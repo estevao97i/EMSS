@@ -1210,7 +1210,7 @@ body a {
   width: 250px;
   height:80px;
   background: url("../images/ESS.gif") top left no-repeat;
-  background-size: 250px 76px;
+  background-size: 250px 75px;
 }
 .layout-container .topbar .topbar-left {
   box-sizing: border-box;

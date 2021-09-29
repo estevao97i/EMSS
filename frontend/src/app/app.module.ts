@@ -15,7 +15,6 @@ import { DiarioErrosComponent } from './components/diario-erros/diario-erros.com
 import { BlockUIModule } from 'ng-block-ui';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
-
 import {AccordionModule} from 'primeng/accordion';
 
 
