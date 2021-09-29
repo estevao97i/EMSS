@@ -13,13 +13,12 @@ import { PageNotificationModule, BreadcrumbModule, MenuModule, ErrorStackModule 
 import { ErrorModule, SecurityModule, VersionTagModule } from '@nuvem/angular-base';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
 import { BlockUIModule } from 'ng-block-ui';
-<<<<<<< HEAD
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
-=======
-import {AccordionModule} from 'primeng/accordion'; 
 
->>>>>>> 8e076dac3b839b6f32010bc27ea4287c99e6308f
+import {AccordionModule} from 'primeng/accordion';
+
+
 
 @NgModule({
     declarations: [
