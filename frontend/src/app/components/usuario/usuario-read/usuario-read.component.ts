@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Routes, Router} from '@angular/router';
 import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
@@ -14,7 +15,7 @@ export class UsuarioReadComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
       // this.customerService.getCustomersLarge().then(customers => {
@@ -34,6 +35,9 @@ export class UsuarioReadComponent implements OnInit {
       //     {name: "Stephen Shaw", image: 'stephenshaw.png'},
       //     {name: "XuXue Feng", image: 'xuxuefeng.png'}
       // ];
+  }
+  usuarioCreate(): void {
+      this.router.navigate(['/usuario/create']);
   }
 
 }

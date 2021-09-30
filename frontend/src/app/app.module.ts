@@ -17,6 +17,8 @@ import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-
 import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
 import {AccordionModule} from 'primeng/accordion';
 import {ButtonModule} from 'primeng/button';
+import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
+import {InputTextModule} from 'primeng/inputtext';
 
 
 
@@ -27,7 +29,8 @@ import {ButtonModule} from 'primeng/button';
         AppFooterComponent,
         DiarioErrosComponent,
         UsuarioReadComponent,
-        InicioReadComponent
+        InicioReadComponent,
+        UsuarioCreateComponent
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -46,7 +49,8 @@ import {ButtonModule} from 'primeng/button';
         SecurityModule.forRoot(environment.auth),
         MenuModule,
         AccordionModule,
-        ButtonModule
+        ButtonModule,
+        InputTextModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

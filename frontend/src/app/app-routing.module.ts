@@ -4,10 +4,13 @@ import { DiarioErrosComponent } from './components/diario-erros/diario-erros.com
 import { LoginSuccessComponent } from '@nuvem/angular-base';
 import {UsuarioReadComponent} from './components/usuario/usuario-read/usuario-read.component';
 import {InicioReadComponent} from './components/inicio/inicio-read/inicio-read.component';
+import {UsuarioCreateComponent} from './components/usuario/usuario-create/usuario-create.component';
+
 
 const routes: Routes = [
     { path: 'Inicio', component: InicioReadComponent},
     { path: 'Usuario', component: UsuarioReadComponent },
+    { path: 'Usuario/create', component: UsuarioCreateComponent},
     { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
     { path: 'login-success', component: LoginSuccessComponent }
 ];
