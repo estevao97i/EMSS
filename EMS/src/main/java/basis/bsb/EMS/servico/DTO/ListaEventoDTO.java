@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,4 +19,5 @@ public class ListaEventoDTO {
     private LocalDate dataEvento;
     private SelectDTO situacao;
     private SelectDTO motivo;
+    private List<UsuarioDTO> usuario;
 }

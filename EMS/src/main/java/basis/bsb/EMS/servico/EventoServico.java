@@ -6,7 +6,9 @@ import basis.bsb.EMS.repositorio.EventoRepositorio;
 import basis.bsb.EMS.servico.DTO.EmailDTO;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
 
+import basis.bsb.EMS.servico.DTO.ListaEventoDTO;
 import basis.bsb.EMS.servico.Mapper.EventoMapper;
+import basis.bsb.EMS.servico.Mapper.ListaEventoMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
 
@@ -35,15 +37,16 @@ public class EventoServico implements Serializable {
     private final EventoRepositorio eventoRepositorio;
     private final EventoMapper eventoMapper;
     private final EmailServico emailServico;
+    private final ListaEventoMapper listaEventoMapper;
 
 
-    public EventoDTO encontrarPorId(Long id) {
+    public ListaEventoDTO encontrarPorId(Long id) {
         Evento evento = eventoRepositorio.findById(id).orElseThrow(() -> new ObjectnotFoundException("Evento nãp encontrado!" + id));
-        return eventoMapper.toDTO(evento);
+        return listaEventoMapper.toDTO(evento);
     }
 
-    public List<EventoDTO> encontrarTodosOrdenado() {
-        return eventoMapper.toDTO(eventoRepositorio.OrderByDate());
+    public List<ListaEventoDTO> encontrarTodosOrdenado() {
+        return listaEventoMapper.toDTO(eventoRepositorio.OrderByDate());
     }
 
     public boolean validaEvento(EventoDTO eventoDTO) {

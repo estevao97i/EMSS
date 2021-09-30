@@ -2,6 +2,7 @@ package basis.bsb.EMS.web.rest;
 
 
 import basis.bsb.EMS.servico.DTO.EventoDTO;
+import basis.bsb.EMS.servico.DTO.ListaEventoDTO;
 import basis.bsb.EMS.servico.EventoServico;
 import basis.bsb.EMS.servico.filtro.EventoFiltro;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,12 @@ public class EventoRecurso {
     private final EventoServico eventoServico;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<EventoDTO> BuscarPorId(@PathVariable Long id){
+    public ResponseEntity<ListaEventoDTO> BuscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(eventoServico.encontrarPorId(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<EventoDTO>> encontrarTodosOrdenado(){
+    public ResponseEntity<List<ListaEventoDTO>> encontrarTodosOrdenado(){
         return ResponseEntity.ok(eventoServico.encontrarTodosOrdenado());
     }
 
