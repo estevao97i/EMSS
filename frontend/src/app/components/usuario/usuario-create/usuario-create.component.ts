@@ -14,7 +14,7 @@ export class UsuarioCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cancelar(): void{
+  cancelar(): void {
       this.router.navigate(['/usuario']);
   }
 

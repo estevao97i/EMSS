@@ -8,9 +8,9 @@ import {UsuarioCreateComponent} from './components/usuario/usuario-create/usuari
 
 
 const routes: Routes = [
-    { path: 'Inicio', component: InicioReadComponent},
-    { path: 'Usuario', component: UsuarioReadComponent },
-    { path: 'Usuario/create', component: UsuarioCreateComponent},
+    { path: 'inicio', component: InicioReadComponent},
+    { path: 'usuario', component: UsuarioReadComponent },
+    { path: 'usuario/create', component: UsuarioCreateComponent},
     { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
     { path: 'login-success', component: LoginSuccessComponent }
 ];

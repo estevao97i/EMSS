@@ -1,11 +1,42 @@
+<p-card class="formulario" header="Criar Usuario" styleClass="ui-card-shadow">
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-g-6">
+                <p-autoComplete [(ngModel)]="country" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="20"
+                                placeholder="Nome" [minLength]="1" ></p-autoComplete>
+                <p-autoComplete  field="name" [size]="20"
+                                 placeholder="CPF" [minLength]="1"style="margin-left:30px">
+                </p-autoComplete>
+            </div>
+            <div class="ui-g-6">
+
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-6">
+                <p-calendar class="ui-g-12" [(ngModel)]="value" placeholder="Data de Nascimento" [size]="90"></p-calendar>
+            </div>
+            <div class="ui-g-6">
+                <p-autoComplete [(ngModel)]="country" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="90"
+                                placeholder="Email" [minLength]="1" >
+                </p-autoComplete>
+            </div>
+        </div>
+    </div>
 
 
-<p-card class="formulario" header="Criar Usuario"  [style]="{width: '1060px'}" styleClass="ui-card-shadow">
+    <br/>
+
+
+
 
 
 
     <p-footer>
-        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="cancelar()" style="margin-right: .60em"></button>
-        <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
+        <p-button  type="button" label="Salvar" icon="pi pi-check"  style="margin-right: .60em"></p-button>
+        <p-button  type="button" label="Cancel" icon="pi pi-times" (onClick)="cancelar()" class="ui-button-secondary"></p-button>
     </p-footer>
 </p-card>
+
+

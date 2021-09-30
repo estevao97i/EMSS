@@ -12,25 +12,27 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-    findAll(): Observable<Usuario[]> {
+    public findAll(): Observable<Usuario[]> {
       return this.http.get<Usuario[]>(this.baseUrl);
     }
 
-    findById(id: number): Observable<Usuario> {
+    public
+
+    public findById(id: number): Observable<Usuario> {
       const url = this.baseUrl + '{id}';
       return this.http.get<Usuario>(url);
     }
 
-    create(usuario: Usuario): Observable<Usuario> {
+    public create(usuario: Usuario): Observable<Usuario> {
       const url = this.baseUrl;
       return this.http.post<Usuario>(url,usuario);
     }
-    update(id: number, usuario: Usuario): Observable<Usuario> {
+    public update(id: number, usuario: Usuario): Observable<Usuario> {
       const url = this.baseUrl + '{id}';
       return this.http.put<Usuario>(url, usuario);
     }
 
-    delete(id: number): Observable<void> {
+    public delete(id: number): Observable<void> {
       const url = this.baseUrl + '{id}';
       return this.http.delete<void>(url);
     }
