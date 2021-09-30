@@ -1,16 +1,16 @@
 <div class="">
-    <button pButton type="button" label="Criar-usuario" class="ui-button-raised"></button>
-
+<button pButton type="button" label="Criar Usuario " (click)="usuarioCreate()" ></button>
 </div>
 <br/>
+
 <p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
          [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
-         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} paginas"
          [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
     <ng-template pTemplate="caption">
         Lista de Usuarios
         <div class="ui-table-globalfilter-container">
-            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar" />
         </div>
     </ng-template>
     <ng-template pTemplate="header">
