@@ -13,11 +13,11 @@ import { PageNotificationModule, BreadcrumbModule, MenuModule, ErrorStackModule 
 import { ErrorModule, SecurityModule, VersionTagModule } from '@nuvem/angular-base';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
 import { BlockUIModule } from 'ng-block-ui';
-import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
 import {AccordionModule} from 'primeng/accordion';
 import {ButtonModule} from 'primeng/button';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
+import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import {InputTextModule} from 'primeng/inputtext';
 
 
@@ -28,6 +28,7 @@ import {InputTextModule} from 'primeng/inputtext';
         AppTopbarComponent,
         AppFooterComponent,
         DiarioErrosComponent,
+        InicioReadComponent,
         UsuarioReadComponent,
         InicioReadComponent,
         UsuarioCreateComponent
