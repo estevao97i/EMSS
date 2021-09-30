@@ -12,26 +12,22 @@ export class UsuarioReadComponent implements OnInit {
 
     usuario: Usuario[] = [];
 
-    displaycolumn: string [] = [];
-
-
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.findAll();
   }
 
   findAll(): void {
       this.usuarioService.findAll().subscribe((resposta) => {
           this.usuario = resposta;
-
       });
 
 
   }
   usuarioCreate(): void {
-      this.router.navigate(['/Usuario/create']);
+      this.router.navigate(['/usuario/create']);
   }
 
 }

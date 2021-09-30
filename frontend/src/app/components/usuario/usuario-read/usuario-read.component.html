@@ -3,7 +3,7 @@
 </div>
 <br/>
 
-<p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
+<p-table #dt [value]="usuario"  dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
          [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
          [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} paginas"
          [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
@@ -16,39 +16,44 @@
     <ng-template pTemplate="header">
         <tr>
             <th colspan="2" pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="name">foto <p-sortIcon field="name"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="name">Foto <p-sortIcon field="name"></p-sortIcon></th>
             <th colspan="3"  pSortableColumn="name">Email <p-sortIcon field="email"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="name">telefone <p-sortIcon field="name"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="name">Telefone <p-sortIcon field="name"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="name">Cargo <p-sortIcon field="cargo"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
         </tr>
 
     </ng-template>
-    <ng-template pTemplate="body" let-customer>
-        <tr class="ui-selectable-row">
-            <td>
-                <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+    <ng-template pTemplate="body" let-usuario>
+        <tr >
+<!--            <td>-->
+<!--                <p-tableCheckbox [value]="usuario"></p-tableCheckbox>-->
+<!--            </td>-->
+            <td colspan="2">
+                <span class="ui-column-title"></span>
+                {{usuario.nome}}
             </td>
-            <td>
-                <span class="ui-column-title">Name</span>
-                {{customer.name}}
-            </td>
-            <td>
+            <td colspan="2">
                 <span class="ui-column-title">Foto</span>
-                <img [alt]="customer.representative.name" src="assets/showcase/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" />
-                <span style="vertical-align: middle; margin-left: .5em">{{customer.representative.name}}</span>
+<!--                <img [alt]="usuario.representative.name" src="assets/showcase/images/demo/avatar/{{usuario.representative.image}}" width="32" style="vertical-align: middle" />-->
+<!--                <span style="vertical-align: middle; margin-left: .5em">{{usuario.nome}}</span>-->
             </td>
-            <td>
-                <span class="ui-column-title">Email</span>
-                {{customer.email}}
+            <td colspan="3">
+                <span class="ui-column-title"></span>
+                {{usuario.email}}
             </td>
-            <td>
-                <span class="ui-column-title">Name</span>
-                {{customer.telefone}}
+            <td colspan="2">
+                <span class="ui-column-title"></span>
+                {{usuario.telefone}}
             </td>
-            <td>
-                <span class="ui-column-title">Status</span>
-                <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
+            <td colspan="2">
+                <span class="ui-column-title"></span>
+                {{usuario.cargo.label}}
+
+            </td>
+            <td colspan="2">
+                <span class="ui-column-title"></span>
+                <span [class]="'customer-badge status-' + usuario.status">{{usuario.status}}</span>
             </td>
 
         </tr>

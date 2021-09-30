@@ -1,4 +1,4 @@
 export class Situacao {
-    id?: number;
-    situacao: string;
+    value?: number;
+    label: string;
 }

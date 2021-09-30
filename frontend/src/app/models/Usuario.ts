@@ -1,6 +1,6 @@
-import { Cargo } from "./Cargo";
+import { Cargo } from './Cargo';
 
-export class Usuario{
+export class Usuario {
     id?: number;
     nome: string;
     cpf: string;

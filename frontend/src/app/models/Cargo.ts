@@ -1,4 +1,4 @@
-export class Cargo{
-    id?: number;
-    descricao: string;
+export class Cargo {
+    value?: number;
+    label: string;
 }

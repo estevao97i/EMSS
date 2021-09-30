@@ -19,6 +19,7 @@ import {ButtonModule} from 'primeng/button';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import {InputTextModule} from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
 
 
 
@@ -53,7 +54,8 @@ import {InputTextModule} from 'primeng/inputtext';
         MenuModule,
         AccordionModule,
         ButtonModule,
-        InputTextModule
+        InputTextModule,
+        CalendarModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
