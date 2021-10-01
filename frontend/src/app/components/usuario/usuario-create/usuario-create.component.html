@@ -1,42 +1,74 @@
-<p-card class="formulario" header="Criar Usuario" styleClass="ui-card-shadow">
 
-    <div class="ui-g">
-        <div class="ui-g-12">
-            <div class="ui-g-6">
-                <p-autoComplete [(ngModel)]="country" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="20"
-                                placeholder="Nome" [minLength]="1" ></p-autoComplete>
-                <p-autoComplete  field="name" [size]="20"
-                                 placeholder="CPF" [minLength]="1"style="margin-left:30px">
-                </p-autoComplete>
+    <p-card class="formulario" header="Criar Usuario" styleClass="ui-card-shadow">
+
+      <form class="form">
+         <div class="p-grid geral">
+            <div class="p-grid nome">
+                <div class="p-col-6">
+                    <div class="p-col-12 p-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"  ></i></span>
+                            <input type="text" pInputText placeholder="Nome" [size]="50">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="ui-g-6">
-
+            <div class="p-grid cpf">
+                <div class="p-col-6">
+                    <div class="p-col-12 p-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText placeholder="CPF" [size]="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-grid tel">
+                <div class="p-col-6">
+                    <div class="p-col-12 p-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText placeholder="Telefone" [size]="50">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="ui-g-12">
-            <div class="ui-g-6">
-                <p-calendar class="ui-g-12" [(ngModel)]="value" placeholder="Data de Nascimento" [size]="90"></p-calendar>
-            </div>
-            <div class="ui-g-6">
-                <p-autoComplete [(ngModel)]="country" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="90"
-                                placeholder="Email" [minLength]="1" >
-                </p-autoComplete>
-            </div>
+        <div class="p-grid geral-2">
+          <div class="p-grid DT-Nasc">
+              <div class="p-col-6">
+                  <div class="p-col-12 p-md-4">
+                      <div class="ui-inputgroup">
+                          <p-calendar [(ngModel)]="dateValue" dateFormat="dd.mm.yy" placeholder="Data Nascimento"></p-calendar>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="p-grid status">
+              <div class="p-col-6">
+                  <div class="p-col-12 p-md-4">
+                      <div class="ui-inputgroup">
+                          <p-checkbox [(ngModel)]="value" [binary]="true" placeholder="Status"></p-checkbox>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="p-grid cargo">
+              <div class="p-col-6">
+                  <div class="p-col-12 p-md-4">
+                      <div class="ui-inputgroup">
+                          <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="Cargo" placeholder="Cargo"></p-dropdown>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
-    </div>
+      </form>
 
-
-    <br/>
-
-
-
-
-
-
-    <p-footer>
-        <p-button  type="button" label="Salvar" icon="pi pi-check"  style="margin-right: .60em"></p-button>
-        <p-button  type="button" label="Cancel" icon="pi pi-times" (onClick)="cancelar()" class="ui-button-secondary"></p-button>
-    </p-footer>
-</p-card>
+        <p-footer class="button">
+            <p-button class="ui-button-secondary input-button" type="button" label="Salvar" icon="pi pi-check" ></p-button>
+            <p-button class="input-cancela" type="button" label="Cancel" icon="pi pi-times" (onClick)="cancelar()"></p-button>
+        </p-footer>
+    </p-card>
 
 

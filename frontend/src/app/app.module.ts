@@ -20,6 +20,8 @@ import { UsuarioCreateComponent } from './components/usuario/usuario-create/usua
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
+import { UsuarioPipePipe } from './pipe/usuario-pipe.pipe';
 
 
 
@@ -34,7 +36,8 @@ import {CalendarModule} from 'primeng/calendar';
         InicioReadComponent,
         UsuarioReadComponent,
         InicioReadComponent,
-        UsuarioCreateComponent
+        UsuarioCreateComponent,
+        UsuarioPipePipe
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -55,7 +58,8 @@ import {CalendarModule} from 'primeng/calendar';
         AccordionModule,
         ButtonModule,
         InputTextModule,
-        CalendarModule
+        CalendarModule,
+        DropdownModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
