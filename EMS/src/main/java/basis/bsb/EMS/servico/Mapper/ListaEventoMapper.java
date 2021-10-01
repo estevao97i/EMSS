@@ -5,6 +5,6 @@ import basis.bsb.EMS.dominio.Evento;
 import basis.bsb.EMS.servico.DTO.ListaEventoDTO;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {SituacaoMapper.class, MotivoMapper.class, ListaUsuarioMapper.class})
+@Mapper(componentModel = "spring", uses = {SituacaoMapper.class, MotivoMapper.class, UsuarioMapper.class})
 public interface ListaEventoMapper extends EntityMapper<ListaEventoDTO,Evento>{
 }
