@@ -1,5 +1,5 @@
 <div class="">
-<p-button type="button" label="Criar Usuario " (onClick)="usuarioCreate()" ></p-button>
+<p-button class="input-b" type="button" label="Criar Usuario " (onClick)="usuarioCreate()" ></p-button>
 </div>
 <br/>
 
@@ -26,17 +26,13 @@
     </ng-template>
     <ng-template pTemplate="body" let-usuario>
         <tr >
-<!--            <td>-->
-<!--                <p-tableCheckbox [value]="usuario"></p-tableCheckbox>-->
-<!--            </td>-->
+
             <td colspan="2">
                 <span class="ui-column-title"></span>
                 {{usuario.nome}}
             </td>
             <td colspan="2">
                 <span class="ui-column-title">Foto</span>
-<!--                <img [alt]="usuario.representative.name" src="assets/showcase/images/demo/avatar/{{usuario.representative.image}}" width="32" style="vertical-align: middle" />-->
-<!--                <span style="vertical-align: middle; margin-left: .5em">{{usuario.nome}}</span>-->
             </td>
             <td colspan="3">
                 <span class="ui-column-title"></span>
