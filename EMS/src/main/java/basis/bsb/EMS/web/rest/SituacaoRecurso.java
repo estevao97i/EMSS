@@ -5,13 +5,11 @@ import basis.bsb.EMS.servico.DTO.SelectDTO;
 import basis.bsb.EMS.servico.SituacaoServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "api/situacoes")

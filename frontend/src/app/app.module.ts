@@ -21,7 +21,7 @@ import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
-import { UsuarioPipePipe } from './pipe/usuario-pipe.pipe';
+import { UsuarioPipe } from './pipe/usuario.pipe';
 
 
 
@@ -37,7 +37,7 @@ import { UsuarioPipePipe } from './pipe/usuario-pipe.pipe';
         UsuarioReadComponent,
         InicioReadComponent,
         UsuarioCreateComponent,
-        UsuarioPipePipe
+        UsuarioPipe
     ],
     imports: [
         BlockUIModule.forRoot({

@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'usuarioPipe'
+  name: 'usuario'
 })
-export class UsuarioPipePipe implements PipeTransform {
+export class UsuarioPipe implements PipeTransform {
 
   transform(ativo: boolean): unknown {
     if (ativo) {
