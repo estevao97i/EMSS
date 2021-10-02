@@ -16,8 +16,6 @@ export class UsuarioService {
       return this.http.get<Usuario[]>(this.baseUrl);
     }
 
-    public
-
     public findById(id: number): Observable<Usuario> {
       const url = this.baseUrl + '{id}';
       return this.http.get<Usuario>(url);

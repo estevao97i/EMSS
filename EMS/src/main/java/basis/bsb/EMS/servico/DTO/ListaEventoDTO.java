@@ -18,6 +18,6 @@ public class ListaEventoDTO {
     private Long id;
     private LocalDate dataEvento;
     private SelectDTO situacao;
-    private SelectDTO motivo;
+    private MotivoDTO motivo;
     private List<UsuarioDTO> usuario;
 }
