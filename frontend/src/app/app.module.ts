@@ -27,6 +27,7 @@ import { UsuarioPipe } from './pipe/usuario.pipe';
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
