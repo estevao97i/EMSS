@@ -1,6 +1,3 @@
-
-
-
 <div class="form_wrapper">
     <div class="form_container">
         <div class="title_container">
@@ -42,7 +39,7 @@
                         <div class="select_arrow"></div>
                     </div>
 
-                    <input class="button" type="submit" value="Register" />
+                    <input class="button" type="submit" value="Criar Usuario" />
                 </form>
             </div>
         </div>
@@ -50,74 +47,4 @@
 </div>
 
 
-    <p-card class="formulario" header="Criar Usuario" styleClass="ui-card-shadow">
 
-      <form class="form">
-         <div class="p-grid geral">
-            <div class="p-grid nome">
-                <div class="p-col-6">
-                    <div class="p-col-12 p-md-4">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"  ></i></span>
-                            <input type="text" pInputText placeholder="Nome" [size]="50">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-grid cpf">
-                <div class="p-col-6">
-                    <div class="p-col-12 p-md-4">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-                            <input type="text" pInputText placeholder="CPF" [size]="50">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-grid tel">
-                <div class="p-col-6">
-                    <div class="p-col-12 p-md-4">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-                            <input type="text" pInputText placeholder="Telefone" [size]="50">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-grid geral-2">
-          <div class="p-grid DT-Nasc">
-              <div class="p-col-6">
-                  <div class="p-col-12 p-md-4">
-                      <div class="ui-inputgroup">
-                          <p-calendar [(ngModel)]="dateValue" dateFormat="dd.mm.yy" placeholder="Data Nascimento"></p-calendar>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="p-grid status">
-              <div class="p-col-6">
-                  <div class="p-col-12 p-md-4">
-                      <div class="ui-inputgroup">
-                          <p-checkbox [(ngModel)]="value" [binary]="true" placeholder="Status"></p-checkbox>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="p-grid cargo">
-              <div class="p-col-6">
-                  <div class="p-col-12 p-md-4">
-                      <div class="ui-inputgroup">
-                          <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="Cargo" placeholder="Cargo"></p-dropdown>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </form>
-
-        <p-footer class="button">
-            <p-button class="ui-button-secondary input-button" type="button" label="Salvar" icon="pi pi-check" ></p-button>
-            <p-button class="input-cancela" type="button" label="Cancel" icon="pi pi-times" (onClick)="cancelar()"></p-button>
-        </p-footer>
-    </p-card>

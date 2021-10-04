@@ -6,7 +6,7 @@ import { Evento } from 'src/app/models/Evento';
 @Injectable({
   providedIn: 'root'
 })
-export class EventoServiceService {
+export class EventoService {
 
     baseUrl = 'http://localhost:8080/api/eventos';
 
@@ -23,7 +23,7 @@ export class EventoServiceService {
 
     create(evento: Evento): Observable<Evento> {
       const url = this.baseUrl;
-      return this.http.post<Evento>(url, evento); 
+      return this.http.post<Evento>(url, evento);
     }
 
     update(id: number, evento: Evento): Observable<Evento> {

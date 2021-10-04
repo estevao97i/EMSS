@@ -22,10 +22,6 @@ export class UsuarioCreateComponent implements OnInit {
       private usuarioService: UsuarioService,
       ) { }
 
-    public form: FormGroup;
-
-  constructor( private router: Router) { }
-
 
   ngOnInit(): void {
       // this.criarUsuario();
