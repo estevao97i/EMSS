@@ -31,12 +31,8 @@
                     </div>
 
                     <div class="input_field select_option">
-                        <select>
-                            <option>Cargo</option>
-                            <option>Estagiario</option>
-                            <option>Junior</option>
-                            <option>Pleno</option>
-                            <option>Senior</option>
+                        <select ngFor="let cargo in cargos">
+                            
                         </select>
                         <div class="select_arrow"></div>
                     </div>
@@ -48,9 +44,10 @@
     </div>
 </div>
 
-
-    <p-card class="formulario" header="Criar Usuario" styleClass="ui-card-shadow">
-
+<p-card >
+<!-- class="formulario" > -->
+<!-- header="Criar Usuario" styleClass="ui-card-shadow"> -->
+<!-- 
       <form class="form">
          <div class="p-grid geral">
             <div class="p-grid nome">
@@ -113,7 +110,7 @@
               </div>
           </div>
         </div>
-      </form>
+      </form> -->
 
         <p-footer class="button">
             <p-button class="ui-button-secondary input-button" type="button" label="Salvar" icon="pi pi-check" ></p-button>
