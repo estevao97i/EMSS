@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, ModuleWithComponentFactories, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UsuarioService} from '../../../Service/usuario.service';
@@ -61,5 +61,9 @@ export class UsuarioCreateComponent implements OnInit {
   create(): void{
     this.usuarioService.create(this.form.getRawValue());
   }
+
+  // formatarData(): void{
+  //   let data: moment.Moment = moment.utc
+  // }
 
 }

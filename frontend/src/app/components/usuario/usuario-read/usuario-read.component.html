@@ -3,7 +3,7 @@
 </div>
 <br/>
 
-<p-table #dt [value]="usuario"  dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
+<p-table dt [value]="usuario"  dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
          [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
          [paginator]="true" currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} paginas"
          [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">

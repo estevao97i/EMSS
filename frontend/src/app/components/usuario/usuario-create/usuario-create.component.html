@@ -1,119 +1,41 @@
-
-
-
 <div class="form_wrapper">
     <div class="form_container">
         <div class="title_container">
             <h2>Cadastro Usuario</h2>
         </div>
         <div class="row clearfix">
-            <div class="">
-                <form>
+            <div>
+                <form [formGroup]="form">
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="email" name="nome" placeholder="Nome" required />
+                        <input formControlName="nome" type="text" name="nome" placeholder="Nome" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="email" placeholder="Email" required />
+                        <input formControlName="email" type="email" name="email" placeholder="Email" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="telefone" placeholder="Data Nascimento" required />
+                        <p-calendar placeholder="Data de Nascimento" formControlName="dataNascimento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
+
                     </div>
                     <div class="row clearfix">
                         <div class="col_half">
                             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input type="text" name="name" placeholder="Telefone" />
+                                <input formControlName="telefone" type="text" name="name" placeholder="Telefone" />
                             </div>
                         </div>
                         <div class="input_field radio_option">
-                            <input type="radio" name="radiogroup1" id="rd1">
+                            <input formControlName="status" type="radio" name="status" id="rd1">
                             <label for="rd1">Ativo</label>
                         </div>
                     </div>
 
                     <div class="input_field select_option">
-                        <select ngFor="let cargo in cargos">
-                            
-                        </select>
+                        <p-dropdown formControlName="cargo" [options]="cargos" ></p-dropdown>
                         <div class="select_arrow"></div>
                     </div>
 
-                    <input class="button" type="submit" value="Register" />
+                    <button class="button" type="submit" value="Cadastrar"></button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<p-card >
-<!-- class="formulario" > -->
-<!-- header="Criar Usuario" styleClass="ui-card-shadow"> -->
-<!-- 
-      <form class="form">
-         <div class="p-grid geral">
-            <div class="p-grid nome">
-                <div class="p-col-6">
-                    <div class="p-col-12 p-md-4">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"  ></i></span>
-                            <input type="text" pInputText placeholder="Nome" [size]="50">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-grid cpf">
-                <div class="p-col-6">
-                    <div class="p-col-12 p-md-4">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-                            <input type="text" pInputText placeholder="CPF" [size]="50">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-grid tel">
-                <div class="p-col-6">
-                    <div class="p-col-12 p-md-4">
-                        <div class="ui-inputgroup">
-                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-                            <input type="text" pInputText placeholder="Telefone" [size]="50">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-grid geral-2">
-          <div class="p-grid DT-Nasc">
-              <div class="p-col-6">
-                  <div class="p-col-12 p-md-4">
-                      <div class="ui-inputgroup">
-                          <p-calendar [(ngModel)]="dateValue" dateFormat="dd.mm.yy" placeholder="Data Nascimento"></p-calendar>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="p-grid status">
-              <div class="p-col-6">
-                  <div class="p-col-12 p-md-4">
-                      <div class="ui-inputgroup">
-                          <p-checkbox [(ngModel)]="value" [binary]="true" placeholder="Status"></p-checkbox>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="p-grid cargo">
-              <div class="p-col-6">
-                  <div class="p-col-12 p-md-4">
-                      <div class="ui-inputgroup">
-                          <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="Cargo" placeholder="Cargo"></p-dropdown>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </form> -->
-
-        <p-footer class="button">
-            <p-button class="ui-button-secondary input-button" type="button" label="Salvar" icon="pi pi-check" ></p-button>
-            <p-button class="input-cancela" type="button" label="Cancel" icon="pi pi-times" (onClick)="cancelar()"></p-button>
-        </p-footer>
-    </p-card>
