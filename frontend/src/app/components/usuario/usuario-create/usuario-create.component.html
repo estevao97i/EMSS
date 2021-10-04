@@ -10,13 +10,14 @@
             <div class="">
                 <form>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="email" name="nome" placeholder="Nome" required />
+                        <input type="text" name="nome" placeholder="Nome" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="email" placeholder="Email" required />
+                        <input type="email" name="email" placeholder="Email" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="telefone" placeholder="Data Nascimento" required />
+                        <p-calendar placeholder="Data de Nascimento" [(ngModel)]="dateValue" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
+
                     </div>
                     <div class="row clearfix">
                         <div class="col_half">
