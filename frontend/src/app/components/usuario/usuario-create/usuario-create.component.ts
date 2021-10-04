@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormGroup } from '@angular/forms';
+
 import {UsuarioService} from '../../../Service/usuario.service';
+
 
 
 @Component({
@@ -19,6 +21,11 @@ export class UsuarioCreateComponent implements OnInit {
       private router: Router,
       private usuarioService: UsuarioService,
       ) { }
+
+    public form: FormGroup;
+
+  constructor( private router: Router) { }
+
 
   ngOnInit(): void {
       // this.criarUsuario();
