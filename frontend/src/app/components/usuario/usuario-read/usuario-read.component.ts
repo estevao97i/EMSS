@@ -3,6 +3,7 @@ import {  Router} from '@angular/router';
 import { Usuario } from 'src/app/models/Usuario';
 import {UsuarioService} from '../../../Service/usuario.service';
 
+
 @Component({
   selector: 'app-usuario-read',
   templateUrl: './usuario-read.component.html',
@@ -11,6 +12,12 @@ import {UsuarioService} from '../../../Service/usuario.service';
 export class UsuarioReadComponent implements OnInit {
 
     usuario: Usuario[] = [];
+
+    display: boolean = false;
+
+    showDialog() {
+        this.display = true;
+    }
 
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
@@ -24,10 +31,7 @@ export class UsuarioReadComponent implements OnInit {
           this.usuario = resposta;
       });
 
-      
-  }
-  usuarioCreate(): void {
-      this.router.navigate(['/usuario/create']);
+
   }
 
 }

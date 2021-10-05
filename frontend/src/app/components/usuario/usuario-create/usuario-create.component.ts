@@ -64,9 +64,4 @@ export class UsuarioCreateComponent implements OnInit {
       this.router.navigate(['/usuario']);
     });
   }
-
-  // formatarData(): void{
-  //   let data: moment.Moment = moment.utc
-  // }
-
 }

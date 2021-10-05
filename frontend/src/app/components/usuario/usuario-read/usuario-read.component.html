@@ -1,7 +1,10 @@
-<div class="but">
-<p-button class="input-but" type="button" label="Criar Usuario " (onClick)="usuarioCreate()" ></p-button>
+<p-dialog  [(visible)]="display">
+    <app-usuario-create></app-usuario-create>
+</p-dialog>
+<div class="buttonc">
+<p-button type="button" (onClick)="showDialog()" label="Criar usuario"></p-button>
 </div>
-<br/>
+
 
 <p-table dt [value]="usuario"  dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
          [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
@@ -16,11 +19,12 @@
     <ng-template pTemplate="header">
         <tr>
             <th colspan="2" pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="name">Foto <p-sortIcon field="name"></p-sortIcon></th>
-            <th colspan="3"  pSortableColumn="name">Email <p-sortIcon field="email"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="name">Telefone <p-sortIcon field="name"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="name">Cargo <p-sortIcon field="cargo"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="foto">Foto <p-sortIcon field="foto"></p-sortIcon></th>
+            <th colspan="3"  pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="telefone">Telefone <p-sortIcon field="name"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="cargo">Cargo <p-sortIcon field="cargo"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+            <th colspan="2" pSortableColumn="acoes">Ações<p-sortIcon field="acoes"></p-sortIcon></th>
         </tr>
 
     </ng-template>
@@ -50,6 +54,11 @@
             <td colspan="2">
                 <span class="ui-column-title"></span>
                 <span [class]="'customer-badge status-' + usuario.status">{{usuario.status|usuario}}</span>
+            </td>
+            <td colspan="2">
+                <a>
+                    <i class="pi pi-ban"></i>
+                </a>
             </td>
 
         </tr>

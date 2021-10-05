@@ -10,6 +10,7 @@ body {
     background: #f2f2f2;
 
 
+
 }
 .clearfix {
     &:after {
@@ -25,8 +26,8 @@ body {
     width: 800px;
     max-width: 100%;
     box-sizing: border-box;
-    padding: 25px;
-    margin: 8% auto 0;
+    padding: 15px;
+    //margin: 8% auto 0;
     position: relative;
     z-index: 1;
     border-top: 5px solid $yellow;
@@ -364,4 +365,5 @@ body {
     .remember_me {
         padding-bottom: 20px;
     }
+
 }
