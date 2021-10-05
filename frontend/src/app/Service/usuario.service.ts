@@ -23,6 +23,7 @@ export class UsuarioService {
 
     public create(usuario: Usuario): Observable<Usuario> {
       const url = this.baseUrl;
+      usuario.cargo = {value: usuario.cargo}
       return this.http.post<Usuario>(url,usuario);
     }
     public update(id: number, usuario: Usuario): Observable<Usuario> {

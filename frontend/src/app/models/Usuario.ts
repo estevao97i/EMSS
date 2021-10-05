@@ -1,3 +1,4 @@
+import { SelectItem } from 'primeng';
 import { Cargo } from './Cargo';
 
 export class Usuario {
@@ -9,5 +10,5 @@ export class Usuario {
     status: boolean;
     foto?: any[];
     telefone: string;
-    cargo: Cargo;
+    cargo: SelectItem;
 }

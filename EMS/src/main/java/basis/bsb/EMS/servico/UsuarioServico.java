@@ -48,6 +48,7 @@ public class UsuarioServico implements Serializable {
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
         if (validaCPF(usuarioDTO) && validaEmail(usuarioDTO)){
             Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+            usuario.setStatus(true);
             Usuario usuarioSalva = usuarioRepositorio.save(usuario);
             return usuarioMapper.toDTO(usuarioSalva);
         }

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UsuarioService} from '../../../Service/usuario.service';
 import { SelectItem } from 'primeng';
 import { CargoService } from 'src/app/Service/cargo.service';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 
 
@@ -40,7 +42,7 @@ export class UsuarioCreateComponent implements OnInit {
         cpf: ['', Validators.required],
         dataNascimento: ['', Validators.required],
         email: ['', Validators.required],
-        status: [''],
+        status: [true],
         telefone: [''],
         cargo: [null, Validators.required]
       });
@@ -60,13 +62,20 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   create(): void {
-    this.usuarioService.create(this.form.getRawValue()).subscribe(res => {
+    this.formatarData();
+    this.formatarCargo();
+    this.usuarioService.create(this.form.getRawValue()).subscribe(() => {
       this.router.navigate(['/usuario']);
     });
   }
 
-  // formatarData(): void{
-  //   let data: moment.Moment = moment.utc
-  // }
+  formatarCargo(): void{
+    this.form.value.cargo = {value: this.form.value.cargo};
+  }
+
+  formatarData(): void{
+    let data: moment.Moment = moment.utc(this.form.value.dataNascimento).local();
+    this.form.value.dataNascimento = data.format('DD/MM/YYYY')
+  }
 
 }
