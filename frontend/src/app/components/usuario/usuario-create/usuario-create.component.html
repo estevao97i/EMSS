@@ -29,10 +29,9 @@
                     </div>
 
                     <div class="input_field select_option">
-                        <p-dropdown formControlName="cargo" [options]="cargos" ></p-dropdown>
-                        <div class="select_arrow"></div>
+                        <p-dropdown formControlName="cargo" [options]="cargos"></p-dropdown>
                     </div>
-                    <button class="button" type="submit" value="Cadastrar"></button>
+                    <p-button (onClick)= "create()" label="Criar Usuario"></p-button>
                 </form>
             </div>
         </div>

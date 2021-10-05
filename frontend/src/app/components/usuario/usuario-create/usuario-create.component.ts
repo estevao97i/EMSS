@@ -31,6 +31,7 @@ export class UsuarioCreateComponent implements OnInit {
       
   ngOnInit(): void {
       this.criarFormulario();
+      this.buscarCargos();
   }
 
   public criarFormulario(): void{
@@ -60,7 +61,9 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   create(): void{
-    this.usuarioService.create(this.form.getRawValue());
+    this.usuarioService.create(this.form.getRawValue()).subscribe(res => {
+      this.router.navigate(['/usuario'])
+    });
   }
 
   // formatarData(): void{
