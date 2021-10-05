@@ -4,51 +4,40 @@
             <h2>Cadastro Usuario</h2>
         </div>
         <div class="row clearfix">
-            <div class="">
-                <form>
+            <div>
+                <form [formGroup]="form">
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="nome" placeholder="Nome" required />
+                        <input formControlName="nome" type="text" name="nome" placeholder="Nome" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                         <input type="text" name="cpf" placeholder="CPF" required />
                     </div>
 
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="email" name="email" placeholder="Email" required />
+                        <input formControlName="email" type="email" name="email" placeholder="Email" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <p-calendar placeholder="Data de Nascimento" [(ngModel)]="dateValue" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
+                        <p-calendar placeholder="Data de Nascimento" formControlName="dataNascimento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
 
                     </div>
                     <div class="row clearfix">
                         <div class="col_half">
                             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input type="text" name="name" placeholder="Telefone" />
+                                <input formControlName="telefone" type="text" name="name" placeholder="Telefone" />
                             </div>
                         </div>
                         <div class="input_field radio_option">
-                            <input type="radio" name="radiogroup1" id="rd1">
+                            <input formControlName="status" type="radio" name="status" id="rd1">
                             <label for="rd1">Ativo</label>
                         </div>
                     </div>
 
                     <div class="input_field select_option">
-                        <select>
-                            <option>Cargo</option>
-                            <option>Estagiario</option>
-                            <option>Junior</option>
-                            <option>Pleno</option>
-                            <option>Senior</option>
-                        </select>
-                        <div class="select_arrow"></div>
+                        <p-dropdown formControlName="cargo" [options]="cargos"></p-dropdown>
                     </div>
-
-                    <input class="button" type="submit" value="Criar Usuario" />
+                    <p-button (onClick)= "create()" label="Criar Usuario"></p-button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
