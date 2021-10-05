@@ -1,9 +1,6 @@
 
 
 $yellow: #dc1022;
-
-
-
 $black:#000000;
 $grey:#cccccc;
 
@@ -365,44 +362,3 @@ body {
         padding-bottom: 20px;
     }
 }
-
-.button{
-    display: flex;
-    margin-top: 10%;
-}
-.input-button {
-    display: flex;
-    padding-left: 83%;
-}
-.input-cancela{
-    display: flex;
-    padding-left: 1%;
-}
-.form{
-    display: flex;
-    line-height: 2%;
-    margin-left: 15%;
-    margin-top: 5%;
-}
-.cpf{
-    display:flex;
-    padding-top: 13%;
-}
-.tel{
-    display:flex;
-    padding-top: 13%;
-}
-.geral-2{
-    display: block;
-    margin-left: 15%;
-}
-.status{
-    display:flex;
-    padding-top: 32%;
-}
-.cargo {
-    display: flex;
-    padding-top: 25%;
-}
-
-

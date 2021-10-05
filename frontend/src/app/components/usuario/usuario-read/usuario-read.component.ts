@@ -24,7 +24,7 @@ export class UsuarioReadComponent implements OnInit {
           this.usuario = resposta;
       });
 
-
+      
   }
   usuarioCreate(): void {
       this.router.navigate(['/usuario/create']);

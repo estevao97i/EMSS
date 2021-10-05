@@ -21,8 +21,9 @@ import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
-
 import { UsuarioPipe } from './pipe/usuario.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -39,10 +40,7 @@ import { UsuarioPipe } from './pipe/usuario.pipe';
         UsuarioReadComponent,
         InicioReadComponent,
         UsuarioCreateComponent,
-
-        UsuarioPipe,
-
-
+        UsuarioPipe
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -64,7 +62,8 @@ import { UsuarioPipe } from './pipe/usuario.pipe';
         ButtonModule,
         InputTextModule,
         CalendarModule,
-        DropdownModule
+        DropdownModule,
+        ReactiveFormsModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
