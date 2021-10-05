@@ -10,7 +10,7 @@
                         <input formControlName="nome" type="text" name="nome" placeholder="Nome" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="cpf" placeholder="CPF" required />
+                        <p-inputMask mask="999.999.999-99" [unmask]=true formControlName="cpf" type="text" name="cpf" placeholder="CPF" required></p-inputMask>
                     </div>
 
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
@@ -18,17 +18,12 @@
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                         <p-calendar placeholder="Data de Nascimento" formControlName="dataNascimento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
-
                     </div>
                     <div class="row clearfix">
                         <div class="col_half">
                             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input formControlName="telefone" type="text" name="name" placeholder="Telefone" />
+                                <p-inputMask mask="(99)99999-9999" [unmask]=true formControlName="telefone" type="text" name="name" placeholder="Telefone"></p-inputMask>
                             </div>
-                        </div>
-                        <div class="input_field radio_option">
-                            <input formControlName="status" type="radio" name="status" id="rd1">
-                            <label for="rd1">Ativo</label>
                         </div>
                     </div>
 
