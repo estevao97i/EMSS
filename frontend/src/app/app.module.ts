@@ -23,6 +23,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
 import { UsuarioPipe } from './pipe/usuario.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
 
 
 
@@ -63,7 +64,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         InputTextModule,
         CalendarModule,
         DropdownModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DialogModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
