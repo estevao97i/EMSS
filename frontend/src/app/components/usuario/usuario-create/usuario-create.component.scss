@@ -1,14 +1,15 @@
-
-
 $yellow: #dc1022;
 $black:#000000;
-$grey:#cccccc;
+$grey: #0a0a0a;
 
 
 body {
+    display:flex;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 14px;
     background: #f2f2f2;
+
+
 }
 .clearfix {
     &:after {
@@ -20,8 +21,8 @@ body {
     }
 }
 .form_wrapper {
-    background: #fff;
-    width: 400px;
+    background: rgba(244, 253, 252, 0.62);
+    width: 800px;
     max-width: 100%;
     box-sizing: border-box;
     padding: 25px;
@@ -31,7 +32,7 @@ body {
     border-top: 5px solid $yellow;
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.37);
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     -webkit-transform: scale3d(1, 1, 1);
@@ -49,6 +50,7 @@ body {
     .title_container {
         text-align: center;
         padding-bottom: 15px;
+        font-size: 20px;
     }
     h3 {
         font-size: 1.1em;
@@ -213,7 +215,7 @@ body {
 }
 .radio_option {
     label {
-        margin-right: em;
+        margin-right: 2em;
         &:before {
             content: "";
             display: inline-block;
@@ -227,6 +229,7 @@ body {
             background-color: transparent;
             background-clip: content-box;
             transition: all 0.2s ease;
+            margin-left: 20%;
         }
     }
     input {

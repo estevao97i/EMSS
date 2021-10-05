@@ -28,7 +28,6 @@ export class UsuarioCreateComponent implements OnInit {
       private cargoService: CargoService
       ) { }
 
-      
   ngOnInit(): void {
       this.criarFormulario();
       this.buscarCargos();
@@ -51,18 +50,18 @@ export class UsuarioCreateComponent implements OnInit {
       this.router.navigate(['/usuario']);
   }
 
-  buscarCargos(): void{
+  buscarCargos(): void {
     this.cargoService.listar().subscribe((res: SelectItem[]) => {
       this.cargos = [{
         label: '==Escolha o Cargo==',
         value: null
       } as SelectItem].concat(res);
-    })
+    });
   }
 
-  create(): void{
+  create(): void {
     this.usuarioService.create(this.form.getRawValue()).subscribe(res => {
-      this.router.navigate(['/usuario'])
+      this.router.navigate(['/usuario']);
     });
   }
 
