@@ -56,9 +56,16 @@
                 <span [class]="'customer-badge status-' + usuario.status">{{usuario.status|usuario}}</span>
             </td>
             <td colspan="2">
-                <a>
-                    <i class="pi pi-ban"></i>
+                <div class="acoes">
+                <a href="#" class="">
+                   <i id="edit" class="material-icons edit">edit</i>
                 </a>
+                 <a href="#" class="">
+                     <i id="delete" class="material-icons delete">delete</i>
+                 </a>
+                </div>
+
+
             </td>
 
         </tr>

@@ -24,6 +24,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { UsuarioPipe } from './pipe/usuario.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
+import { EventoCreateComponent } from './components/inicio/evento-create/evento-create.component';
 
 
 
@@ -41,7 +42,8 @@ import {DialogModule} from 'primeng/dialog';
         UsuarioReadComponent,
         InicioReadComponent,
         UsuarioCreateComponent,
-        UsuarioPipe
+        UsuarioPipe,
+        EventoCreateComponent
     ],
     imports: [
         BlockUIModule.forRoot({

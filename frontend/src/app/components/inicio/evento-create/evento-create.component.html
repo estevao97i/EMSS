@@ -1,0 +1,37 @@
+<div class="form_wrapper"><p-dialog header="Title" [(visible)]="display"></p-dialog>
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Criar Evento</h2>
+        </div>
+        <div class="row clearfix">
+            <div>
+                <form [formGroup]="form">
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <input formControlName="titulo" type="text" name="titulo" placeholder="Titulo motivo" required />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <input type="text" name="motivo" placeholder="Motivo" required />
+                    </div>
+
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input formControlName="valor" type="text" name="email" placeholder="Valor do Evento" required />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <p-calendar placeholder="Data de Evento" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col_half">
+                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                <input formControlName="situaçao" type="text" name="name" placeholder="Situaçao" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input_field select_option">
+                        <p-dropdown formControlName="usuarios" name="Usuarios" [options]="usuarios"></p-dropdown>
+                    </div>
+                    <p-button label="Criar Usuario"></p-button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
