@@ -8,6 +8,6 @@ export class Evento{
     justificativaAdiamento?: string;
     valor: number;
     situacao: Situacao;
-    motivo: Motivo; 
+    motivo: Motivo;
     usuario: Usuario[];
 }

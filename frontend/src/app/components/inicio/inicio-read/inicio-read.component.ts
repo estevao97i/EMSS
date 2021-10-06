@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {EventoService} from '../../evento/evento.service';
+import {EventoService} from '../../../Service/evento.service';
 import {Evento} from '../../../models/Evento';
+import {BlockUiService} from '@nuvem/angular-base';
+import {pipe} from 'rxjs';
+import {finalize} from 'rxjs/operators';
 
 
 @Component({
@@ -12,7 +15,14 @@ export class InicioReadComponent implements OnInit {
 
     evento: Evento[] = [];
 
-    constructor(private eventoService: EventoService) {
+    display: Boolean = false;
+
+    showDialog() {
+        console.log(this.display);
+        this.display = true;
+    }
+
+    constructor(private eventoService: EventoService, private blockUiService: BlockUiService) {
     }
 
     ngOnInit(): void {
@@ -20,7 +30,11 @@ export class InicioReadComponent implements OnInit {
     }
 
     findAll(): void {
-        this.eventoService.findAll().subscribe((resposta) => {
+        this.blockUiService.show();
+        this.eventoService.findAll()
+            .pipe(
+                finalize(() => this.blockUiService.hide()))
+            .subscribe((resposta) => {
             this.evento = resposta;
         });
 
