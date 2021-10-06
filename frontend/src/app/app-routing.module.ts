@@ -1,3 +1,4 @@
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
     { path: 'inicio', component: InicioReadComponent},
     { path: 'usuario', component: UsuarioReadComponent },
     { path: 'usuario/create', component: UsuarioCreateComponent},
+    { path: 'usuario/update', component: UsuarioUpdateComponent},
     { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
     { path: 'login-success', component: LoginSuccessComponent }
 ];

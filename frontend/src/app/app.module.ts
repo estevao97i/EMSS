@@ -24,12 +24,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import { UsuarioPipe } from './pipe/usuario.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { EventoCreateComponent } from './components/inicio/evento-create/evento-create.component';
-
-
-
-
-
 
 
 @NgModule({
@@ -43,6 +39,7 @@ import { EventoCreateComponent } from './components/inicio/evento-create/evento-
         InicioReadComponent,
         UsuarioCreateComponent,
         UsuarioPipe,
+        UsuarioUpdateComponent,
         EventoCreateComponent
     ],
     imports: [
