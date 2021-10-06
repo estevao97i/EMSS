@@ -14,8 +14,6 @@ const routes: Routes = [
     { path: 'usuario', component: UsuarioReadComponent },
     { path: 'usuario/create', component: UsuarioCreateComponent},
     { path: 'usuario/update', component: UsuarioUpdateComponent},
-    { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
-    { path: 'login-success', component: LoginSuccessComponent },
     { path: 'motivo', component: MotivoReadComponent}
 ];
 

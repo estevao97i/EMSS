@@ -1,7 +1,7 @@
 <div class="form_wrapper"><p-dialog header="Title" [(visible)]="display"></p-dialog>
     <div class="form_container">
         <div class="title_container">
-            <h2>Criar Evento</h2>
+            <h2>Criar Motivo</h2>
         </div>
         <div class="row clearfix">
             <div>
@@ -10,26 +10,9 @@
                         <input formControlName="titulo" type="text" name="titulo" placeholder="Titulo motivo" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="motivo" placeholder="Motivo" required />
+                        <input formControlName="descricao" type="text" name="descricao" placeholder="Motivo" required />
                     </div>
-
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input formControlName="valor" type="text" name="email" placeholder="Valor do Evento" required />
-                    </div>
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <p-calendar placeholder="Data de Evento" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col_half">
-                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input formControlName="situaçao" type="text" name="name" placeholder="Situaçao" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input_field select_option">
-                        <p-multiSelect [options]="" formControlName="evento" optionLabel="name"></p-multiSelect>
-                    </div>
-                    <p-button label="Criar Usuario"></p-button>
+                    <p-button (onClick)= "create()"  label="Criar Usuario"></p-button>
                 </form>
             </div>
         </div>
