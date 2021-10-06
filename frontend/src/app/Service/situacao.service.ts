@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+
+import { SelectItem } from 'primeng';
 import { Observable } from 'rxjs';
-import {Situacao} from '../models/Situacao';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SituacaoService {
 
-    baseUrl = 'localhost://8080/api/situacoes';
+    baseUrl = 'http://localhost:8080/api/situacoes';
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-    public listarTodos(): Observable<Situacao[]>{
-        return this.http.get<Situacao[]>(this.baseUrl);
-    }
+  public listar(): Observable<SelectItem[]>{
+    const url = this.baseUrl;
+    return this.http.get<SelectItem[]>(url);
+  }
+
 }

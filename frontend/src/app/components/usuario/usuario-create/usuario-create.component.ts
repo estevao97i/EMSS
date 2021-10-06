@@ -36,17 +36,17 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   public criarFormulario(): void{
-      this.form = this.formBuilder.group({
-        id: [null],
-        nome: ['', Validators.required],
-        cpf: ['', Validators.required],
-        dataNascimento: ['', Validators.required],
-        email: ['', Validators.required],
-        status: [true],
-        telefone: [''],
-        cargo: [null, Validators.required]
-      });
-  }
+    this.form = this.formBuilder.group({
+      id: [null],
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
+      email: ['', Validators.required],
+      status: [true],
+      telefone: [''],
+      cargo: [null, Validators.required]
+    });
+}
 
   cancelar(): void {
       this.router.navigate(['/usuario']);
