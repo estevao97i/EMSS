@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { EventoCreateComponent } from './components/inicio/evento-create/evento-create.component';
+import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { EventoCreateComponent } from './components/inicio/evento-create/evento-
         UsuarioCreateComponent,
         UsuarioPipe,
         UsuarioUpdateComponent,
-        EventoCreateComponent
+        EventoCreateComponent,
+        UsuarioDeleteComponent
     ],
     imports: [
         BlockUIModule.forRoot({

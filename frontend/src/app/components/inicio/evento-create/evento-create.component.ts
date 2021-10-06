@@ -39,7 +39,6 @@ export class EventoCreateComponent implements OnInit {
     this.usuarioService.findAll().subscribe((res) => {
       this.usuario = res;
   })
-
 }
 
   buscarSituacao(): void {
@@ -86,10 +85,6 @@ formatarData(): void{
   this.form.value.dataNascimento = data.format('DD/MM/YYYY');
 }
 
-formatarUsuario(): void{
-  this.form.value.usuario = {value: this.form.value.usuario};
-}
-
 formatarSituacao(): void {
   this.form.value.situacao = {value: this.form.value.situacao};
 }
@@ -97,7 +92,7 @@ formatarSituacao(): void {
 create(): void{
   this.formatarData();
   this.formatarSituacao();
-  this.formatarUsuario();
+  this.buscarUsuarios();
   this.eventoService.create(this.form.getRawValue()).subscribe(() => {
     this.router.navigate(['/inicio']);
   });
