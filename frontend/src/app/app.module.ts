@@ -13,7 +13,7 @@ import { PageNotificationModule, BreadcrumbModule, MenuModule, ErrorStackModule 
 import { ErrorModule, SecurityModule, VersionTagModule } from '@nuvem/angular-base';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
 import { BlockUIModule } from 'ng-block-ui';
-import { InicioReadComponent } from './components/inicio/inicio-read/inicio-read.component';
+import { InicioReadComponent } from './components/inicio/evento-read/inicio-read.component';
 import {AccordionModule} from 'primeng/accordion';
 import {ButtonModule} from 'primeng/button';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
@@ -26,6 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { EventoCreateComponent } from './components/inicio/evento-create/evento-create.component';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { MotivoReadComponent } from './components/motivo/motivo-read/motivo-read.component';
+import { MotivoCreateComponent } from './components/motivo/motivo-create/motivo-create.component';
 
 
 @NgModule({
@@ -39,8 +42,12 @@ import { EventoCreateComponent } from './components/inicio/evento-create/evento-
         InicioReadComponent,
         UsuarioCreateComponent,
         UsuarioPipe,
+        EventoCreateComponent,
+        MotivoReadComponent,
+        MotivoCreateComponent,
         UsuarioUpdateComponent,
         EventoCreateComponent
+
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -64,7 +71,8 @@ import { EventoCreateComponent } from './components/inicio/evento-create/evento-
         CalendarModule,
         DropdownModule,
         ReactiveFormsModule,
-        DialogModule
+        DialogModule,
+        MultiSelectModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

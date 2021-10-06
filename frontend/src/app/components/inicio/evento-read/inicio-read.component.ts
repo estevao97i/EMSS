@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventoService} from '../../../Service/evento.service';
 import {Evento} from '../../../models/Evento';
 import {BlockUiService} from '@nuvem/angular-base';
-import {pipe} from 'rxjs';
+
 import {finalize} from 'rxjs/operators';
 
 

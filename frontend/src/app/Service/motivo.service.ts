@@ -1,3 +1,4 @@
+
 import { SelectItem } from 'primeng';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -8,12 +9,14 @@ import { Injectable } from '@angular/core';
 })
 export class MotivoService {
 
+
+    baseUrl = 'http://localhost:8080/api/motivos';
+
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:8080/api/motivos';
-
-  public listar(): Observable<SelectItem[]>{
-    const url = this.baseUrl 
+  public listar(): Observable<SelectItem[]> {
+    const url = this.baseUrl;
     return this.http.get<SelectItem[]>(url);
   }
 }
+
