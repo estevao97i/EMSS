@@ -6,13 +6,16 @@
            <column name="ID" type="INT" autoIncrement="true" remarks="indentificaçao do usuario">
                <constraints primaryKey="true"/>
            </column>
+           <column name="NOME" type="VARCHAR(50)" remarks="criacao da coluna nome">
+               <constraints nullable="false"/>
+           </column>
            <column name="CPF" type="VARCHAR(11)" remarks="documento do usuario">
              <constraints nullable="false" unique="true"/>
            </column>
            <column name="DT_NASCIMENTO" type="DATE" remarks="Ddata do anivessario">
                <constraints nullable="false"/>
            </column>
-           <column name="E-MAIL" type="VARCHAR(50)" remarks="forma de comunicar com o usuarios">
+           <column name="EMAIL" type="VARCHAR(50)" remarks="forma de comunicar com o usuarios">
                <constraints nullable="false" unique="true"/>
            </column>
            <column name="ID_CARGO" type="INT" remarks="indentificador do cardgo do usuario">
@@ -28,11 +31,16 @@
 
        </createTable>
 
+
+
        <addForeignKeyConstraint baseTableName="USUARIO"
                                 baseColumnNames="ID_CARGO"
                                 constraintName="FK_CARGO_USUARIO"
                                 referencedTableName="CARGO"
                                 referencedColumnNames="ID"/>
    </changeSet>
+
+
+
 
 </databaseChangeLog>

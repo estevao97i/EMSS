@@ -15,4 +15,5 @@
     <include file="config/liquibase/changelog/202109161155_insere_cargo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/202109161201_insere_situacao.xml" relativeToChangelogFile="false"/>
 
+
 </databaseChangeLog>
