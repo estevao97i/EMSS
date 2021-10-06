@@ -1,7 +1,7 @@
+import { UsuarioService } from './../../../Service/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import {  Router} from '@angular/router';
 import { Usuario } from 'src/app/models/Usuario';
-import {UsuarioService} from '../../../Service/usuario.service';
 
 
 @Component({
@@ -30,8 +30,10 @@ export class UsuarioReadComponent implements OnInit {
       this.usuarioService.findAll().subscribe((resposta) => {
           this.usuario = resposta;
       });
+    }
 
-
-  }
+  desativarUsuario(usuario: Usuario): void{
+    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
+  }  
 
 }

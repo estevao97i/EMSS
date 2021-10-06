@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,7 @@ export class CargoService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:8080/api/cargos';
+  baseUrl: string = environment.apiUrl + '/cargos';
 
   public listar(): Observable<SelectItem[]>{
     const url = this.baseUrl 

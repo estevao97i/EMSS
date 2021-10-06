@@ -60,8 +60,9 @@
                 <a routerLink="/usuario/update" class="">
                    <i id="edit" class="material-icons edit">edit</i>
                 </a>
-                 <a routerLink="/usuario/delete" class="">
-                     <i id="delete" class="material-icons delete">delete</i>
+                 <a (click)="desativarUsuario(usuario)" class="">
+                    <i class="material-icons delete">delete</i>
+                    <!-- <i *ngIf="usuario.cargo.value === inativo" id="ativar" class="material-icons primary">done-outline</i> -->
                  </a>
                 </div>
             </td>

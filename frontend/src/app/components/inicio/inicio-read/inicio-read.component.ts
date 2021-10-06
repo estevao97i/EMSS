@@ -15,6 +15,8 @@ export class InicioReadComponent implements OnInit {
 
     evento: Evento[] = [];
 
+    evento1: Evento;
+
     display: Boolean = false;
 
     showDialog() {
@@ -39,4 +41,14 @@ export class InicioReadComponent implements OnInit {
         });
 
     }
+
+    encontrarPorId(id: number): void{
+    this.eventoService.findById(id).subscribe((res) => {
+        this.evento1 = res;
+        })
+    }
+
+    // desativarUsuario(usuario: Usuario): void{
+    //     this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
+    //   }  
 }

@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioUpdateComponent implements OnInit {
 
-  
+  public form: FormGroup;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  // public criarFormulario(): void{
+  //   this.form = this.formBuilder.group({
+  //     id: [null],
+  //     nome: ['', Validators.required],
+  //     cpf: ['', Validators.required],
+  //     dataNascimento: ['', Validators.required],
+  //     email: ['', Validators.required],
+  //     status: [true],
+  //     telefone: [''],
+  //     cargo: [null, Validators.required]
+  //   });
+  // }
 }

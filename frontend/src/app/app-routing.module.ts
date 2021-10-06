@@ -1,4 +1,3 @@
-import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,7 +12,6 @@ const routes: Routes = [
     { path: 'inicio', component: InicioReadComponent},
     { path: 'usuario', component: UsuarioReadComponent },
     { path: 'usuario/create', component: UsuarioCreateComponent},
-    { path: 'usuario/delete', component: UsuarioDeleteComponent},
     { path: 'usuario/update', component: UsuarioUpdateComponent},
     { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
     { path: 'login-success', component: LoginSuccessComponent }

@@ -6,6 +6,7 @@
            <div *ngIf="numeros.id % 2 == 0">
                <div class="direction-r" >
                    <div class="flag-wrapper">
+                       <p-button label=""></p-button>
                        <span class="flag">{{numeros.motivo.descricao}}</span>
                        <span class="time-wrapper"><span class="time">{{numeros.dataEvento}}</span></span>
                    </div>
@@ -15,10 +16,11 @@
             <div *ngIf="numeros.id % 2 != 0">
                 <div class="direction-l">
                     <div class="flag-wrapper">
-                        <span class="flag">{{numeros.motivo.descricao}}</span>
+                        <!-- <p-button label=""></p-button> -->
+                        <p-button class="flag">{{numeros.motivo.descricao}}</p-button>
                         <span class="time-wrapper"><span class="time">{{numeros.dataEvento}}</span></span>
                     </div>
-                    <div class="desc">{{numeros.usuario.nome}}</div>
+                    <div class="desc">{{numeros.usuario}}</div>
                 </div>
             </div>
         </li>
