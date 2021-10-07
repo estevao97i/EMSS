@@ -52,7 +52,6 @@ export class InicioReadComponent implements OnInit {
     encontrarPorId(id: number): void{
     this.eventoService.findById(id).subscribe((res) => {
         this.evento1 = res;
-        this.displayEvento = true;
         })
     }
 

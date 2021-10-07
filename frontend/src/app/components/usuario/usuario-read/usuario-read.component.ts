@@ -15,6 +15,8 @@ export class UsuarioReadComponent implements OnInit {
 
     usuario: Usuario[] = [];
 
+    usuario1: Usuario;
+
     display: boolean = false;
 
     update: Boolean = false;
@@ -36,9 +38,13 @@ export class UsuarioReadComponent implements OnInit {
           this.usuario = resposta;
       });
     }
-
-  desativarUsuario(usuario: Usuario): void{
-    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
-  }  
+  desativarUsuario(usuario: Usuario): void {
+    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {});
+    }
+  encontrarPorId(id: number): void{
+    this.usuarioService.findById(id).subscribe((res) => {
+      this.usuario1 = res;
+    });
+  }
 
 }

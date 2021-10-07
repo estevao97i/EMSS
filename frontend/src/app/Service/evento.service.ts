@@ -19,7 +19,6 @@ export class EventoService {
 
     findById(id: number): Observable<EventoLista> {
       const url = `${this.baseUrl}/${id}`;
-      console.log(id)
       return this.http.get<EventoLista>(url);
     }
 

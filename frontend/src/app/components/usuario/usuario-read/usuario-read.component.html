@@ -1,4 +1,4 @@
-<p-dialog  [(visible)]="display">
+<p-dialog [(visible)]="display">
     <app-usuario-create></app-usuario-create>
     </p-dialog>
 <div class="buttonc">
@@ -6,7 +6,7 @@
 </div>
 
 <p-dialog  [(visible)]="update">
-    <app-usuario-update></app-usuario-update>
+    <app-usuario-update [usuarioPronto]="usuario"></app-usuario-update>
 </p-dialog>
 
 
@@ -75,5 +75,6 @@
         </tr>
     </ng-template>
 </p-table>
+
 
 
