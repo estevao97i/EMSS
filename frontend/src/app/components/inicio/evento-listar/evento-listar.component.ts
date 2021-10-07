@@ -12,7 +12,7 @@ export class EventoListarComponent implements OnInit {
 
   constructor(private eventoService: EventoService) { }
 
-  @Input() var: EventoLista;
+  @Input() leigo: EventoLista;
 
   ngOnInit(): void {
     this.criarFormulario();
@@ -34,10 +34,10 @@ export class EventoListarComponent implements OnInit {
   }
 
   public popularFormulario(): void{
-    this.form.get('id').setValue(this.var.id);
-    this.form.get('dataEvento').setValue(this.var.dataEvento);
-    this.form.get('situacao').setValue(this.var.situacao);
-    this.form.get('motivo').setValue(this.var.motivo);
-    this.form.get('usuario').setValue(this.var.usuario);
+    this.form.get('id').setValue(this.leigo.id);
+    this.form.get('dataEvento').setValue(this.leigo.dataEvento);
+    this.form.get('situacao').setValue(this.leigo.situacao);
+    this.form.get('motivo').setValue(this.leigo.motivo);
+    this.form.get('usuario').setValue(this.leigo.usuario);
   }
 } 

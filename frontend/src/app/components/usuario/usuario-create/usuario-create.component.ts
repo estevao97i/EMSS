@@ -1,3 +1,4 @@
+
 import { Component, Input, ModuleWithComponentFactories, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +6,7 @@ import {UsuarioService} from '../../../Service/usuario.service';
 import { SelectItem } from 'primeng';
 import { CargoService } from 'src/app/Service/cargo.service';
 import * as moment from 'moment';
+import { Usuario } from 'src/app/models/Usuario';
 
 
 
@@ -22,7 +24,6 @@ export class UsuarioCreateComponent implements OnInit {
     public form: FormGroup;
     public formBuilder: FormBuilder = new FormBuilder;
 
-
   constructor(
       private router: Router,
       private usuarioService: UsuarioService,
@@ -33,6 +34,8 @@ export class UsuarioCreateComponent implements OnInit {
       this.criarFormulario();
       this.buscarCargos();
   }
+
+
 
   public criarFormulario(): void{
     this.form = this.formBuilder.group({
@@ -63,8 +66,7 @@ export class UsuarioCreateComponent implements OnInit {
   create(): void {
     this.formatarData();
     this.formatarCargo();
-    this.usuarioService.create(this.form.getRawValue()).subscribe(() => {
-      this.router.navigate(['/usuario']);
+    this.usuarioService.create(this.form.getRawValue()).subscribe((res) => {
     });
   }
 

@@ -1,36 +1,11 @@
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-
 <ul class="timeline">
-        <!-- Item 1 -->
-        <li *ngFor="let numeros of evento">
-           <div *ngIf="numeros.id % 2 == 0">
-               <div class="direction-r" >
-                   <div class="flag-wrapper">
-                       <p-button class="flag" (click)="showDialogListaEvento(numeros.id)">{{numeros.motivo.descricao}}</p-button>
-                       <span class="time-wrapper"><span class="time">{{numeros.dataEvento}}</span></span>
-                   </div>
-                   <div class="desc">{{numeros.usuario}}</div>
-               </div>
-           </div>
-            <div *ngIf="numeros.id % 2 != 0">
-                <div class="direction-l">
-                    <div class="flag-wrapper">
-                        <!-- <p-button label=""></p-button> -->
-                        <p-button class="flag" (click)="showDialogListaEvento(numeros.id)">{{numeros.motivo.descricao}}</p-button>
-                        <span class="time-wrapper"><span class="time">{{numeros.dataEvento}}</span></span>
-                    </div>
-                    <div class="desc">{{numeros.usuario}}</div>
-                </div>
+        <li>
+            <div class="flag-wrapper">
+                <span class="time-wrapper">
+                    <h1 class="time">{{leigo.motivo.titulo}}</h1>
+                    <h1 class="time">{{leigo.dataEvento}}</h1>
+                </span>
             </div>
-        </li>
+        </div>
+    </li>
 </ul>
-
-<p-dialog [(visible)]="display">
-    <app-evento-create></app-evento-create>
-</p-dialog>
-
-<p-dialog [(visible)]="displayEvento">
-    <app-evento-listar [var]="evento1"></app-evento-listar>
-</p-dialog>
-
-<button class="create" type="button" (click)="showDialog()" pButton icon="pi pi-plus"></button>
