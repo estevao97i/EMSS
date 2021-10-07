@@ -1,4 +1,3 @@
-import { EventoListarComponent } from './components/inicio/evento-listar/evento-listar.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

@@ -9,7 +9,7 @@ import { Evento } from 'src/app/models/Evento';
 })
 export class EventoService {
 
-    baseUrl = "http://localhost:8080/api/eventos";
+    baseUrl = 'http://localhost:8080/api/eventos';
 
   constructor( private http: HttpClient) { }
 
@@ -39,6 +39,10 @@ export class EventoService {
 
     adiar(id: number): Observable<void> {
       const url = `${this.baseUrl}/` + `{id}`;
+<<<<<<< HEAD
+=======
+      console.log(id);
+>>>>>>> 54bc0359494013b1e545d1a31db70cf761ffb188
       return this.http.put<void>(url, null);
     }
 

@@ -15,6 +15,7 @@ import {Usuario} from 'src/app/models/Usuario';
   templateUrl: './evento-create.component.html',
   styleUrls: ['./evento-create.component.scss']
 })
+
 export class EventoCreateComponent implements OnInit {
 
   @Input() criaEvento: boolean = true;

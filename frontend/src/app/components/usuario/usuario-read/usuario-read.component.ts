@@ -25,8 +25,13 @@ export class UsuarioReadComponent implements OnInit {
         this.display = true;
     }
 
-    atualizar() {
-        this.update = true;
+    atualizar(id: number) {
+        this.usuarioService.findById(id).subscribe((res) => {
+            this.usuario1 = res;
+            this.update = true;
+            console.log(this.usuario1.id);
+        });
+
     }
 
   ngOnInit(): void {
@@ -38,15 +43,13 @@ export class UsuarioReadComponent implements OnInit {
           this.usuario = resposta;
       });
     }
-
-  desativarUsuario(usuario: Usuario): void{
-    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
-  }  
-
+  desativarUsuario(usuario: Usuario): void {
+    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {});
+    }
   encontrarPorId(id: number): void{
     this.usuarioService.findById(id).subscribe((res) => {
       this.usuario1 = res;
-    })
+    });
   }
 
 }
