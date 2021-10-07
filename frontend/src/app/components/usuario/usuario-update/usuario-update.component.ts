@@ -1,5 +1,6 @@
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
   selector: 'app-usuario-update',
@@ -9,11 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class UsuarioUpdateComponent implements OnInit {
 
   public form: FormGroup;
-    public formBuilder: FormBuilder = new FormBuilder;
+  public formBuilder: FormBuilder = new FormBuilder;
+
+  @Input() usuarioPronto: Usuario;
+
 
   constructor() { }
 
+
   ngOnInit(): void {
+    this.criarFormulario();
   }
 
   public criarFormulario(): void{
@@ -26,6 +32,21 @@ export class UsuarioUpdateComponent implements OnInit {
       status: [true],
       telefone: [''],
       cargo: [null, Validators.required]
+
+    })
+    this.popularFormulario();
+  }
+
+  public popularFormulario(): void{
+    this.form.get('id').setValue(this.usuarioPronto.id);
+    this.form.get('cpf').setValue(this.usuarioPronto.cpf);
+    this.form.get('dataNascimento').setValue(this.usuarioPronto.dataNascimento);
+    this.form.get('email').setValue(this.usuarioPronto.email);
+    this.form.get('status').setValue(this.usuarioPronto.status);
+    this.form.get('telefone').setValue(this.usuarioPronto.telefone);
+    this.form.get('cargo').setValue(this.usuarioPronto.cargo);
+    this.form.get('nome').setValue(this.usuarioPronto.nome);
     });
+
   }
 }
