@@ -15,7 +15,6 @@ export class UsuarioUpdateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   public criarFormulario(): void{
     this.form = this.formBuilder.group({
       id: [null],
@@ -28,4 +27,5 @@ export class UsuarioUpdateComponent implements OnInit {
       cargo: [null, Validators.required]
     });
   }
+
 }

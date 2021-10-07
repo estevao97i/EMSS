@@ -15,12 +15,12 @@ import * as moment from 'moment';
 })
 export class UsuarioCreateComponent implements OnInit {
 
-    @Input() criaUsuario: boolean = true;
+    @Input() criaUsuario: Boolean = true;
 
     public cargos: SelectItem[] = [];
 
     public form: FormGroup;
-    public formBuilder: FormBuilder = new FormBuilder;
+        public formBuilder: FormBuilder = new FormBuilder;
 
 
   constructor(
@@ -34,7 +34,7 @@ export class UsuarioCreateComponent implements OnInit {
       this.buscarCargos();
   }
 
-  public criarFormulario(): void{
+  public criarFormulario(): void {
     this.form = this.formBuilder.group({
       id: [null],
       nome: ['', Validators.required],
@@ -45,7 +45,7 @@ export class UsuarioCreateComponent implements OnInit {
       telefone: [''],
       cargo: [null, Validators.required]
     });
-}
+  }
 
   cancelar(): void {
       this.router.navigate(['/usuario']);
