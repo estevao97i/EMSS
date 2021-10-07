@@ -61,7 +61,7 @@ public class EventoServico implements Serializable {
         if (validaEvento(eventoDTO)) {
             Evento evento = eventoMapper.toEntity(eventoDTO);
             Evento eventoSalva = eventoRepositorio.save(evento);
-//            evento.getDataEvento().plusWeeks(1);
+            evento.getDataEvento().plusWeeks(1);
             return eventoMapper.toDTO(eventoSalva);
         }
         throw new ObjectnotFoundException("Não pode salvar Evento" + eventoDTO.getDataEvento());
@@ -75,7 +75,7 @@ public class EventoServico implements Serializable {
     }
 
 
-    @Scheduled(cron = "00 43 14 * * *")
+    @Scheduled(cron = "29 32 09 * * ?")
     public void rotinaDeEmail() {
         Optional<Evento> eventoOptional = eventoRepositorio.findTodayEvento(LocalDate.now());
         if (eventoOptional.isPresent()) {
@@ -85,7 +85,7 @@ public class EventoServico implements Serializable {
             emailDTO.setDestinatario("projeto.formacaobsb@gmail.com");
             emailDTO.setAssunto("Hoje tem um Patrocinador ira pargar o lache!!!");
             emailDTO.setCorpo("Esta chegando a hora do evento!!!!" + eventoDoDia.getMotivo().getTitulo() + "Esse evento sera patrocinado por" +
-                    eventoDoDia.getUsuario().toArray()[0]+ "e por mais outras" + (eventoDoDia.getUsuario().toArray().length -1)+ "pessoas" );
+                    eventoDoDia.getUsuario().toArray()[1]+ "e por mais outras" + (eventoDoDia.getUsuario().toArray().length +1)+ "pessoas" );
 
             for(Usuario user :eventoDoDia.getUsuario()) {
                 copias.add(user.getEmail());
