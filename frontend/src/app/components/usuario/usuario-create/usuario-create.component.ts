@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UsuarioService} from '../../../Service/usuario.service';
 import { SelectItem } from 'primeng';
 import { CargoService } from 'src/app/Service/cargo.service';
-import { Moment } from 'moment';
 import * as moment from 'moment';
 
 

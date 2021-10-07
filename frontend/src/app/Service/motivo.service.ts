@@ -1,4 +1,3 @@
-import { environment } from './../../environments/environment.prod';
 import { SelectItem } from 'primeng';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +10,7 @@ export class MotivoService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = environment.apiUrl + '/motivos';
+  baseUrl = "http://localhost:/api/motivos";
 
   public listar(): Observable<SelectItem[]>{
     const url = this.baseUrl 
