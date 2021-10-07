@@ -1,7 +1,5 @@
-import { Situacao } from './../../../models/Situacao';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventoLista } from './../../../models/EventoLista';
-import { Evento } from 'src/app/models/Evento';
 import { EventoService } from './../../../Service/evento.service';
 import { Component, Input, OnInit } from '@angular/core';
 

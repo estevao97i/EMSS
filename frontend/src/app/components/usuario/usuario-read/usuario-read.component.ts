@@ -11,16 +11,21 @@ import { Usuario } from 'src/app/models/Usuario';
 })
 export class UsuarioReadComponent implements OnInit {
 
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
+
     usuario: Usuario[] = [];
 
     display: boolean = false;
+
+    update: Boolean = false;
 
     showDialog() {
         this.display = true;
     }
 
-
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+    atualizar() {
+        this.update = true;
+    }
 
   ngOnInit(): void {
     this.findAll();

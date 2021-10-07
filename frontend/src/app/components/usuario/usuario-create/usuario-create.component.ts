@@ -73,7 +73,7 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   formatarData(): void{
-    let data: moment.Moment = moment.utc(this.form.value.dataNascimento).local();
+    const data: moment.Moment = moment.utc(this.form.value.dataNascimento).local();
     this.form.value.dataNascimento = data.format('DD/MM/YYYY')
   }
 }

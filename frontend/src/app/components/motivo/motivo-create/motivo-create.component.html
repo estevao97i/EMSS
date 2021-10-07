@@ -1,0 +1,20 @@
+<div class="form_wrapper"><p-dialog header="Title" [(visible)]="display"></p-dialog>
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Criar Motivo</h2>
+        </div>
+        <div class="row clearfix">
+            <div>
+                <form [formGroup]="form">
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <input formControlName="titulo" type="text" name="titulo" placeholder="Titulo motivo" required />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <input formControlName="descricao" type="text" name="descricao" placeholder="Motivo" required />
+                    </div>
+                    <p-button (onClick)= "create()"  label="Criar Usuario"></p-button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

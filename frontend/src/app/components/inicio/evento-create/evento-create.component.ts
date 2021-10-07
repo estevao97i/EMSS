@@ -1,13 +1,14 @@
 import { UsuarioService } from './../../../Service/usuario.service';
 import { MotivoService } from './../../../Service/motivo.service';
 import { SituacaoService } from './../../../Service/situacao.service';
-import { EventoService } from './../../../Service/evento.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SelectItem } from 'primeng';
 import { Component, Input, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/models/Usuario';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import {EventoService} from '../../../Service/evento.service';
+import {Usuario} from 'src/app/models/Usuario';
+
 
 @Component({
   selector: 'app-evento-create',

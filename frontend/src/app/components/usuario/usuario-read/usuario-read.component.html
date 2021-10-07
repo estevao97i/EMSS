@@ -1,9 +1,14 @@
 <p-dialog  [(visible)]="display">
     <app-usuario-create></app-usuario-create>
-</p-dialog>
+    <app-usuario-update></app-usuario-update>
+   </p-dialog>
 <div class="buttonc">
 <p-button type="button" (onClick)="showDialog()" label="Criar usuario"></p-button>
 </div>
+
+<p-dialog  [(visible)]="update">
+    <app-usuario-update></app-usuario-update>
+</p-dialog>
 
 
 <p-table dt [value]="usuario"  dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
@@ -66,7 +71,6 @@
                  </a>
                 </div>
             </td>
-
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
