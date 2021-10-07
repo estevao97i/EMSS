@@ -1,6 +1,6 @@
-import { Usuario } from './../components/usuario/usuario';
 import { Motivo } from './Motivo';
 import { Situacao } from './Situacao';
+import {Usuario} from './Usuario';
 
 export class EventoLista {
     id?: any;

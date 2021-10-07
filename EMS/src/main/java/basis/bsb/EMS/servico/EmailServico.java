@@ -37,7 +37,7 @@ public class EmailServico {
             mime.addCc(s);
         }
 
-        mime.setText("Patrocinador:" + Evento_.usuario );
+        mime.setText("Patrocinador: " + Evento_.usuario );
         javaSenderEmail.send(mimeMessage);
     }
 }
