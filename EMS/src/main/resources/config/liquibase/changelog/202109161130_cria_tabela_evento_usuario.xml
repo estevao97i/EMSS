@@ -4,10 +4,10 @@
     <changeSet id="202109161131" author="estevao.araujo">
         <createTable tableName="EVENTO_USUARIO">
             <column name="ID_USUARIO" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="evento_usuario_fk"/>
             </column>
             <column name="ID_EVENTO" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="evento_usuario_fk"/>
             </column>
         </createTable>
 

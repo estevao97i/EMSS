@@ -39,7 +39,7 @@ export class EventoService {
 
     adiar(id: number): Observable<void> {
       const url = `${this.baseUrl}/` + `{id}`;
-      return this.http.put<void>(url, id);
+      return this.http.put<void>(url, null);
     }
 
   }
