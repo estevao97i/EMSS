@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EventoLista } from './../../../models/EventoLista';
-import { EventoService } from './../../../Service/evento.service';
+import { EventoLista } from '../../../models/EventoLista';
+import { EventoService } from '../../../Service/evento.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./evento-listar.component.css']
 })
 export class EventoListarComponent implements OnInit {
+
+    public formBuilder: FormBuilder = new FormBuilder;
+    public form: FormGroup;
 
   constructor(private eventoService: EventoService) { }
 
@@ -19,17 +22,14 @@ export class EventoListarComponent implements OnInit {
     console.log(this.form);
   }
 
-  public formBuilder: FormBuilder = new FormBuilder; 
-  public form: FormGroup;
-
-  public criarFormulario(): void{
+  public criarFormulario(): void {
     this.form = this.formBuilder.group({
       id: [null],
       dataEvento: [''],
       situacao: [''],
       motivo: [''],
       usuario: ['']
-    })
+    });
     this.popularFormulario();
   }
 
@@ -40,4 +40,4 @@ export class EventoListarComponent implements OnInit {
     this.form.get('motivo').setValue(this.leigo.motivo);
     this.form.get('usuario').setValue(this.leigo.usuario);
   }
-} 
+}
