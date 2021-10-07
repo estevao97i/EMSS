@@ -1,4 +1,3 @@
-
 import { SelectItem } from 'primeng';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +8,6 @@ import {Motivo} from '../models/Motivo';
   providedIn: 'root'
 })
 export class MotivoService {
-
 
     baseUrl = 'http://localhost:8080/api/motivos';
 

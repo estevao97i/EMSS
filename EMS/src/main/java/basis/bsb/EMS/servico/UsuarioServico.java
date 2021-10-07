@@ -70,7 +70,11 @@ public class UsuarioServico implements Serializable {
     public void inativarUsuario(Long id){
         UsuarioDTO usuarioDTO = encontrarPorId(id);
         eventoServico.analisaUsuario(usuarioMapper.toEntity(usuarioDTO));
-        usuarioDTO.setStatus(false);
+        if (usuarioDTO.isStatus()){
+            usuarioDTO.setStatus(false);
+        } else {
+            usuarioDTO.setStatus(true);
+        }
         editar(usuarioDTO);
     }
 
