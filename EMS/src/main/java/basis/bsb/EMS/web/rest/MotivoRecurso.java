@@ -44,6 +44,12 @@ public class MotivoRecurso {
         return ResponseEntity.ok(motivoServico.buscarTodosFiltro(filtro));
     }
 
+    @DeleteMapping(value ="/{id}")
+    public ResponseEntity<Void> deletarMotivo(@PathVariable Long id){
+        motivoServico.deletarMotivo(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
 

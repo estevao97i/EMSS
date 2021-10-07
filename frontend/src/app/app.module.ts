@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { EventoCreateComponent } from './components/inicio/evento-create/evento-create.component';
+import { EventoListarComponent } from './components/inicio/evento-listar/evento-listar.component';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { MotivoReadComponent } from './components/motivo/motivo-read/motivo-read.component';
 import { MotivoCreateComponent } from './components/motivo/motivo-create/motivo-create.component';
@@ -46,6 +47,8 @@ import { MotivoCreateComponent } from './components/motivo/motivo-create/motivo-
         MotivoReadComponent,
         MotivoCreateComponent,
         UsuarioUpdateComponent,
+        EventoCreateComponent,
+        EventoListarComponent,
         EventoCreateComponent
 
     ],

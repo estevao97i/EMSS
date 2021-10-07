@@ -6,23 +6,25 @@
         <div class="row clearfix">
             <div>
                 <form [formGroup]="form">
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="motivo" placeholder="Motivo" required />
-                    </div>
-
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input formControlName="valor" type="text" name="email" placeholder="Valor do Evento" required />
+                        <input formControlName="valor" type="text" name="valor" placeholder="valor do Evento $$$" required />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                         <p-calendar placeholder="Data de Evento" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
                     </div>
-                    <div class="row clearfix">
+                    <div class="input_field select_option">
+                        <p-dropdown formControlName="situacao" [options]="situacao"></p-dropdown>
+                    </div>
+                    <!-- <div class="input_field select_option">
+                        <p-dropdown formControlName="" [options]="situacao"></p-dropdown>
+                    </div> -->
+                    <!-- <div class="row clearfix">
                         <div class="col_half">
                             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                                 <input formControlName="situaçao" type="text" name="name" placeholder="Situaçao" />
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="input_field select_option">
                         <p-multiSelect [options]="" formControlName="evento" optionLabel="name"></p-multiSelect>
                     </div>

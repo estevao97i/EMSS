@@ -10,7 +10,7 @@ export class CargoService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:8080/api/cargos';
+  baseUrl = "http://localhost:8080/api/cargos";
 
   public listar(): Observable<SelectItem[]>{
     const url = this.baseUrl 
