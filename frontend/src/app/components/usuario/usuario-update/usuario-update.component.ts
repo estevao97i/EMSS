@@ -1,4 +1,3 @@
-
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from 'src/app/models/Usuario';
@@ -14,6 +13,7 @@ export class UsuarioUpdateComponent implements OnInit {
   public formBuilder: FormBuilder = new FormBuilder;
 
   @Input() usuarioPronto: Usuario;
+
 
   constructor() { }
 
@@ -32,6 +32,7 @@ export class UsuarioUpdateComponent implements OnInit {
       status: [true],
       telefone: [''],
       cargo: [null, Validators.required]
+
     })
     this.popularFormulario();
   }
@@ -45,5 +46,7 @@ export class UsuarioUpdateComponent implements OnInit {
     this.form.get('telefone').setValue(this.usuarioPronto.telefone);
     this.form.get('cargo').setValue(this.usuarioPronto.cargo);
     this.form.get('nome').setValue(this.usuarioPronto.nome);
+    }
+
   }
-}
+
