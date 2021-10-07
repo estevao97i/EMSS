@@ -40,4 +40,12 @@ export class EventoListarComponent implements OnInit {
     this.form.get('motivo').setValue(this.leigo.motivo);
     this.form.get('usuario').setValue(this.leigo.usuario);
   }
+<<<<<<< HEAD
+
+  public adiarEvento(): void{
+    this.eventoService.adiar(this.leigo.id);
+  }
+} 
+=======
 }
+>>>>>>> dd0394a41e59f4dfc066a590bac1d24573d99c79

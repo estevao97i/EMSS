@@ -46,7 +46,7 @@ export class UsuarioUpdateComponent implements OnInit {
     this.form.get('telefone').setValue(this.usuarioPronto.telefone);
     this.form.get('cargo').setValue(this.usuarioPronto.cargo);
     this.form.get('nome').setValue(this.usuarioPronto.nome);
-    });
+    }
 
   }
-}
+
