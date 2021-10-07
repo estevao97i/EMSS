@@ -2,8 +2,6 @@ import { EventoListarComponent } from './components/inicio/evento-listar/evento-
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
-import { LoginSuccessComponent } from '@nuvem/angular-base';
 import {UsuarioReadComponent} from './components/usuario/usuario-read/usuario-read.component';
 import {UsuarioCreateComponent} from './components/usuario/usuario-create/usuario-create.component';
 import {MotivoReadComponent} from './components/motivo/motivo-read/motivo-read.component';
