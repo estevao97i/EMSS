@@ -280,5 +280,4 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
     ngOnDestroy() {
         this.unbindRipple();
     }
-
 }
