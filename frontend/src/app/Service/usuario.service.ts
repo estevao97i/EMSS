@@ -8,7 +8,7 @@ import { Usuario } from 'src/app/models/Usuario';
 })
 export class UsuarioService {
 
-    baseUrl = "http://localhost:8080/api/usuario";
+    baseUrl = 'http://localhost:8080/api/usuario';
 
   constructor(private http: HttpClient) { }
 
@@ -26,9 +26,10 @@ export class UsuarioService {
       usuario.cargo = {value: usuario.cargo}
       return this.http.post<Usuario>(url,usuario);
     }
-    
+
     public update(id: number, usuario: Usuario): Observable<Usuario> {
       const url = this.baseUrl + '{id}';
+      console.log(id);
       return this.http.put<Usuario>(url, usuario);
     }
 

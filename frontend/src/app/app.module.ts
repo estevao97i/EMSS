@@ -50,7 +50,6 @@ import { MotivoCreateComponent } from './components/motivo/motivo-create/motivo-
         EventoCreateComponent,
         EventoListarComponent,
         EventoCreateComponent
-
     ],
     imports: [
         BlockUIModule.forRoot({

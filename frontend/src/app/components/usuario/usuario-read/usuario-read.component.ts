@@ -25,8 +25,13 @@ export class UsuarioReadComponent implements OnInit {
         this.display = true;
     }
 
-    atualizar() {
-        this.update = true;
+    atualizar(id: number) {
+        this.usuarioService.findById(id).subscribe((res) => {
+            this.usuario1 = res;
+            this.update = true;
+            console.log(this.usuario1.id);
+        });
+
     }
 
   ngOnInit(): void {

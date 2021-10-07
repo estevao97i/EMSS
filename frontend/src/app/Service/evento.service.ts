@@ -9,7 +9,7 @@ import { Evento } from 'src/app/models/Evento';
 })
 export class EventoService {
 
-    baseUrl = "http://localhost:8080/api/eventos";
+    baseUrl = 'http://localhost:8080/api/eventos';
 
   constructor( private http: HttpClient) { }
 
@@ -28,12 +28,19 @@ export class EventoService {
     }
 
     update(id: number, evento: Evento): Observable<Evento> {
-      const url = this.baseUrl + '/{id}';
+      const url = `${this.baseUrl}/` + `{id}`;
       return this.http.put<Evento>(url, evento);
     }
 
     delete(id: number): Observable<void> {
-      const url = this.baseUrl + '{id}';
+      const url = `${this.baseUrl}/` + `{id}`;
       return this.http.delete<void>(url);
     }
-}
+
+    adiar(id: number): Observable<void> {
+      const url = `${this.baseUrl}/` + `{id}`;
+      console.log(id);
+      return this.http.put<void>(url, null);
+    }
+
+  }

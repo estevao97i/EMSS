@@ -36,6 +36,7 @@ export class InicioReadComponent implements OnInit {
 
     ngOnInit(): void {
         this.findAll();
+        // this.encontrarPorId(evento1.id);
     }
 
     findAll(): void {
@@ -52,10 +53,10 @@ export class InicioReadComponent implements OnInit {
     encontrarPorId(id: number): void{
     this.eventoService.findById(id).subscribe((res) => {
         this.evento1 = res;
-        })
+        });
     }
 
     // desativarUsuario(usuario: Usuario): void{
     //     this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
-    //   }  
+    //   }
 }
