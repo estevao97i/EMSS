@@ -14,15 +14,13 @@ export class UsuarioUpdateComponent implements OnInit {
 
   @Input() usuarioPronto: Usuario;
 
-
   constructor() { }
-
 
   ngOnInit(): void {
     this.criarFormulario();
+    this.popularFormulario();
   }
-
-  public criarFormulario(): void{
+  public criarFormulario(): void {
     this.form = this.formBuilder.group({
       id: [null],
       nome: ['', Validators.required],
@@ -31,13 +29,11 @@ export class UsuarioUpdateComponent implements OnInit {
       email: ['', Validators.required],
       status: [true],
       telefone: [''],
-      cargo: [null, Validators.required]
+      cargo: ['', Validators.required]
 
-    })
-    this.popularFormulario();
+    });
   }
-
-  public popularFormulario(): void{
+  public popularFormulario(): void {
     this.form.get('id').setValue(this.usuarioPronto.id);
     this.form.get('cpf').setValue(this.usuarioPronto.cpf);
     this.form.get('dataNascimento').setValue(this.usuarioPronto.dataNascimento);
@@ -49,4 +45,3 @@ export class UsuarioUpdateComponent implements OnInit {
     }
 
   }
-

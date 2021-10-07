@@ -30,22 +30,20 @@ export class EventoListarComponent implements OnInit {
       motivo: [''],
       usuario: ['']
     });
-    this.popularFormulario();
+
   }
 
   public popularFormulario(): void{
     this.form.get('id').setValue(this.leigo.id);
     this.form.get('dataEvento').setValue(this.leigo.dataEvento);
     this.form.get('situacao').setValue(this.leigo.situacao);
-    this.form.get('motivo').setValue(this.leigo.motivo);
+    this.form.get('motivo').setValue(this.leigo.motivo.titulo);
     this.form.get('usuario').setValue(this.leigo.usuario);
   }
-<<<<<<< HEAD
 
   public adiarEvento(): void{
-    this.eventoService.adiar(this.leigo.id);
+    this.eventoService.adiar(this.leigo.id).subscribe((res) => {
+        console.log(res);
+    });
   }
-} 
-=======
 }
->>>>>>> dd0394a41e59f4dfc066a590bac1d24573d99c79

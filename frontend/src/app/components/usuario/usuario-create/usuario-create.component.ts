@@ -1,4 +1,3 @@
-
 import { Component, Input, ModuleWithComponentFactories, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +8,6 @@ import * as moment from 'moment';
 import { Usuario } from 'src/app/models/Usuario';
 
 
-
 @Component({
   selector: 'app-usuario-create',
   templateUrl: './usuario-create.component.html',
@@ -17,12 +15,13 @@ import { Usuario } from 'src/app/models/Usuario';
 })
 export class UsuarioCreateComponent implements OnInit {
 
-    @Input() criaUsuario: boolean = true;
+    @Input() criaUsuario: Boolean = true;
 
     public cargos: SelectItem[] = [];
+    public usuario: Usuario;
 
     public form: FormGroup;
-    public formBuilder: FormBuilder = new FormBuilder;
+        public formBuilder: FormBuilder = new FormBuilder;
 
   constructor(
       private router: Router,
@@ -35,9 +34,8 @@ export class UsuarioCreateComponent implements OnInit {
       this.buscarCargos();
   }
 
+  public criarFormulario(): void {
 
-
-  public criarFormulario(): void{
     this.form = this.formBuilder.group({
       id: [null],
       nome: ['', Validators.required],
@@ -48,7 +46,7 @@ export class UsuarioCreateComponent implements OnInit {
       telefone: [''],
       cargo: [null, Validators.required]
     });
-}
+  }
 
   cancelar(): void {
       this.router.navigate(['/usuario']);
@@ -67,6 +65,7 @@ export class UsuarioCreateComponent implements OnInit {
     this.formatarData();
     this.formatarCargo();
     this.usuarioService.create(this.form.getRawValue()).subscribe((res) => {
+        this.usuario = res;
     });
   }
 
@@ -76,6 +75,6 @@ export class UsuarioCreateComponent implements OnInit {
 
   formatarData(): void{
     const data: moment.Moment = moment.utc(this.form.value.dataNascimento).local();
-    this.form.value.dataNascimento = data.format('DD/MM/YYYY')
+    this.form.value.dataNascimento = data.format('DD/MM/YYYY');
   }
 }
