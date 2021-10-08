@@ -8,14 +8,13 @@
                    <div class="flag-wrapper">
                        <span class="flag" (click)="showDialogListaEvento(numeros.id)">{{numeros.motivo.descricao}}</span>
                        <span class="time-wrapper"><span class="time">{{numeros.dataEvento}}</span></span>
+                       <span class="time-wrapper"><span class="time">{{numeros.valor}}</span></span>
                    </div>
-                   <div class="desc">{{numeros.usuario}}</div>
                </div>
            </div>
             <div *ngIf="numeros.id % 2 != 0">
                 <div class="direction-l">
                     <div class="flag-wrapper">
-                        <!-- <p-button label=""></p-button> -->
                         <span class="flag" (click)="showDialogListaEvento(numeros.id)">{{numeros.motivo.descricao}}</span>
                         <span class="time-wrapper"><span class="time">{{numeros.dataEvento}}</span></span>
                     </div>
@@ -32,4 +31,4 @@
     <app-evento-listar [leigo]="evento1"></app-evento-listar>
 </p-dialog>
 
-<button class="create" type="button" (click)="showDialog()" pButton icon="pi pi-plus"></button>
+<!--<button class="create" type="button" (click)="showDialog()" pButton icon="pi pi-plus"></button>-->

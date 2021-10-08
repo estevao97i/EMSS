@@ -6,7 +6,11 @@
                     <h2 class="time">{{leigo.dataEvento}}</h2>
                     <br><br><br>
                     <h1 class="">{{leigo.situacao.label}}</h1>
-
+                    <ul class="">
+                        <li *ngFor="let nome of leigo.usuario">
+                            {{nome.nome}}
+                        </li>
+                    </ul><br><br>
                 </span>
             <p-button (onClick)="adiarEvento()" label="Adiar evento"></p-button>
             </div>

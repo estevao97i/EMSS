@@ -42,8 +42,6 @@ export class EventoListarComponent implements OnInit {
   }
 
   public adiarEvento(): void{
-    this.eventoService.adiar(this.leigo.id).subscribe((res) => {
-        console.log(res);
-    });
+    this.eventoService.adiar(this.leigo.id).subscribe((res) => {});
   }
 }

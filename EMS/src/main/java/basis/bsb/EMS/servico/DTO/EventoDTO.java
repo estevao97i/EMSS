@@ -34,6 +34,6 @@ public class EventoDTO {
     private MotivoDTO motivo;
 
     @NotBlank
-    private List<UsuarioDTO> usuario;
+    private List<SelectDTO> usuario;
 
 }
