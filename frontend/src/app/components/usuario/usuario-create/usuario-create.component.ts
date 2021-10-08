@@ -20,6 +20,7 @@ export class UsuarioCreateComponent implements OnInit {
     public cargos: SelectItem[] = [];
     public usuario: Usuario;
 
+
     public form: FormGroup;
         public formBuilder: FormBuilder = new FormBuilder;
 
@@ -66,6 +67,7 @@ export class UsuarioCreateComponent implements OnInit {
     this.formatarCargo();
     this.usuarioService.create(this.form.getRawValue()).subscribe((res) => {
         this.usuario = res;
+        this.router.navigate(['/usuario']);
     });
   }
 
