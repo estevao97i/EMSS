@@ -1,7 +1,6 @@
 package basis.bsb.EMS.web.rest;
 
 
-import basis.bsb.EMS.servico.DTO.ListaUsuarioDTO;
 import basis.bsb.EMS.servico.DTO.UsuarioDTO;
 import basis.bsb.EMS.servico.UsuarioServico;
 import basis.bsb.EMS.servico.filtro.UsuarioFiltro;
