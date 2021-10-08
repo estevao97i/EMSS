@@ -43,7 +43,7 @@ public class EventoRecurso {
     }
 
     @PutMapping(value = "/adia/{id}")
-    public ResponseEntity<List<EventoDTO>> adiar(@PathVariable Long id){
+    public ResponseEntity<List<EventoDTO>> adiar(@PathVariable("id") Long id){
         return ResponseEntity.ok(eventoServico.adiaEvento(id));
     }
 

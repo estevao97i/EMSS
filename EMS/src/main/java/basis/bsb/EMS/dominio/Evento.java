@@ -37,10 +37,10 @@ public class Evento {
     @ManyToOne(fetch = FetchType.EAGER)
     private Situacao situacao;
     
-    @ManyToMany()
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "EVENTO_USUARIO",
-            joinColumns = {@JoinColumn(name = "ID_USUARIO")},
-            inverseJoinColumns = {@JoinColumn(name = "ID_EVENTO")})
+            joinColumns = {@JoinColumn(name = "ID_EVENTO")},
+            inverseJoinColumns = {@JoinColumn(name = "ID_USUARIO")})
     private List<Usuario> usuario = new ArrayList<>();
 
 }
