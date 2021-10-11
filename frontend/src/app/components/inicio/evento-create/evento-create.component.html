@@ -1,36 +1,29 @@
-<!--<div class="form_wrapper"><p-dialog header="Title" [(visible)]="display"></p-dialog>-->
-<!--    <div class="form_container">-->
-<!--        <div class="title_container">-->
-<!--            <h2>Criar Evento</h2>-->
-<!--        </div>-->
-<!--        <div class="row clearfix">-->
-<!--            <div>-->
-<!--                <form [formGroup]="form">-->
-<!--                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>-->
-<!--                        <input formControlName="valor" type="text" name="valor" placeholder="valor do Evento $$$" required />-->
-<!--                    </div>-->
-<!--                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>-->
-<!--                        <p-calendar placeholder="Data de Evento" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>-->
-<!--                    </div>-->
-<!--                    <div class="input_field select_option">-->
-<!--                        <p-dropdown formControlName="situacao" [options]="situacao"></p-dropdown>-->
-<!--                    </div>-->
-                    <!-- <div class="input_field select_option">
-                        <p-dropdown formControlName="" [options]="situacao"></p-dropdown>
-                    </div> -->
-                    <!-- <div class="row clearfix">
-                        <div class="col_half">
-                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input formControlName="situaçao" type="text" name="name" placeholder="Situaçao" />
-                            </div>
-                        </div>
-                    </div> -->
-<!--                    <div class="input_field select_option">-->
-<!--                        <p-multiSelect [options]="" formControlName="evento.usuario" optionLabel="name"></p-multiSelect>-->
-<!--                    </div>-->
-<!--                    <p-button label="Criar Usuario"></p-button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="form_wrapper"><p-dialog header="Title" [(visible)]="display"></p-dialog>
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Criar Evento</h2>
+        </div>
+        <div class="row clearfix">
+            <div>
+                <form [formGroup]="form">
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input formControlName="valor" type="text" name="valor" placeholder="valor do Evento $$$" required />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <p-calendar placeholder="Data de Evento" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
+                    </div>
+                    <div class="input_field select_option">
+                        <p-dropdown [options]="situacao" formControlName="situacao" ></p-dropdown>
+                    </div>
+                    <div class="input_field select_option">
+                        <p-dropdown  [options]="motivos" formControlName="motivo"></p-dropdown>
+                    </div>
+                    <div class="input_field select_option">
+                        <p-multiSelect [options]="" formControlName="usuario" optionLabel="name"></p-multiSelect>
+                    </div>
+                    <p-button label="Criar Evento"></p-button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

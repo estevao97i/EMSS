@@ -1,4 +1,5 @@
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+<div class="event">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 
 <ul class="timeline">
         <!-- Item 1 -->
@@ -27,8 +28,9 @@
     <app-evento-create></app-evento-create>
 </p-dialog>
 
-<p-dialog [(visible)]="displayEvento" *ngIf="evento1">
+<p-dialog [(visible)]="displayEvento" *ngIf="evento1" (onHide)="findAll()">
     <app-evento-listar [leigo]="evento1"></app-evento-listar>
 </p-dialog>
 
-<!--<button class="create" type="button" (click)="showDialog()" pButton icon="pi pi-plus"></button>-->
+<button class="create" type="button" (click)="showDialog()" pButton icon="pi pi-plus"></button>
+</div>

@@ -22,42 +22,48 @@ export class EventoCreateComponent implements OnInit {
 
   public situacao: SelectItem[] = [];
   public usuario: Usuario[] = [];
-  public motivo: SelectItem[] = [];
+  public motivos: SelectItem[] = [];
 
   public form: FormGroup;
   public formBuilder: FormBuilder = new FormBuilder;
 
   constructor( private router: Router,
     private eventoService: EventoService,
-    private SituacaoService: SituacaoService,
+    private situacaoService: SituacaoService,
     private motivoService: MotivoService,
     private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.buscarSituacao();
+    this.buscarMotivo();
+    this.buscarUsuarios();
     this.criarFormulario();
+
   }
 
   buscarUsuarios(): void {
     this.usuarioService.findAll().subscribe((res) => {
       this.usuario = res;
-  })
+  });
 }
 
   buscarSituacao(): void {
-    this.SituacaoService.listar().subscribe((res: SelectItem[]) => {
+    this.situacaoService.listar().subscribe((res: SelectItem[]) => {
       this.situacao = [{
         label: '==Situacao do Evento==',
         value: null
       } as SelectItem].concat(res);
+
     });
   }
 
   buscarMotivo(): void {
-    this.motivoService.listar().subscribe((res: SelectItem[]) => {
-      this.situacao = [{
-        label: '==Motivo do Evento==',
+    this.motivoService.listarSelect().subscribe((res: SelectItem[]) => {
+      this.motivos = [{
+        label: '==Motivo==',
         value: null
       } as SelectItem].concat(res);
+      console.log(this.motivos);
     });
   }
 
@@ -69,7 +75,7 @@ public criarFormulario(): void{
     valor: ['', Validators.required],
     situacao: ['', Validators.required],
     usuario: [null, Validators.required],
-    motivo: [null, Validators.required],
+    motivo: ['', Validators.required],
   });
 
 }
@@ -95,6 +101,7 @@ create(): void{
   this.formatarData();
   this.formatarSituacao();
   this.buscarUsuarios();
+  this.formatarMotivo();
   this.eventoService.create(this.form.getRawValue()).subscribe(() => {
     this.router.navigate(['/inicio']);
   });

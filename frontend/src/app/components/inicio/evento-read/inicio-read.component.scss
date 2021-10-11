@@ -1,5 +1,10 @@
+.event{
+    display: flex;
+    margin-top: 2%;
+
+}
 body {
-    margin: 0;
+    margin-top: 0;
     padding: 0;
     background: rgb(230,230,230);
 
@@ -16,14 +21,14 @@ body {
     width: 660px;
     margin: 0 auto;
     margin-top: 20px;
-    padding: 1em 0;
+    padding: 4em 0;
     list-style-type: none;
 }
 
 .timeline:before {
     position: absolute;
     left: 50%;
-    top: 0;
+    top: 20px;
     content: ' ';
     display: block;
     width: 6px;
@@ -63,13 +68,14 @@ body {
     position: relative;
     width: 300px;
     float: right;
+
 }
 
 .flag-wrapper {
     position: relative;
     display: inline-block;
 
-    text-align: center;
+    //text-align: center;
 }
 
 .flag {
@@ -146,9 +152,9 @@ body {
 .time-wrapper {
     display: inline;
 
-    line-height: 1em;
-    font-size: 0.66666em;
-    color: rgb(250,80,80);
+    line-height: 4em;
+    font-size: 0.9em;
+    color: rgb(238, 5, 5);
     vertical-align: middle;
 }
 
@@ -162,8 +168,8 @@ body {
 
 .time {
     display: inline-block;
-    padding: 4px 6px;
-    background: rgb(248,248,248);
+    padding: 2px 4px;
+    background: rgba(215, 250, 249, 0.02);
 }
 
 .desc {
@@ -278,9 +284,9 @@ body {
 }
 
 .create {
-    display: flex;
+    display: block;
     background-color: #14e731;
-    margin-left: 90%;
     font-size: 25px;
+    margin-top: 40%;
 }
 
