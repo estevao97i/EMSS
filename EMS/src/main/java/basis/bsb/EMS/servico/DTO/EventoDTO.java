@@ -31,7 +31,7 @@ public class EventoDTO {
     private SelectDTO situacao;
 
     @NotBlank
-    private MotivoDTO motivo;
+    private SelectDTO motivo;
 
     @NotBlank
     private List<SelectDTO> usuario;

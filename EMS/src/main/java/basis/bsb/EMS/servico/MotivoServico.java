@@ -4,7 +4,9 @@ package basis.bsb.EMS.servico;
 import basis.bsb.EMS.dominio.Motivo;
 import basis.bsb.EMS.repositorio.MotivoRepositorio;
 import basis.bsb.EMS.servico.DTO.MotivoDTO;
+import basis.bsb.EMS.servico.DTO.SelectDTO;
 import basis.bsb.EMS.servico.Mapper.MotivoMapper;
+import basis.bsb.EMS.servico.Mapper.MotivoSelectMapper;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.MotivoFiltro;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +22,13 @@ import java.util.List;
 public class MotivoServico implements Serializable {
 
     private final MotivoMapper motivoMapper;
+    private final MotivoSelectMapper motivoSelectMapper;
     private final MotivoRepositorio motivoRepositorio;
 
+
+    public List<SelectDTO> ListaTodosMotivosSelect(){
+        return motivoSelectMapper.toDTO(motivoRepositorio.findAll());
+    }
 
     public List<MotivoDTO> ListaTodosMotivos(){
         return motivoMapper.toDTO(motivoRepositorio.findAll());

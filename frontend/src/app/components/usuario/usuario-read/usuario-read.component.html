@@ -27,7 +27,7 @@
             <th colspan="2" pSortableColumn="telefone">Telefone <p-sortIcon field="name"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="cargo">Cargo <p-sortIcon field="cargo"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="acoes">Ações<p-sortIcon field="acoes"></p-sortIcon></th>
+<!--            <th colspan="2" pSortableColumn="acoes">Ações<p-sortIcon field="acoes"></p-sortIcon></th>-->
         </tr>
 
     </ng-template>
@@ -56,14 +56,14 @@
                 <span class="ui-column-title"></span>
                 <span [class]="'customer-badge status-' + usuario.status">{{usuario.status|usuario}}</span>
             </td>
-            <td colspan="2">
-                <div class="acoes">
-                   <p-button (onClick)="atualizar(usuario.id)"><i id="edita"  class="material-icons edita">edit</i></p-button>
+<!--            <td colspan="2">-->
+<!--                <div class="acoes">-->
+<!--                   <p-button (onClick)="atualizar(usuario.id)"><i id="edita"  class="material-icons edita">edit</i></p-button>-->
 
-                   <p-button><i id="delete"  class="material-icons delete">delete</i></p-button>
+<!--                   <p-button><i id="delete"  class="material-icons delete">delete</i></p-button>-->
 
-                </div>
-            </td>
+<!--                </div>-->
+<!--            </td>-->
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

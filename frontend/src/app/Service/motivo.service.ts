@@ -13,10 +13,15 @@ export class MotivoService {
 
   constructor(private http: HttpClient) { }
 
-  public listar(): Observable<SelectItem[]> {
-    const url = this.baseUrl;
+  public listarSelect(): Observable<SelectItem[]> {
+      const url = `${this.baseUrl}/select`;
     return this.http.get<SelectItem[]>(url);
   }
+
+    public listar(): Observable<Motivo[]> {
+        const url = this.baseUrl;
+        return this.http.get<Motivo[]>(url);
+    }
 
   public create(motivo: Motivo): Observable <Motivo> {
       const url = this.baseUrl;

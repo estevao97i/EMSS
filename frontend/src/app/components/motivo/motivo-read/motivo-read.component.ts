@@ -36,6 +36,17 @@ export class MotivoReadComponent implements OnInit {
           this.motivo = [].concat(resposta);
       });
     }
+    //
+    // findAllSelect(): void {
+    //     this.blockUiService.show();
+    //     this.motivoService.listarSelect().pipe(
+    //         finalize(() => this.blockUiService.hide()))
+    //         .subscribe((resposta) => {
+    //             this.motivo = [].concat(resposta);
+    //         });
+    // }
+
+
 
     // findAll(): void{
     //     this.motivoService.listar().subscribe((res) => {

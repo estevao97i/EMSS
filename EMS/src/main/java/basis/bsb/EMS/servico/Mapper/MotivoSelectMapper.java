@@ -1,17 +1,19 @@
 package basis.bsb.EMS.servico.Mapper;
-import basis.bsb.EMS.dominio.Usuario;
+
+
+import basis.bsb.EMS.dominio.Motivo;
 import basis.bsb.EMS.servico.DTO.SelectDTO;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = {})
-public interface usuarioSelectMapper extends EntityMapper<SelectDTO, Usuario> {
+public interface MotivoSelectMapper extends EntityMapper<SelectDTO, Motivo> {
 
     @Mapping(source= "id", target = "value")
-    @Mapping(source = "nome", target="label")
-    SelectDTO toDTO(Usuario usuario);
+    @Mapping(source = "titulo", target="label")
+    SelectDTO toDTO(Motivo motivo);
 
     @InheritInverseConfiguration
-    Usuario toEntity(SelectDTO select);
+    Motivo toEntity(SelectDTO dto);
 }
