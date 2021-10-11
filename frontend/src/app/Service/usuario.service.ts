@@ -1,4 +1,3 @@
-import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,7 +8,7 @@ import { Usuario } from 'src/app/models/Usuario';
 })
 export class UsuarioService {
 
-  baseUrl: string = environment.apiUrl + '/usuario';
+    baseUrl = 'http://localhost:8080/api/usuario';
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +29,7 @@ export class UsuarioService {
 
     public update(id: number, usuario: Usuario): Observable<Usuario> {
       const url = this.baseUrl + '{id}';
+      console.log(id);
       return this.http.put<Usuario>(url, usuario);
     }
 

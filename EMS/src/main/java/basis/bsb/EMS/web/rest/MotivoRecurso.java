@@ -2,6 +2,7 @@ package basis.bsb.EMS.web.rest;
 
 
 import basis.bsb.EMS.servico.DTO.MotivoDTO;
+import basis.bsb.EMS.servico.DTO.SelectDTO;
 import basis.bsb.EMS.servico.MotivoServico;
 import basis.bsb.EMS.servico.filtro.MotivoFiltro;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin()
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "api/motivos")
@@ -27,6 +28,11 @@ public class MotivoRecurso {
     public ResponseEntity<MotivoDTO> editar(@RequestBody MotivoDTO motivoDTO, @PathVariable Long id){
         motivoDTO.setId(id);
         return ResponseEntity.ok(motivoServico.editarMotivo(motivoDTO));
+    }
+
+    @GetMapping(value = "/select")
+    public ResponseEntity<List<SelectDTO>> listarTodosSelect(){
+        return ResponseEntity.ok(motivoServico.ListaTodosMotivosSelect());
     }
 
     @GetMapping

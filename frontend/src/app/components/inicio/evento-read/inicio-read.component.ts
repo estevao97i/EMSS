@@ -1,8 +1,9 @@
+import { EventoLista } from './../../../models/EventoLista';
 import { Component, OnInit } from '@angular/core';
 import {EventoService} from '../../../Service/evento.service';
 import {Evento} from '../../../models/Evento';
 import {BlockUiService} from '@nuvem/angular-base';
-import {pipe} from 'rxjs';
+
 import {finalize} from 'rxjs/operators';
 
 
@@ -15,12 +16,18 @@ export class InicioReadComponent implements OnInit {
 
     evento: Evento[] = [];
 
-    evento1: Evento;
+    evento1: EventoLista;
 
+    displayEvento: boolean = false;
     display: Boolean = false;
 
+    showDialogListaEvento(id: number) {
+        this.encontrarPorId(id);
+        console.log(this.evento1);
+        this.displayEvento = true;
+    }
+
     showDialog() {
-        console.log(this.display);
         this.display = true;
     }
 
@@ -29,6 +36,7 @@ export class InicioReadComponent implements OnInit {
 
     ngOnInit(): void {
         this.findAll();
+        // this.encontrarPorId(evento1.id);
     }
 
     findAll(): void {
@@ -45,10 +53,10 @@ export class InicioReadComponent implements OnInit {
     encontrarPorId(id: number): void{
     this.eventoService.findById(id).subscribe((res) => {
         this.evento1 = res;
-        })
+        });
     }
 
     // desativarUsuario(usuario: Usuario): void{
     //     this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
-    //   }  
+    //   }
 }

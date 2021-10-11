@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin()
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api/eventos")
@@ -43,7 +43,7 @@ public class EventoRecurso {
     }
 
     @PutMapping(value = "/adia/{id}")
-    public ResponseEntity<List<EventoDTO>> adiar(@PathVariable Long id){
+    public ResponseEntity<List<EventoDTO>> adiar(@PathVariable("id") Long id){
         return ResponseEntity.ok(eventoServico.adiaEvento(id));
     }
 

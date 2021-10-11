@@ -13,22 +13,15 @@
                         <p-calendar placeholder="Data de Evento" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
                     </div>
                     <div class="input_field select_option">
-                        <p-dropdown formControlName="situacao" [options]="situacao"></p-dropdown>
+                        <p-dropdown [options]="situacao" formControlName="situacao" ></p-dropdown>
                     </div>
-                    <!-- <div class="input_field select_option">
-                        <p-dropdown formControlName="" [options]="situacao"></p-dropdown>
-                    </div> -->
-                    <!-- <div class="row clearfix">
-                        <div class="col_half">
-                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input formControlName="situaçao" type="text" name="name" placeholder="Situaçao" />
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="input_field select_option">
-                        <p-dropdown formControlName="usuario" name="usuario" [options]="usuarios"></p-dropdown>
+                        <p-dropdown  [options]="motivos" formControlName="motivo"></p-dropdown>
                     </div>
-                    <p-button label="Criar Usuario"></p-button>
+                    <div class="input_field select_option">
+                        <p-multiSelect [options]="" formControlName="usuario" optionLabel="name"></p-multiSelect>
+                    </div>
+                    <p-button label="Criar Evento"></p-button>
                 </form>
             </div>
         </div>

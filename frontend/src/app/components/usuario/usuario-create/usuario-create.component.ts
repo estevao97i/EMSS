@@ -4,9 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UsuarioService} from '../../../Service/usuario.service';
 import { SelectItem } from 'primeng';
 import { CargoService } from 'src/app/Service/cargo.service';
-import { Moment } from 'moment';
 import * as moment from 'moment';
-
+import { Usuario } from 'src/app/models/Usuario';
 
 
 @Component({
@@ -16,13 +15,14 @@ import * as moment from 'moment';
 })
 export class UsuarioCreateComponent implements OnInit {
 
-    @Input() criaUsuario: boolean = true;
+    @Input() criaUsuario: Boolean = true;
 
     public cargos: SelectItem[] = [];
+    public usuario: Usuario;
+
 
     public form: FormGroup;
-    public formBuilder: FormBuilder = new FormBuilder;
-
+        public formBuilder: FormBuilder = new FormBuilder;
 
   constructor(
       private router: Router,
@@ -35,7 +35,8 @@ export class UsuarioCreateComponent implements OnInit {
       this.buscarCargos();
   }
 
-  public criarFormulario(): void{
+  public criarFormulario(): void {
+
     this.form = this.formBuilder.group({
       id: [null],
       nome: ['', Validators.required],
@@ -46,7 +47,7 @@ export class UsuarioCreateComponent implements OnInit {
       telefone: [''],
       cargo: [null, Validators.required]
     });
-}
+  }
 
   cancelar(): void {
       this.router.navigate(['/usuario']);
@@ -64,8 +65,9 @@ export class UsuarioCreateComponent implements OnInit {
   create(): void {
     this.formatarData();
     this.formatarCargo();
-    this.usuarioService.create(this.form.getRawValue()).subscribe(() => {
-      this.router.navigate(['/usuario']);
+    this.usuarioService.create(this.form.getRawValue()).subscribe((res) => {
+        this.usuario = res;
+        this.router.navigate(['/usuario']);
     });
   }
 
@@ -74,7 +76,7 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   formatarData(): void{
-    let data: moment.Moment = moment.utc(this.form.value.dataNascimento).local();
-    this.form.value.dataNascimento = data.format('DD/MM/YYYY')
+    const data: moment.Moment = moment.utc(this.form.value.dataNascimento).local();
+    this.form.value.dataNascimento = data.format('DD/MM/YYYY');
   }
 }

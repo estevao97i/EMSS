@@ -11,16 +11,28 @@ import { Usuario } from 'src/app/models/Usuario';
 })
 export class UsuarioReadComponent implements OnInit {
 
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
+
     usuario: Usuario[] = [];
 
+    usuario1: Usuario;
+
     display: boolean = false;
+
+    update: Boolean = false;
 
     showDialog() {
         this.display = true;
     }
 
+    atualizar(id: number) {
+        this.usuarioService.findById(id).subscribe((res) => {
+            this.usuario1 = res;
+            this.update = true;
+            console.log(this.usuario1.id);
+        });
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+    }
 
   ngOnInit(): void {
     this.findAll();
@@ -31,9 +43,13 @@ export class UsuarioReadComponent implements OnInit {
           this.usuario = resposta;
       });
     }
-
-  desativarUsuario(usuario: Usuario): void{
-    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {})
-  }  
+  desativarUsuario(usuario: Usuario): void {
+    this.usuarioService.inativarUsuario(usuario.id, usuario).subscribe(() => {});
+    }
+  encontrarPorId(id: number): void{
+    this.usuarioService.findById(id).subscribe((res) => {
+      this.usuario1 = res;
+    });
+  }
 
 }

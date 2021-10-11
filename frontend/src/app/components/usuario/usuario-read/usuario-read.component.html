@@ -1,9 +1,13 @@
-<p-dialog  [(visible)]="display">
+<p-dialog [(visible)]="display">
     <app-usuario-create></app-usuario-create>
-</p-dialog>
+    </p-dialog>
 <div class="buttonc">
 <p-button type="button" (onClick)="showDialog()" label="Criar usuario"></p-button>
 </div>
+
+<p-dialog  [(visible)]="update">
+    <app-usuario-update [usuarioPronto]="usuario1"></app-usuario-update>
+</p-dialog>
 
 
 <p-table dt [value]="usuario"  dataKey="id" styleClass="ui-table-customers" [rowHover]="true"
@@ -19,12 +23,11 @@
     <ng-template pTemplate="header">
         <tr>
             <th colspan="2" pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="foto">Foto <p-sortIcon field="foto"></p-sortIcon></th>
             <th colspan="3"  pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="telefone">Telefone <p-sortIcon field="name"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="cargo">Cargo <p-sortIcon field="cargo"></p-sortIcon></th>
             <th colspan="2" pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-            <th colspan="2" pSortableColumn="acoes">Ações<p-sortIcon field="acoes"></p-sortIcon></th>
+<!--            <th colspan="2" pSortableColumn="acoes">Ações<p-sortIcon field="acoes"></p-sortIcon></th>-->
         </tr>
 
     </ng-template>
@@ -35,9 +38,7 @@
                 <span class="ui-column-title"></span>
                 {{usuario.nome}}
             </td>
-            <td colspan="2">
-                <span class="ui-column-title">Foto</span>
-            </td>
+
             <td colspan="3">
                 <span class="ui-column-title"></span>
                 {{usuario.email}}
@@ -55,18 +56,14 @@
                 <span class="ui-column-title"></span>
                 <span [class]="'customer-badge status-' + usuario.status">{{usuario.status|usuario}}</span>
             </td>
-            <td colspan="2">
-                <div class="acoes">
-                <a routerLink="/usuario/update" class="">
-                   <i id="edit" class="material-icons edit">edit</i>
-                </a>
-                 <a (click)="desativarUsuario(usuario)" class="">
-                    <i class="material-icons delete">delete</i>
-                    <!-- <i *ngIf="usuario.cargo.value === inativo" id="ativar" class="material-icons primary">done-outline</i> -->
-                 </a>
-                </div>
-            </td>
+<!--            <td colspan="2">-->
+<!--                <div class="acoes">-->
+<!--                   <p-button (onClick)="atualizar(usuario.id)"><i id="edita"  class="material-icons edita">edit</i></p-button>-->
 
+<!--                   <p-button><i id="delete"  class="material-icons delete">delete</i></p-button>-->
+
+<!--                </div>-->
+<!--            </td>-->
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
@@ -75,5 +72,6 @@
         </tr>
     </ng-template>
 </p-table>
+
 
 

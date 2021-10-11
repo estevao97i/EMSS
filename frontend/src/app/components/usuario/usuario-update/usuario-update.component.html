@@ -9,15 +9,9 @@
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                         <input formControlName="nome" type="text" name="nome" placeholder="Nome" required />
                     </div>
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <p-inputMask mask="999.999.999-99" [unmask]=true formControlName="cpf" type="text" name="cpf" placeholder="CPF" required></p-inputMask>
-                    </div>
 
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                         <input formControlName="email" type="email" name="email" placeholder="Email" required />
-                    </div>
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <p-calendar placeholder="Data de Nascimento" formControlName="dataNascimento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
                     </div>
                     <div class="row clearfix">
                         <div class="col_half">
@@ -26,11 +20,10 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="input_field select_option">
                         <p-dropdown formControlName="cargo" [options]="cargos"></p-dropdown>
                     </div>
-                    <p-button (onClick)= "create()" label="Criar Usuario"></p-button>
+                    <p-button (onClick)="create()" label="Criar Usuario"></p-button>
                 </form>
             </div>
         </div>
