@@ -1,0 +1,10 @@
+version: '2'
+services:
+  Turmaformacao:
+    image: postgres:11.5
+    environment:
+      - POSTGRES_USER=user_formacao
+      - POSTGRES_PASSWORD=user_formacao
+      - POSTGRES_DB=formacao
+    ports:
+      - 5432:5432

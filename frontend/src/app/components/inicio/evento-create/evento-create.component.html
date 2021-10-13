@@ -1,0 +1,36 @@
+<div class="form_wrapper"><p-dialog header="Title" [(visible)]="display"></p-dialog>
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Criar Evento</h2>
+        </div>
+        <div class="row clearfix">
+            <div>
+                <form [formGroup]="form">
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input formControlName="valor" type="text" name="valor" placeholder="valor do Evento $$$" required />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <p-calendar placeholder="Data de Evento" dateFormat="dd/mm/yy" formControlName="dataEvento" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-calendar>
+                    </div>
+                    <div class="input_field select_option">
+                        <p-dropdown [options]="situacao" formControlName="situacao" ></p-dropdown>
+                    </div>
+                    <div class="input_field select_option">
+                        <p-dropdown  [options]="motivos" formControlName="motivo"></p-dropdown>
+                    </div>
+                    <div>
+                        <p-pickList [source]="usuario" [target]="UsuariosSelecionados" [responsive]="true" filterBy="label">
+                            <ng-template let-usuario pTemplate="item">
+                                <div  class="ui-helper-clearfix">
+                                    <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{usuario.label}}</div>
+                                </div>
+                            </ng-template>
+                        </p-pickList>
+                    </div>
+                    <p-button label="Criar Evento" (onClick)="create()"></p-button>
+                    <p-button label="Cancelar" (onClick)="cancelar()"></p-button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

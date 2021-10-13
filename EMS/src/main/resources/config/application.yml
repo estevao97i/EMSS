@@ -1,0 +1,32 @@
+spring:
+  application:
+      name: EMS
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/formacao
+    username: user_formacao
+    password: user_formacao
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+#    drop-first: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: projeto.formacaobsb@gmail.com
+    password: user_formacao
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          quitwait: false
+
+application:
+  email:
+    endereco-remetente: projeto.formacaobsb@gmail.com
+    nome-remetente: EM
+
+

@@ -1,0 +1,51 @@
+<p-dialog header="Title" [(visible)]="display">
+    <app-motivo-create></app-motivo-create>
+</p-dialog>
+<br/>
+<button class="but-creat" type="button" (click)="showDialog()" pButton label="Criar Motivos"></button>
+<p-table class="tabela" [value]="motivo">
+    <ng-template pTemplate="header">
+        <tr class="text">
+            <th colspan="2">Titulo</th>
+            <th colspan="3">Motivo</th>
+<!--            <th colspan="0.1">Ações</th>-->
+        </tr>
+    </ng-template>
+    <ng-template class="text" pTemplate="body" let-motivo>
+        <tr >
+            <td pEditableColumn colspan="2">
+                <p-cellEditor class="text-1">
+                    <ng-template pTemplate="input">
+                        <p-dropdown [options]="brands" [(ngModel)]="motivo.titulo" [style]="{'width':'100%'}"></p-dropdown>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{motivo.titulo}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td pEditableColumn colspan="3">
+                <p-cellEditor class="text-1">
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="motivo.descricao.color">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{motivo.descricao}}
+                    </ng-template>
+                </p-cellEditor>
+<!--            </td>-->
+<!--            <td pEditableColumn colspan="0.1">-->
+<!--                <div class="acoes">-->
+<!--                    <a href="#" class="">-->
+<!--                        <i id="edit" class="material-icons edit">edit</i>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="">-->
+<!--                        <i id="delete" class="material-icons delete">delete</i>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </td>-->
+        </tr>
+    </ng-template>
+</p-table>
+
+
+

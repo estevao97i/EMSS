@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202109161131" author="estevao.araujo">
+        <createTable tableName="EVENTO_USUARIO">
+            <column name="ID_USUARIO" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="evento_usuario_fk"/>
+            </column>
+            <column name="ID_EVENTO" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="evento_usuario_fk"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="EVENTO_USUARIO"
+                                 baseColumnNames="ID_USUARIO"
+                                 constraintName="FK_USUARIO_EVENTO_REL"
+                                 referencedTableName="USUARIO"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="EVENTO_USUARIO"
+                                 baseColumnNames="ID_EVENTO"
+                                 constraintName="FK_EVENTO_USUARIO_REL"
+                                 referencedTableName="EVENTO"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>    
