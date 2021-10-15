@@ -1,5 +1,5 @@
-import { SelectItem } from 'primeng';
 import { Observable } from 'rxjs';
+import { SelectItem } from 'primeng';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Motivo} from '../models/Motivo';
@@ -26,6 +26,11 @@ export class MotivoService {
   public create(motivo: Motivo): Observable <Motivo> {
       const url = this.baseUrl;
     return this.http.post<Motivo>(url,motivo);
+  }
+
+  public delete(id: number): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }
 

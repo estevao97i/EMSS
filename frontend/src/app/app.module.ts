@@ -50,7 +50,7 @@ import {PickListModule} from 'primeng/picklist';
         UsuarioUpdateComponent,
         EventoCreateComponent,
         EventoListarComponent,
-        EventoCreateComponent
+        EventoCreateComponent,
     ],
     imports: [
         BlockUIModule.forRoot({

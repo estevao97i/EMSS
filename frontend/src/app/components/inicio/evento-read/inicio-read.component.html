@@ -26,12 +26,12 @@
 
 <p-button pButton icon="pi pi-plus" (click)="showDialog()"></p-button>	
 <p-dialog [(visible)]="display">
-	<app-evento-create [criaEvento] = "display"></app-evento-create>
+	<app-evento-create [criaEvento] = "display" (salvar) = "atualizar()" (cancelado)="display = $event"></app-evento-create>
 	
 </p-dialog>
 
 <p-dialog [(visible)]="displayEvento" *ngIf="evento1" (onHide)="findAll()">
-    <app-evento-listar [leigo]="evento1"></app-evento-listar>
+    <app-evento-listar [leigo]="evento1" (salvado)="atualizarData()"></app-evento-listar>
 </p-dialog>
 
 

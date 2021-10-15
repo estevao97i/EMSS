@@ -1,6 +1,7 @@
 package basis.bsb.EMS.repositorio;
 
 import basis.bsb.EMS.dominio.Evento;
+import basis.bsb.EMS.dominio.Motivo;
 import basis.bsb.EMS.dominio.Usuario;
 import basis.bsb.EMS.servico.DTO.EventoDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,8 @@ import java.util.Optional;
 
 @Repository
 public interface EventoRepositorio extends JpaRepository<Evento,Long>, JpaSpecificationExecutor<Evento> {
+
+    boolean existsByMotivo(Long id);
 
     boolean existsByDataEvento(LocalDate data);
 

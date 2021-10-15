@@ -1,4 +1,4 @@
-import { Component, Input, ModuleWithComponentFactories, OnInit } from '@angular/core';
+import { Component, Input, ModuleWithComponentFactories, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UsuarioService} from '../../../Service/usuario.service';
@@ -17,6 +17,7 @@ export class UsuarioCreateComponent implements OnInit {
 
     public cargos: SelectItem[] = [];
     public usuario: Usuario;
+    @Output() cancela: EventEmitter<boolean> = new EventEmitter();
 
 
     public form: FormGroup;
@@ -48,7 +49,7 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   cancelar(): void {
-      this.router.navigate(['/usuario']);
+      this.cancela.emit(false);
   }
 
   buscarCargos(): void {

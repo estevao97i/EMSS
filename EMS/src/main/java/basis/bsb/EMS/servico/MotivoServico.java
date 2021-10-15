@@ -7,9 +7,11 @@ import basis.bsb.EMS.servico.DTO.MotivoDTO;
 import basis.bsb.EMS.servico.DTO.SelectDTO;
 import basis.bsb.EMS.servico.Mapper.MotivoMapper;
 import basis.bsb.EMS.servico.Mapper.MotivoSelectMapper;
+import basis.bsb.EMS.servico.excecao.NaoPodeExcluirException;
 import basis.bsb.EMS.servico.excecao.ObjectnotFoundException;
 import basis.bsb.EMS.servico.filtro.MotivoFiltro;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,7 @@ public class MotivoServico implements Serializable {
     private final MotivoMapper motivoMapper;
     private final MotivoSelectMapper motivoSelectMapper;
     private final MotivoRepositorio motivoRepositorio;
+    private final EventoServico eventoServico;
 
 
     public List<SelectDTO> ListaTodosMotivosSelect(){
@@ -51,7 +54,17 @@ public class MotivoServico implements Serializable {
     }
 
     public void deletarMotivo(Long id){
-        motivoRepositorio.deleteById(id);
+        try {
+            if(!eventoServico.verificaMotivoDentroEvento(id)){
+                motivoRepositorio.deleteById(id);
+            }else {
+
+            }
+
+        }catch (DataIntegrityViolationException e){
+            throw new NaoPodeExcluirException("Não pode excluir um motivo que esteja relacionado ao evento!");
+        }
+
     }
 
     public List<MotivoDTO> buscarTodosFiltro(MotivoFiltro filtro){

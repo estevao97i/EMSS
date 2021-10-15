@@ -3,11 +3,10 @@ import { MotivoService } from './../../../Service/motivo.service';
 import { SituacaoService } from './../../../Service/situacao.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SelectItem } from 'primeng';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import {EventoService} from '../../../Service/evento.service';
-
 
 
 @Component({
@@ -19,6 +18,9 @@ import {EventoService} from '../../../Service/evento.service';
 export class EventoCreateComponent implements OnInit {
 
   @Input() criaEvento: boolean = true;
+  @Output() cancelado: EventEmitter<boolean> = new EventEmitter();
+  @Output() salvar: EventEmitter<void> = new EventEmitter();
+  
 
   public situacao: SelectItem[] = [];
   public usuario: SelectItem[] = [];
@@ -83,8 +85,7 @@ public criarFormulario(): void{
 }
 
 cancelar(): void {
-  this.criaEvento = false;
-  // this.router.navigate(['/inicio']);
+  this.cancelado.emit(false);
 }
 
 formatarMotivo(): void{
@@ -103,8 +104,8 @@ formatarSituacao(): void {
 create(): void{
   this.formatarMotivo();
   this.formatarSituacao();
-  // this.formatarData();
   this.eventoService.create(this.form.value).subscribe(() => {
+    this.salvar.emit();
   })
 
   }

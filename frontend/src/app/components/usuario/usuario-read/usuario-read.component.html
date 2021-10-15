@@ -1,12 +1,12 @@
 <p-dialog [(visible)]="display">
-    <app-usuario-create></app-usuario-create>
+    <app-usuario-create (cancela)="display = $event"></app-usuario-create>
     </p-dialog>
 
 <div class="buttonc">
 <p-button type="button" (onClick)="showDialog()" label="Criar usuario"></p-button>
 </div>
 
-<p-dialog  [(visible)]="displayupdate">
+<p-dialog  [(visible)]="displayupdate" *ngIf="displayupdate">
     <app-usuario-update [usuarioPronto]="usuario1"></app-usuario-update>
 </p-dialog>
 

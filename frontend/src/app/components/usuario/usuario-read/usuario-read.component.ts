@@ -27,14 +27,12 @@ export class UsuarioReadComponent implements OnInit {
 
     showDialogAtualizar(){
       this.atualizar(this.usuario1);
-      // this.update = true;
     }
 
     atualizar(usuario: Usuario) {
         this.usuarioService.findById(usuario.id).subscribe((res) => {
         this.usuario1 = res;
         this.displayupdate = true;
-        console.log(this.usuario1);
         });
   }
 

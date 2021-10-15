@@ -96,6 +96,13 @@ public class EventoServico implements Serializable {
         }
     }
 
+    public boolean verificaMotivoDentroEvento(Long id){
+        if(!eventoRepositorio.existsByMotivo(id)){
+            return false;
+        }
+        return true;
+    }
+
     public List<EventoDTO> trocaDataEvento(Long id1, Long id2) {
         Evento evento1 = eventoRepositorio.findById(id1).orElseThrow(() -> new ObjectnotFoundException(""));
         Evento evento2 = eventoRepositorio.findById(id2).orElseThrow(() -> new ObjectnotFoundException(""));
